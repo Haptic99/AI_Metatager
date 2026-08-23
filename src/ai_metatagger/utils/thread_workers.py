@@ -224,12 +224,6 @@ class AnalysisThread(QtCore.QThread):
                 trk_id = str(trk['track_id'])
                 if trk_id not in state_data[basename]:
                     state_data[basename][trk_id] = {
-                        'KI': {
-                            'lang': trk['language_iso'],
-                            'sdh': trk['is_hearing_impaired'],
-                            'forced': trk['is_forced'],
-                            'name': ''
-                        },
                         'Validated': {
                             'lang': False,
                             'sdh': False,
@@ -237,6 +231,13 @@ class AnalysisThread(QtCore.QThread):
                             'name': False
                         }
                     }
+                # Always overwrite KI data with fresh results
+                state_data[basename][trk_id]['KI'] = {
+                    'lang': trk['language_iso'],
+                    'sdh': trk['is_hearing_impaired'],
+                    'forced': trk['is_forced'],
+                    'name': ''
+                }
             save_state(state_data)
             self.movie_ready.emit()
         self.progress_update.emit(total, total, "Alle Filme analysiert!")
