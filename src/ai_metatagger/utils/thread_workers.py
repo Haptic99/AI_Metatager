@@ -28,6 +28,11 @@ class AnalysisThread(QtCore.QThread):
             is_sdh = 'SDH' in title.upper()
             is_forced = 'FORCED' in title.upper()
             track_type = "Audio" if s.get('codec_type') == 'audio' else "Untertitel"
+            codec = s.get('codec_name', '').lower()
+            if track_type == "Audio": sub_type = "Audio"
+            elif 'pgs' in codec or 'dvd' in codec: sub_type = "PGS"
+            else: sub_type = "SRT"
+            
             tracks.append({
                 "file_name": os.path.basename(filepath),
                 "track_id": idx,
@@ -35,7 +40,7 @@ class AnalysisThread(QtCore.QThread):
                 "language_iso": lang,
                 "track_name": "",
                 "is_default": False,
-                "subtitle_type": "",
+                "subtitle_type": sub_type,
                 "is_hearing_impaired": is_sdh,
                 "is_forced": is_forced,
                 "notes": "AUTO",

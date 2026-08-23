@@ -34,6 +34,11 @@ class Screen3Validator(QtWidgets.QWidget):
         self.movie_list = QtWidgets.QListWidget()
         self.movie_list.itemClicked.connect(self.on_movie_selected)
         left_panel_layout.addWidget(self.movie_list)
+        
+        self.btn_remove_movie = QtWidgets.QPushButton("X Film ignorieren")
+        self.btn_remove_movie.setStyleSheet("background-color: #d32f2f;")
+        self.btn_remove_movie.clicked.connect(self.remove_movie)
+        left_panel_layout.addWidget(self.btn_remove_movie)
         self.lbl_available = QtWidgets.QLabel("Neue Filme (Auswählen für KI-Analyse):")
         self.lbl_available.setFont(QtGui.QFont("Segoe UI", 10, QtGui.QFont.Bold))
         left_panel_layout.addWidget(self.lbl_available)
@@ -116,7 +121,12 @@ class Screen3Validator(QtWidgets.QWidget):
         self.track_list.itemClicked.connect(self.on_track_selected)
         right_layout.addWidget(self.track_list)
         self.form_grid = QtWidgets.QGridLayout()
-        self.form_grid.setColumnStretch(1, 1)
+        self.form_grid.setSpacing(20)
+        self.form_grid.setColumnStretch(0, 1)
+        self.form_grid.setColumnStretch(1, 2)
+        self.form_grid.setColumnStretch(2, 3)
+        self.form_grid.setColumnStretch(3, 1)
+        self.form_grid.setColumnStretch(4, 1)
         # Labels for Headers
         self.form_grid.addWidget(QtWidgets.QLabel("<b>Eigenschaft</b>"), 0, 0)
         self.form_grid.addWidget(QtWidgets.QLabel("<b>KI-Vorschlag</b>"), 0, 1)
@@ -334,7 +344,9 @@ class Screen3Validator(QtWidgets.QWidget):
                 item_spur = QtWidgets.QTableWidgetItem(str(row['track_id']))
                 item_spur.setData(QtCore.Qt.UserRole, i)
                 item_art = QtWidgets.QTableWidgetItem(str(row['track_type']))
-                item_codec = QtWidgets.QTableWidgetItem(str(row.get('subtitle_type', '')) if row['track_type'] == 'subtitle' else 'Audio')
+                ctype = str(row.get('subtitle_type', ''))
+                if not ctype: ctype = "Audio" if str(row['track_type']).lower() == 'audio' else "SRT"
+                item_codec = QtWidgets.QTableWidgetItem(ctype)
                 
                 if row['is_validated'] == True:
                     item_spur.setForeground(QtGui.QColor("#aaaaaa"))
@@ -407,12 +419,12 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_conv_srt.setVisible(False)
         self.btn_conv_pgs.setVisible(False)
         self.lbl_conv.setVisible(False)
-        if row['track_type'] == 'subtitle':
+        if str(row['track_type']).lower() == 'untertitel':
             codec = str(row.get('subtitle_type', '')).lower()
-            if codec in ['subrip', 'srt']:
+            if not codec or 'srt' in codec or 'subrip' in codec:
                 self.btn_conv_srt.setVisible(True)
                 self.lbl_conv.setVisible(True)
-            elif codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']:
+            else:
                 self.btn_conv_pgs.setVisible(True)
                 self.lbl_conv.setVisible(True)
 
@@ -570,3 +582,23 @@ class Screen3Validator(QtWidgets.QWidget):
             os.startfile(files[0])
         else:
             QtWidgets.QMessageBox.warning(self, "Nicht gefunden", "Die extrahierten PGS Bilder wurden nicht gefunden.")
+
+    def remove_movie(self):
+        item = self.movie_list.currentItem()
+        if not item: return
+        film = item.text()
+        
+        reply = QtWidgets.QMessageBox.question(self, 'Film entfernen', f'Willst du "{film}" wirklich aus der Validierungsliste entfernen? Die KI-Werte werden dann nicht übernommen.', QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, QtWidgets.QMessageBox.No)
+        if reply == QtWidgets.QMessageBox.Yes:
+            # Set is_validated to True for all tracks of this film to hide it
+            self.df.loc[self.df['file_name'] == film, 'is_validated'] = True
+            save_matrix(self.df)
+            
+            # Clear UI if it's the current film
+            if getattr(self, 'current_film', None) == film:
+                self.current_film = None
+                self.current_idx = 0
+                self.track_list.setRowCount(0)
+            
+            # Refresh
+            self.check_for_new_data()
