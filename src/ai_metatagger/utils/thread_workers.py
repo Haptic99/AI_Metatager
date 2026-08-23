@@ -2,6 +2,7 @@ import os
 import subprocess
 import shutil
 import json
+import time
 import pandas as pd
 from PyQt5 import QtCore
 from ai_metatagger.config import DIR_TEST, MKVPROPEDIT, PYTHON_EXE, DB_PATH
@@ -16,10 +17,12 @@ class AnalysisThread(QtCore.QThread):
         self.file_paths = file_paths
         self.is_cancelled = False
     def extract_metadata(self, filepath):
-        cmd = ["ffprobe", "-v", "error", "-show_streams", "-of", "json", filepath]
-        res = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', creationflags=subprocess.CREATE_NO_WINDOW)
-        if res.returncode != 0: return []
-        data = json.loads(res.stdout)
+        data = getattr(self, 'ffprobe_cache', {}).get(filepath)
+        if not data:
+            cmd = ["ffprobe", "-v", "error", "-show_streams", "-of", "json", filepath]
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', creationflags=subprocess.CREATE_NO_WINDOW)
+            if res.returncode != 0: return []
+            data = json.loads(res.stdout)
         tracks = []
         streams = [s for s in data.get('streams', []) if s.get('codec_type') != 'video']
         for idx, s in enumerate(streams, start=1):
@@ -56,11 +59,9 @@ class AnalysisThread(QtCore.QThread):
             os.makedirs(DIR_TEST)
             
         self.progress_update.emit(0, 100, "Scanne alle Dateien...")
-        import subprocess, json, time
         file_stats = []
         total_points = 0
         w_audio = 2
-        import time
         prescan_start = time.time()
         w_pgs = 10
         w_srt = 1
@@ -78,6 +79,8 @@ class AnalysisThread(QtCore.QThread):
             try:
                 res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding='utf-8', errors='replace', creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
                 data = json.loads(res.stdout)
+                if not hasattr(self, 'ffprobe_cache'): self.ffprobe_cache = {}
+                self.ffprobe_cache[path] = data
                 for s in data.get('streams', []):
                     ctype = s.get('codec_type')
                     if ctype == 'audio':
@@ -88,7 +91,8 @@ class AnalysisThread(QtCore.QThread):
                         codec = s.get('codec_name', '')
                         if codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']: pts_for_file += w_pgs
                         else: pts_for_file += w_srt
-            except: pass
+            except (subprocess.SubprocessError, json.JSONDecodeError, OSError) as e:
+                print(f'Prescan error: {e}')
             
             pts_for_file += w_mux
             total_points += pts_for_file
@@ -101,7 +105,8 @@ class AnalysisThread(QtCore.QThread):
             with open(csv_path, "a", encoding="utf-8") as f:
                 if write_header: f.write("Movie,TrackType,Codec,DurationSec\n")
                 f.write(f'"ALL",prescan,ffprobe,{prescan_dur:.2f}\n')
-        except: pass
+        except OSError as e:
+            print(f'Log write error: {e}')
         
         if total_points == 0: total_points = 1
         points_done = 0
@@ -160,7 +165,8 @@ class AnalysisThread(QtCore.QThread):
                     with open(csv_path, "a", encoding="utf-8") as f:
                         if write_header: f.write("Movie,TrackType,Codec,DurationSec\n")
                         f.write(f'"{basename}",{track_type},{codec},{dur:.2f}\n')
-                except: pass
+                except OSError as e:
+                    print(f'Log write error: {e}')
                 
                 fractional_points = 0.0
                 if track_type == 'audio': points_done += w_audio

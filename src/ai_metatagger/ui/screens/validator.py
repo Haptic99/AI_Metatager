@@ -621,7 +621,8 @@ class Screen3Validator(QtWidgets.QWidget):
         new_sdh = self.cmb_sdh.currentText() == "Ja"
         new_forced = self.cmb_forced.currentText() == "Ja"
         new_titel = self.txt_titel.text()
-        accuracy_file = r"F:\Jellyfin_AI_Cockpit\data\KI_Accuracy.json"
+        from ai_metatagger.config import DATA_DIR
+        accuracy_file = os.path.join(DATA_DIR, "KI_Accuracy.json")
         os.makedirs(os.path.dirname(accuracy_file), exist_ok=True)
         stats = {"total": 0, "correct_lang": 0, "correct_sdh": 0, "correct_forced": 0, "perfect_tracks": 0}
         if os.path.exists(accuracy_file):

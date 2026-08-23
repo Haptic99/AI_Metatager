@@ -318,7 +318,8 @@ class Screen4Trainer(QtWidgets.QWidget):
 
 
 
-        accuracy_file = r"F:\Jellyfin_AI_Cockpit\data\KI_Accuracy.json"
+        from ai_metatagger.config import DATA_DIR
+        accuracy_file = os.path.join(DATA_DIR, "KI_Accuracy.json")
 
 
 

@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import time
 import datetime
@@ -7,13 +7,7 @@ import re
 import subprocess
 import json
 
-# Lade Konfiguration
-CONFIG_PATH = r"F:\Jellyfin_AI_Cockpit\config.json"
-try:
-    with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
-        CONFIG = json.load(f)
-except:
-    CONFIG = {}
+from ai_metatagger.config import DATA_DIR, DIR_SERIEN, TESSERACT_PATH, FFSUBSYNC_PATH, MKVPROPEDIT
 
 if os.name == 'nt':
     class NoWindowPopen(subprocess.Popen):
@@ -34,17 +28,16 @@ warnings.filterwarnings("ignore")
 
 DetectorFactory.seed = 0
 
-TESSERACT_PATH = r"C:\Users\dmart\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 if os.path.exists(TESSERACT_PATH):
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
-MEDIA_DIR = r"F:\Jellyfin\Serien"
-TEMP_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "temp_cleanup")
+MEDIA_DIR = DIR_SERIEN
+TEMP_DIR = os.path.join(DATA_DIR, "temp_cleanup")
 if not os.path.exists(TEMP_DIR):
-    os.makedirs(TEMP_DIR)
+    os.makedirs(TEMP_DIR, exist_ok=True)
 
-LOG_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Master_Cleanup_Log.txt")
-REVIEW_LOG = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Bitte_Pruefen.txt")
+LOG_PATH = os.path.join(DATA_DIR, "Master_Cleanup_Log.txt")
+REVIEW_LOG = os.path.join(DATA_DIR, "Bitte_Pruefen.txt")
 
 def write_review(msg):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -52,10 +45,11 @@ def write_review(msg):
     try:
         with open(REVIEW_LOG, 'a', encoding='utf-8') as f:
             f.write(formatted_msg + "\n")
-    except: pass
-KORREKTUR_LOG = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Master_Korrektur_Log.txt")
-SYNC_LOG = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Master_Sync_Log.txt")
-FFSUBSYNC_PATH = r"C:\Users\dmart\AppData\Roaming\Python\Python313\Scripts\ffsubsync.exe"
+    except Exception as e:
+        print(f"Error writing to review log: {e}")
+
+KORREKTUR_LOG = os.path.join(DATA_DIR, "Master_Korrektur_Log.txt")
+SYNC_LOG = os.path.join(DATA_DIR, "Master_Sync_Log.txt")
 
 def write_log(msg, console=True, log_type="cleanup"):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -64,7 +58,7 @@ def write_log(msg, console=True, log_type="cleanup"):
     try:
         with open(LOG_PATH, 'a', encoding='utf-8') as f:
             f.write(formatted_msg + "\n")
-    except: pass
+    except Exception: pass
         
     if console:
         print(str(msg).encode(sys.stdout.encoding, errors='replace').decode(sys.stdout.encoding))
@@ -76,7 +70,9 @@ def get_streams(filepath):
         if res.returncode != 0: return []
         data = json.loads(res.stdout)
         return data.get('streams', [])
-    except: return []
+    except Exception as e:
+        write_log(f'Error in get_streams: {e}')
+        return []
 
 def is_same_lang_family(lang1, lang2):
     if not lang1 or not lang2: return False
@@ -168,7 +164,7 @@ def read_text_subtitle(filepath):
             text_lines = [l.strip() for l in lines if l.strip() and not l.strip().isdigit() and '-->' not in l]
             full_text = "\n".join(text_lines)
             line_count = len(text_lines)
-        except: pass
+        except Exception: pass
     return full_text, line_count
 
 def auto_sync_subtitle(video_path, sub_path, out_path):
@@ -204,7 +200,8 @@ def find_dense_audio_spots(srt_path, num_spots=3, duration_sec=30):
             
         top_blocks = sorted(blocks.items(), key=lambda x: x[1], reverse=True)[:num_spots]
         return [block_idx * duration_sec for block_idx, count in top_blocks]
-    except:
+    except Exception as e:
+        write_log(f'Error in get_subtitle_timestamps: {e}')
         return []
 
 def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
@@ -231,7 +228,8 @@ def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
         import torch
         device = "cuda" if torch.cuda.is_available() else "cpu"
         model = whisper.load_model("tiny", device=device)
-    except:
+    except Exception as e:
+        write_log(f'Whisper Model Load Error: {e}')
         return 'und', '0%'
         
     detected_langs = []
@@ -251,7 +249,7 @@ def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
                 prob = probs[lang] * 100
                 detected_langs.append((map_lang(lang), prob))
                 write_log(f"       Whisper KI (Spot {int(spot)}s): {map_lang(lang)} ({prob:.1f}%)", console=False)
-            except: pass
+            except Exception: pass
             finally:
                 if os.path.exists(temp_audio): os.remove(temp_audio)
                 
@@ -278,9 +276,11 @@ def get_subtitle_timestamps(filepath, stream_idx):
             pts = p.get('pts_time')
             if pts:
                 try: timestamps.append(float(pts))
-                except: pass
+                except Exception: pass
         return timestamps
-    except: return []
+    except Exception as e:
+        write_log(f'Error in get_streams: {e}')
+        return []
 
 def extract_subtitle_image(filepath, stream_idx, ts, out_img):
     try:
@@ -295,7 +295,7 @@ def extract_subtitle_image(filepath, stream_idx, ts, out_img):
         ]
         subprocess.run(cmd, check=True)
         return True
-    except:
+    except subprocess.CalledProcessError:
         return False
 
 def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, is_forced_meta, old_lang="und", old_title="", progress_callback=None):
@@ -344,7 +344,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                             cropped.save(out_img)
                             first_img = out_img
                             break
-                except: pass
+                except Exception: pass
                 
         if first_img and old_lang == "und":
             best_conf = 0
@@ -359,7 +359,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                         if avg > best_conf:
                             best_conf = avg
                             best_lang = g
-                except: pass
+                except Exception: pass
             if best_lang:
                 tess_lang = best_lang
                 write_log(f"       => Auto-Script erkannt! Benutze Sprachmodell: {tess_lang} (Confidence: {best_conf:.1f})")
@@ -378,7 +378,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                             cropped = img.crop(bbox)
                             cropped.save(out_img)
                     return pytesseract.image_to_string(out_img, lang=tess_lang).strip()
-                except: return ""
+                except Exception: return ""
                 finally:
                     if os.path.exists(out_img): os.remove(out_img)
             return ""
@@ -453,7 +453,7 @@ def process_file(filepath, progress_callback=None):
                 duration = float(parts[0])*3600 + float(parts[1])*60 + float(parts[2][:2])
             else:
                 try: duration = float(duration)
-                except: duration = 0
+                except ValueError: duration = 0
             break
 
     non_video_streams = [s for s in streams if s.get('codec_type') != 'video']
@@ -544,7 +544,7 @@ def process_file(filepath, progress_callback=None):
                     try:
                         if abs(float(sync_offset)) > CONFIG.get("sync_offset_threshold", 2.0) or (sync_scale != "1.000" and sync_scale != "1.0"):
                             write_review(f"[{os.path.basename(filepath)}] Auto-Sync Spur {idx}: GroÃŸe Verschiebung ({sync_offset}s, Speed: {sync_scale}x)")
-                    except: pass
+                    except Exception: pass
                     needs_muxing = True
                     needs_ffmpeg = True
                     extracted_text, line_count = read_text_subtitle(synced_sub)
@@ -593,7 +593,7 @@ def process_file(filepath, progress_callback=None):
                                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Text): KI sehr unsicher ({conf:.1f}% fÃ¼r '{det_lang}')")
                                 elif det_lang not in expected and det_lang != 'und':
                                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Text): Exotische Sprache erkannt ('{det_lang}')")
-                    except: pass
+                    except Exception: pass
                     
         else:
             import time
@@ -619,7 +619,7 @@ def process_file(filepath, progress_callback=None):
                         write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Bild): KI sehr unsicher ({c_val:.1f}% fÃ¼r '{detected_pgs_lang}')")
                     elif detected_pgs_lang not in expected and detected_pgs_lang != 'und':
                         write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Bild): Exotische Sprache erkannt ('{detected_pgs_lang}')")
-                except: pass
+                except Exception: pass
                     
         is_dup = False
         for p_lang, p_text in processed_subs:
@@ -737,7 +737,7 @@ def process_file(filepath, progress_callback=None):
                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Audio): KI sehr unsicher ({c_val:.1f}% fÃ¼r '{detected}')")
                 elif detected not in expected and detected != 'und':
                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Audio): Exotische Sprache erkannt ('{detected}')")
-            except: pass
+            except Exception: pass
                 
         if new_lang != old_lang or old_title: needs_muxing = True
             
@@ -806,14 +806,14 @@ def process_file(filepath, progress_callback=None):
     if progress_callback: progress_callback('muxing', 0, 'start')
     if not needs_ffmpeg:
         write_log("  -> Schnelles Metadaten-Update (mkvpropedit)...")
-        mkvprop_args = [r"C:\Program Files\MKVToolNix\mkvpropedit.exe", filepath]
+        mkvprop_args = [MKVPROPEDIT, filepath]
         
         # Audio Tracks
         for i, (orig_idx, new_lang) in enumerate(mapped_audios):
             track_id = f"a{i+1}"
             try:
                 is_default_flag = 1 if ffmpeg_args[ffmpeg_args.index(f"-disposition:a:{i}")+1] == "default" else 0
-            except:
+            except (ValueError, IndexError):
                 is_default_flag = 0
             iso_map = {'zh-Hans': 'chi', 'zh-Hant': 'chi', 'pt-BR': 'por', 'pt-PT': 'por', 'es-ES': 'spa', 'es-419': 'spa', 'fr-CA': 'fre'}
             legacy_lang = iso_map.get(new_lang, new_lang)
@@ -827,7 +827,7 @@ def process_file(filepath, progress_callback=None):
                 disp_str = ffmpeg_args[ffmpeg_args.index(f"-disposition:s:{out_idx}")+1]
                 is_default = 1 if "default" in disp_str else 0
                 is_forced = 1 if "forced" in disp_str else 0
-            except:
+            except Exception:
                 is_default = 0
                 is_forced = 0
             
@@ -856,7 +856,7 @@ def process_file(filepath, progress_callback=None):
     if res.returncode == 0 and os.path.exists(temp_out):
         
         # --- MKVPROPEDIT BCP-47 FIX ---
-        mkvprop_args = [r"C:\Program Files\MKVToolNix\mkvpropedit.exe", temp_out]
+        mkvprop_args = [MKVPROPEDIT, temp_out]
         
         # Audio Tracks
         for i, (orig_idx, new_lang) in enumerate(mapped_audios):

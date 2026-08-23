@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import json
 
@@ -35,3 +35,5 @@ DIR_TEST = CONFIG.get("Verzeichnis_Test", "")
 
 PYTHON_EXE = CONFIG.get("Pfad_Python", sys.executable)
 MKVPROPEDIT = CONFIG.get("Pfad_mkvpropedit", "mkvpropedit")
+TESSERACT_PATH = CONFIG.get("Pfad_Tesseract", r"C:\Users\dmart\AppData\Local\Programs\Tesseract-OCR\tesseract.exe")
+FFSUBSYNC_PATH = CONFIG.get("Pfad_ffsubsync", r"C:\Users\dmart\AppData\Roaming\Python\Python313\Scripts\ffsubsync.exe")
