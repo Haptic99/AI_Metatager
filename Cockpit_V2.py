@@ -1,9 +1,3 @@
-﻿import sys
-import io
-if sys.stdout is None:
-    sys.stdout = io.StringIO()
-if sys.stderr is None:
-    sys.stderr = io.StringIO()
 import os
 import sys
 
@@ -265,8 +259,8 @@ class Screen3Validator(QtWidgets.QWidget):
         self.current_filepath = None
         self.current_row = None
         
-        self.vlc_instance = vlc.Instance("--no-xlib")
-        self.media_player = self.vlc_instance.media_player_new()
+        self.vlc_instance = None
+        self.media_player = None
         
         main_layout = QtWidgets.QVBoxLayout(self)
         
@@ -562,6 +556,9 @@ class Screen3Validator(QtWidgets.QWidget):
                         
         if os.path.exists(filepath) and filepath != self.current_filepath:
             self.current_filepath = filepath
+            if self.vlc_instance is None:
+                self.vlc_instance = vlc.Instance("--no-xlib")
+                self.media_player = self.vlc_instance.media_player_new()
             media = self.vlc_instance.media_new(filepath)
             self.media_player.set_media(media)
             if sys.platform.startswith('linux'):
@@ -650,10 +647,12 @@ class Screen3Validator(QtWidgets.QWidget):
         if isinstance(focus_widget, (QtWidgets.QLineEdit, QtWidgets.QComboBox)):
             return
             
+        if not self.media_player: return
         if self.media_player.is_playing(): self.media_player.pause()
         else: self.media_player.play()
             
     def update_ui(self):
+        if not self.media_player: return
         length = self.media_player.get_length()
         time_ms = self.media_player.get_time()
         
@@ -775,9 +774,15 @@ class CockpitWizard(QtWidgets.QMainWindow):
         event.accept()
         
 if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    app.setStyle("Fusion")
-    window = CockpitWizard()
-    window.show()
-    sys.exit(app.exec_())
+    try:
+        app = QtWidgets.QApplication(sys.argv)
+        app.setStyle("Fusion")
+        window = CockpitWizard()
+        window.show()
+        sys.exit(app.exec_())
+    except Exception as e:
+        import traceback
+        with open("crash_log.txt", "w", encoding="utf-8") as f:
+            f.write(traceback.format_exc())
+
 
