@@ -286,6 +286,18 @@ class Screen3Validator(QtWidgets.QWidget):
             if getattr(self, 'current_film', None) is None:
                 self.current_idx = 0
                 self.load_row()
+        else:
+            self.auto_rows = []
+            self.update_movie_list()
+            self.current_film = None
+            self.current_idx = 0
+            self.track_list.setRowCount(0)
+            if hasattr(self, 'lbl_huge_header'):
+                self.lbl_huge_header.setText("Alles erledigt!")
+            if hasattr(self, 'lbl_huge_track'):
+                self.lbl_huge_track.setText("")
+            if hasattr(self, 'btn_save'):
+                self.btn_save.setEnabled(False)
     def switch_vlc_track(self, typ, spur_index):
         if str(typ).lower() == "untertitel":
             all_rows_for_film = self.df[self.df['file_name'] == self.current_row['file_name']]
@@ -392,8 +404,17 @@ class Screen3Validator(QtWidgets.QWidget):
             except: pass
         self.btn_save.setEnabled(all_valid)
     def load_row(self):
-        if self.current_idx >= len(self.auto_rows):
+        if self.current_idx >= len(self.auto_rows) or len(self.auto_rows) == 0:
             self.btn_save.setEnabled(False)
+            if len(self.auto_rows) == 0:
+                self.current_film = None
+                self.track_list.setRowCount(0)
+                if hasattr(self, 'lbl_huge_header'):
+                    self.lbl_huge_header.setText("Alles erledigt!")
+                if hasattr(self, 'lbl_huge_track'):
+                    self.lbl_huge_track.setText("")
+                if self.media_player:
+                    self.media_player.stop()
             return
         row_idx = self.auto_rows[self.current_idx]
         row = self.df.loc[row_idx]
@@ -590,6 +611,20 @@ class Screen3Validator(QtWidgets.QWidget):
         
         reply = QtWidgets.QMessageBox.question(self, 'Film entfernen', f'Willst du "{film}" wirklich aus der Validierungsliste entfernen? Die KI-Werte werden dann nicht übernommen.', QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, QtWidgets.QMessageBox.No)
         if reply == QtWidgets.QMessageBox.Yes:
+            # Stop playback if it's playing
+            if getattr(self, 'current_film', None) == film:
+                if self.media_player:
+                    self.media_player.stop()
+                    
+            # Delete file from Test_Videos
+            import glob
+            filepath = os.path.join(DIR_TEST, film)
+            if os.path.exists(filepath):
+                try:
+                    os.remove(filepath)
+                except Exception as e:
+                    print(f"Konnte Datei nicht löschen: {e}")
+                    
             # Set is_validated to True for all tracks of this film to hide it
             self.df.loc[self.df['file_name'] == film, 'is_validated'] = True
             save_matrix(self.df)
