@@ -1,4 +1,4 @@
-﻿import os
+import os
 import json
 import sqlite3
 import pandas as pd
@@ -55,7 +55,8 @@ def load_state():
         try:
             with open(STATE_PATH, 'r', encoding='utf-8') as f:
                 return json.load(f)
-        except: pass
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"Warnung: State-Datei konnte nicht geladen werden: {e}")
     return {}
 
 def save_state(state_data):

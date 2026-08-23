@@ -385,7 +385,8 @@ class Screen3Validator(QtWidgets.QWidget):
                 import json
                 with open(state_file, 'r', encoding='utf-8') as f:
                     st_data = json.load(f)
-        except: pass
+        except (json.JSONDecodeError, OSError, KeyError) as e:
+            print(f"Warnung: State konnte nicht geladen werden: {e}")
         
         for i, row_idx in enumerate(self.auto_rows):
             row = self.df.loc[row_idx]
@@ -417,7 +418,8 @@ class Screen3Validator(QtWidgets.QWidget):
                             item_spur.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
                             item_art.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
                             item_codec.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
-                    except: pass
+                    except (KeyError, TypeError) as e:
+                        pass  # Expected when state data is incomplete for this track
                     
                 self.track_list.setItem(row_count, 0, item_spur)
                 self.track_list.setItem(row_count, 1, item_art)
@@ -439,7 +441,8 @@ class Screen3Validator(QtWidgets.QWidget):
                 state_data = load_state()
                 state_data[film][trk_id]['Validated'][field] = True
                 save_state(state_data)
-            except: pass
+            except (KeyError, TypeError, json.JSONDecodeError, OSError) as e:
+                print(f"Warnung: Validierung konnte nicht gespeichert werden: {e}")
         # UI Update
         btn = getattr(self, f"btn_valid_{field}")
         btn.setStyleSheet("background-color: #4caf50; color: white;")
@@ -461,7 +464,8 @@ class Screen3Validator(QtWidgets.QWidget):
                     all_valid = val_dict.get('lang', False)
                 else:
                     all_valid = all(val_dict.values())
-            except: pass
+            except (KeyError, TypeError) as e:
+                pass  # Expected when state data is incomplete for this track
         # Color the current track row in track_list
         for i in range(self.track_list.rowCount()):
             item = self.track_list.item(i, 0)
@@ -607,7 +611,8 @@ class Screen3Validator(QtWidgets.QWidget):
                     all_valid = val_dict.get('lang', False)
                 else:
                     all_valid = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
-            except: pass
+            except (json.JSONDecodeError, OSError, KeyError) as e:
+                print(f"Warnung: State konnte nicht gelesen werden: {e}")
             
         if not all_valid:
             QtWidgets.QMessageBox.warning(self, "Fehlende Prüfung", "Bitte überprüfe und setze erst alle Häkchen (Zeilen) für diese Spur!")
@@ -629,7 +634,8 @@ class Screen3Validator(QtWidgets.QWidget):
             try:
                 with open(accuracy_file, 'r', encoding='utf-8') as af:
                     stats = json.load(af)
-            except: pass
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"Warnung: KI_Accuracy konnte nicht geladen werden: {e}")
         stats["total"] += 1
         perfect = True
         if original_lang == new_lang: stats["correct_lang"] += 1

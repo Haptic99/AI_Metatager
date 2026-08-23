@@ -13,8 +13,12 @@ DB_PATH = os.path.join(DATA_DIR, 'Jellyfin_AI_Database.sqlite')
 STATE_PATH = os.path.join(DATA_DIR, 'validation_state.json')
 INFO_MATRIX_PATH = os.path.join(DATA_DIR, 'Informationsmatrix.xlsx')
 
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(TEMP_DIR, exist_ok=True)
+try:
+    os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(TEMP_DIR, exist_ok=True)
+except OSError as e:
+    print(f"FEHLER: Verzeichnisse konnten nicht angelegt werden ({DATA_DIR}): {e}")
+    print("Bitte stellen Sie sicher, dass das Programm Schreibrechte hat.")
 
 def load_config():
     if os.path.exists(CONFIG_PATH):

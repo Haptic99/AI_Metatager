@@ -1976,3 +1976,38 @@ DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\da
 DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\Shape of Water - Das Flüstern des Wassers (2017).mkv_sub_3_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=ger -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 forced -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=eng -disposition:s:2 hearing_impaired -c copy F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\clean_Shape of Water - Das Flüstern des Wassers (2017).mkv
   -> Speichere aufgerÃ¤umte Datei (FFmpeg Remux)...
      Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+[2026-08-23 17:17:36]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 2.3s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Black Swan (2010).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+Lade Whisper Modell (tiny) in den Speicher...
+       Whisper KI (Spot 300s): ger (93.3%)
+       Whisper KI (Spot 1281s): ger (99.1%)
+       Whisper KI (Spot 2262s): ger (98.9%)
+       Whisper KI (Spot 3243s): ger (98.8%)
+       Whisper KI (Spot 4225s): eng (54.5%)
+       Whisper KI (Spot 5206s): ger (95.9%)
+[2026-08-23 17:28:09]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (93.7%)
+       Whisper KI (Spot 1281s): eng (92.9%)
+       Whisper KI (Spot 2262s): eng (98.9%)
+       Whisper KI (Spot 3243s): eng (88.7%)
+       Whisper KI (Spot 4225s): eng (46.6%)
+       Whisper KI (Spot 5206s): eng (83.0%)
+[2026-08-23 17:28:10]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.2s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!

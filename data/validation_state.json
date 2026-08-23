@@ -1,0 +1,48 @@
+{
+    "Das ist das Ende.mkv": {
+        "1": {
+            "Validated": {
+                "lang": false,
+                "sdh": false,
+                "forced": false,
+                "name": false
+            },
+            "KI": {
+                "lang": "ger",
+                "sdh": false,
+                "forced": false,
+                "name": ""
+            }
+        }
+    },
+    "Black Swan (2010).mkv": {
+        "1": {
+            "Validated": {
+                "lang": false,
+                "sdh": false,
+                "forced": false,
+                "name": false
+            },
+            "KI": {
+                "lang": "ger",
+                "sdh": false,
+                "forced": false,
+                "name": ""
+            }
+        },
+        "2": {
+            "Validated": {
+                "lang": false,
+                "sdh": false,
+                "forced": false,
+                "name": false
+            },
+            "KI": {
+                "lang": "eng",
+                "sdh": false,
+                "forced": false,
+                "name": ""
+            }
+        }
+    }
+}

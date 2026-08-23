@@ -1,4 +1,4 @@
-﻿import os
+import os
 import re
 import json
 import subprocess
@@ -124,7 +124,9 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                             cropped = img.crop(bbox)
                             cropped.save(out_img)
                     return pytesseract.image_to_string(out_img, lang=tess_lang).strip()
-                except Exception: return ""
+                except Exception as e:
+                    write_log(f"Warnung in OCR extract_and_ocr: {e}")
+                    return ""
                 finally:
                     if os.path.exists(out_img): os.remove(out_img)
             return ""
@@ -160,6 +162,6 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                     write_log(f"       => OCR KI Gesamtergebnis: '{guess}' (Sicherheit: {conf:.1f}%)", console=False)
                     return guess, is_forced, f"{conf:.1f}%", is_hi
             except Exception as e:
-                pass
+                write_log(f"Warnung bei OCR-Spracherkennung: {e}")
             
     return detected_lang, is_forced, '0%', False

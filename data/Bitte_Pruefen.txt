@@ -325,3 +325,5 @@
 [2026-08-23 16:11:57] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 5 (Bild): Exotische Sprache erkannt ('eng')
 [2026-08-23 16:11:59] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 1 (Audio): Exotische Sprache erkannt ('ger')
 [2026-08-23 16:12:01] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 2 (Audio): Exotische Sprache erkannt ('eng')
+[2026-08-23 17:28:09] [Black Swan (2010).mkv] Spur 1 (Audio): Exotische Sprache erkannt ('ger')
+[2026-08-23 17:28:10] [Black Swan (2010).mkv] Spur 2 (Audio): Exotische Sprache erkannt ('eng')

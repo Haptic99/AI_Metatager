@@ -49,5 +49,16 @@ class CockpitWizard(QtWidgets.QMainWindow):
         self.screen3.scan_files()
         self.screen3.bg_status_frame.hide()
     def closeEvent(self, event):
+        # Stop any running analysis thread and its subprocesses
+        if hasattr(self, 'thread') and self.thread.isRunning():
+            self.thread.stop()
+            self.thread.wait(5000)  # Wait up to 5s for thread to finish
+        # Release Whisper VRAM
+        try:
+            from ai_metatagger.core.audio_analyzer import unload_whisper_model
+            unload_whisper_model()
+        except Exception:
+            pass
         self.screen3.stop()
         event.accept()
+

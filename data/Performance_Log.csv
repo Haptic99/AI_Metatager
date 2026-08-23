@@ -201,3 +201,8 @@ Movie,TrackType,Codec,DurationSec
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,2.19
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.78
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.43
+"ALL",prescan,ffprobe,0.05
+"Das ist das Ende.mkv",audio,,2.31
+"ALL",prescan,ffprobe,0.07
+"Black Swan (2010).mkv",audio,,1.94
+"Black Swan (2010).mkv",audio,,1.21

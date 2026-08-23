@@ -496,7 +496,6 @@ def process_file(filepath, progress_callback=None):
         for attempt in range(5):
             try:
                 if os.path.exists(filepath): os.remove(filepath)
-                import shutil
                 shutil.move(temp_out, filepath)
                 success = True
                 break
