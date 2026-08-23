@@ -97,11 +97,25 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.btn_valid_forced.clicked.connect(lambda: self.field_validated.emit('forced'))
         self.form_grid.addWidget(self.btn_valid_forced, 3, 4)
         
+        
+        # 4. Standard
+        self.lbl_default_title = QtWidgets.QLabel("Standard:")
+        self.form_grid.addWidget(self.lbl_default_title, 4, 0)
+        self.lbl_ki_default = QtWidgets.QLabel("-")
+        self.form_grid.addWidget(self.lbl_ki_default, 4, 1)
+        self.cmb_default = QtWidgets.QComboBox()
+        self.cmb_default.addItems(["Nein", "Ja"])
+        self.form_grid.addWidget(self.cmb_default, 4, 2)
+        
+        self.btn_valid_default = QtWidgets.QPushButton("✓")
+        self.btn_valid_default.clicked.connect(lambda: self.field_validated.emit('default'))
+        self.form_grid.addWidget(self.btn_valid_default, 4, 4)
+
         # 4. Name
         self.lbl_name_title = QtWidgets.QLabel("Spezial Name:")
-        self.form_grid.addWidget(self.lbl_name_title, 4, 0)
+        self.form_grid.addWidget(self.lbl_name_title, 5, 0)
         self.lbl_ki_name = QtWidgets.QLabel("-")
-        self.form_grid.addWidget(self.lbl_ki_name, 4, 1)
+        self.form_grid.addWidget(self.lbl_ki_name, 5, 1)
         self.txt_titel = QtWidgets.QLineEdit()
         self.txt_titel.setPlaceholderText("z.B. Director's Commentary")
         self.form_grid.addWidget(self.txt_titel, 4, 2)
@@ -111,7 +125,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         
         self.btn_valid_name = QtWidgets.QPushButton("✔")
         self.btn_valid_name.clicked.connect(lambda: self.field_validated.emit('name'))
-        self.form_grid.addWidget(self.btn_valid_name, 4, 4)
+        self.form_grid.addWidget(self.btn_valid_name, 5, 4)
         
         layout.addLayout(self.form_grid)
         
@@ -191,11 +205,12 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.lbl_ki_lang.setText(str(ki_data.get('lang', '-')))
         self.lbl_ki_sdh.setText("Ja" if ki_data.get('sdh') else "Nein")
         self.lbl_ki_forced.setText("Ja" if ki_data.get('forced') else "Nein")
+        self.lbl_ki_default.setText("Ja" if ki_data.get('default') else "Nein")
         name_val = ki_data.get('name', '')
         self.lbl_ki_name.setText(str(name_val) if name_val else "-")
         
     def update_validation_ui(self, val_data, is_all_valid):
-        for field in ['lang', 'sdh', 'forced', 'name']:
+        for field in ['lang', 'sdh', 'forced', 'default', 'name']:
             btn = getattr(self, f"btn_valid_{field}")
             if val_data.get(field):
                 btn.setStyleSheet("background-color: #4caf50; color: white;")

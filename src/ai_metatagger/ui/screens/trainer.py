@@ -44,30 +44,21 @@ class Screen4Trainer(QtWidgets.QWidget):
         layout.addStretch()
 
     def load_stats(self):
-        from ai_metatagger.config import DATA_DIR
-        accuracy_file = os.path.join(DATA_DIR, "KI_Accuracy.json")
+        try:
+            s = self.parent.screen3.ctrl.get_detailed_accuracy()
+            t = s.get("total", 1)
+            if t == 0: t = 1
 
-        if os.path.exists(accuracy_file):
-            try:
-                with open(accuracy_file, 'r', encoding='utf-8') as f:
-                    s = json.load(f)
-
-                t = s.get("total", 1)
-                if t == 0: t = 1
-
-                text = (
-                    "\U0001f3c6 Validierte Spuren gesamt: " + str(s.get('total', 0)) + "\\n\\n" +
-                    "\u2714\ufe0f Sprache korrekt: " + str(s.get('correct_lang', 0)) + " (" + str(int(s.get('correct_lang',0)/t*100)) + "%)\\n" +
-                    "\u2714\ufe0f SDH korrekt: " + str(s.get('correct_sdh', 0)) + " (" + str(int(s.get('correct_sdh',0)/t*100)) + "%)\\n" +
-                    "\u2714\ufe0f Forced korrekt: " + str(s.get('correct_forced', 0)) + " (" + str(int(s.get('correct_forced',0)/t*100)) + "%)\\n\\n" +
-                    "\U0001f680 Makellose Spuren (100% KI-Treffer): " + str(s.get('perfect_tracks', 0)) + " (" + str(int(s.get('perfect_tracks',0)/t*100)) + "%)"
-                )
-                text = text.replace("\\n", "\n")
-                self.lbl_dash.setText(text)
-            except Exception as e:
-                self.lbl_dash.setText(f"Fehler beim Laden der Statistiken: {e}")
-        else:
-            self.lbl_dash.setText("Noch keine Statistiken vorhanden. Validiere eine Spur!")
+            text = (
+                "\U0001f3c6 Validierte Spuren gesamt: " + str(s.get('total', 0)) + "\n\n" +
+                "\u2714\ufe0f Sprache korrekt: " + str(s.get('correct_lang', 0)) + " (" + str(int(s.get('correct_lang',0)/t*100)) + "%)\n" +
+                "\u2714\ufe0f SDH korrekt: " + str(s.get('correct_sdh', 0)) + " (" + str(int(s.get('correct_sdh',0)/t*100)) + "%)\n" +
+                "\u2714\ufe0f Forced korrekt: " + str(s.get('correct_forced', 0)) + " (" + str(int(s.get('correct_forced',0)/t*100)) + "%)\n\n" +
+                "\U0001f680 Makellose Spuren (100% KI-Treffer): " + str(s.get('perfect_tracks', 0)) + " (" + str(int(s.get('perfect_tracks',0)/t*100)) + "%)"
+            )
+            self.lbl_dash.setText(text)
+        except Exception as e:
+            self.lbl_dash.setText(f"Fehler beim Laden der Statistiken: {e}")
 
     def showEvent(self, event):
         self.load_stats()

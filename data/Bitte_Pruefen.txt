@@ -416,3 +416,18 @@
 [2026-08-23 20:00:44] [The Witcher (2019) - S01E01.mkv] Spur 7 (Audio): Exotische Sprache erkannt ('pl')
 [2026-08-23 20:00:46] [The Witcher (2019) - S01E01.mkv] Spur 8 (Audio): Exotische Sprache erkannt ('uk')
 [2026-08-23 20:00:47] [The Witcher (2019) - S01E01.mkv] Spur 9 (Audio): Exotische Sprache erkannt ('uk')
+[2026-08-23 20:34:25] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 3: Forced-Tag entfernt (194 Zeilen). Prüfen ob echter Forced (viel Fremdsprache)!
+[2026-08-23 20:34:25] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 3 (Text): Exotische Sprache erkannt ('ger')
+[2026-08-23 20:34:48] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 4 (Bild): Exotische Sprache erkannt ('eng')
+[2026-08-23 21:04:50] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 3: Forced-Tag entfernt (194 Zeilen). Prüfen ob echter Forced (viel Fremdsprache)!
+[2026-08-23 21:04:51] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 3 (Text): Exotische Sprache erkannt ('ger')
+[2026-08-23 21:05:19] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 4 (Bild): Exotische Sprache erkannt ('eng')
+[2026-08-23 21:05:48] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 5 (Bild): Exotische Sprache erkannt ('eng')
+[2026-08-23 21:05:51] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 1 (Audio): Exotische Sprache erkannt ('ger')
+[2026-08-23 21:05:53] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 2 (Audio): Exotische Sprache erkannt ('eng')
+[2026-08-23 21:20:27] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 3: Forced-Tag entfernt (194 Zeilen). Prüfen ob echter Forced (viel Fremdsprache)!
+[2026-08-23 21:20:28] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 3 (Text): Exotische Sprache erkannt ('ger')
+[2026-08-23 21:20:51] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 4 (Bild): Exotische Sprache erkannt ('eng')
+[2026-08-23 21:21:14] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 5 (Bild): Exotische Sprache erkannt ('eng')
+[2026-08-23 21:21:17] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 1 (Audio): Exotische Sprache erkannt ('ger')
+[2026-08-23 21:21:18] [Shape of Water - Das Flüstern des Wassers (2017).mkv] Spur 2 (Audio): Exotische Sprache erkannt ('eng')

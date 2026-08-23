@@ -3,7 +3,7 @@ import json
 import sqlite3
 import threading
 import pandas as pd
-from ai_metatagger.config import DATA_DIR, STATE_PATH, DB_PATH
+from ai_metatagger.config import DATA_DIR, DB_PATH
 
 DB_LOCK = threading.Lock()
 

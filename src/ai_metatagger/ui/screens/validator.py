@@ -10,20 +10,21 @@ from ai_metatagger.core.validator_controller import ValidatorController
 import threading
 import time
 
+
 class Screen3Validator(QtWidgets.QWidget):
     def __init__(self, parent):
         super().__init__()
         self.parent = parent
         self.ctrl = ValidatorController()
-        
+
         self.auto_rows = []
         self.current_idx = 0
         self.current_film = None
         self.current_row = None
-        
+
         self._setup_ui()
         self._connect_signals()
-        
+
         # Timer for UI updates (video timeline)
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(500)
@@ -34,52 +35,54 @@ class Screen3Validator(QtWidgets.QWidget):
         main_layout = QtWidgets.QVBoxLayout(self)
         self.splitter = QtWidgets.QSplitter(QtCore.Qt.Horizontal)
         main_layout.addWidget(self.splitter, stretch=1)
-        
+
         # Sidebar
         self.sidebar = ValidatorSidebarWidget()
         self.splitter.addWidget(self.sidebar)
-        
+
         # Right Panel
         right_panel = QtWidgets.QWidget()
         center_layout = QtWidgets.QHBoxLayout(right_panel)
-        
+
         # Video Area
         left_layout = QtWidgets.QVBoxLayout()
         header_row = QtWidgets.QHBoxLayout()
         self.btn_toggle_list = QtWidgets.QPushButton("☰ Filmliste")
         self.btn_toggle_list.setMaximumWidth(150)
-        self.btn_toggle_list.clicked.connect(lambda: self.sidebar.setVisible(not self.sidebar.isVisible()))
+        self.btn_toggle_list.clicked.connect(
+            lambda: self.sidebar.setVisible(not self.sidebar.isVisible()))
         header_row.addWidget(self.btn_toggle_list)
-        
+
         self.lbl_huge_header = QtWidgets.QLabel("🎬 -")
-        self.lbl_huge_header.setFont(QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold))
+        self.lbl_huge_header.setFont(
+            QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold))
         self.lbl_huge_header.setStyleSheet("color: #4caf50;")
         header_row.addWidget(self.lbl_huge_header)
-        
+
         self.lbl_huge_track = QtWidgets.QLabel("Spur: -")
         self.lbl_huge_track.setFont(QtGui.QFont("Segoe UI", 16))
         self.lbl_huge_track.setStyleSheet("color: #ff9800;")
         header_row.addWidget(self.lbl_huge_track)
         header_row.addStretch()
         left_layout.addLayout(header_row)
-        
+
         self.player_widget = VideoPlayerWidget()
         self.player_widget.setMinimumSize(500, 300)
         left_layout.addWidget(self.player_widget, stretch=1)
-        
+
         # Player Controls
         controls = QtWidgets.QHBoxLayout()
         self.btn_play = QtWidgets.QPushButton("Play/Pause")
         self.btn_play.clicked.connect(self.player_widget.toggle_play)
         controls.addWidget(self.btn_play)
-        
+
         self.slider = ClickableSlider(QtCore.Qt.Horizontal)
         self.slider.sliderMoved.connect(self.player_widget.set_position)
         controls.addWidget(self.slider)
-        
+
         self.lbl_time = QtWidgets.QLabel("00:00 / 00:00")
         controls.addWidget(self.lbl_time)
-        
+
         self.vol_icon = QtWidgets.QLabel("Vol:")
         controls.addWidget(self.vol_icon)
         self.slider_vol = QtWidgets.QSlider(QtCore.Qt.Horizontal)
@@ -88,53 +91,67 @@ class Screen3Validator(QtWidgets.QWidget):
         self.slider_vol.setMaximumWidth(100)
         self.slider_vol.valueChanged.connect(self.player_widget.set_volume)
         controls.addWidget(self.slider_vol)
-        
+
         left_layout.addLayout(controls)
         center_layout.addLayout(left_layout, stretch=2)
-        
+
         # Form Area
         right_layout = QtWidgets.QVBoxLayout()
         self.form_widget = ValidatorFormWidget()
         right_layout.addWidget(self.form_widget)
-        
-        self.btn_next_screen = QtWidgets.QPushButton("Validierung abschließen ➔")
-        self.btn_next_screen.clicked.connect(lambda: self.parent.stacked.setCurrentIndex(1))
+
+        self.btn_next_screen = QtWidgets.QPushButton(
+            "Validierung abschließen ➔")
+        self.btn_next_screen.clicked.connect(
+            lambda: self.parent.stacked.setCurrentIndex(1))
         right_layout.addWidget(self.btn_next_screen)
-        
+
         center_layout.addLayout(right_layout, stretch=1)
         self.splitter.addWidget(right_panel)
         self.splitter.setSizes([200, 800])
-        
+
         # Shortcuts
-        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Left), self).activated.connect(lambda: self.player_widget.seek(-5000))
-        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Right), self).activated.connect(lambda: self.player_widget.seek(5000))
-        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Space), self).activated.connect(self._toggle_play_safe)
-        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Up), self).activated.connect(lambda: self._change_volume(10))
-        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Down), self).activated.connect(lambda: self._change_volume(-10))
+        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Left), self).activated.connect(
+            lambda: self.player_widget.seek(-5000))
+        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Right), self).activated.connect(
+            lambda: self.player_widget.seek(5000))
+        QtWidgets.QShortcut(QtGui.QKeySequence(
+            QtCore.Qt.Key_Space), self).activated.connect(self._toggle_play_safe)
+        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Up), self).activated.connect(
+            lambda: self._change_volume(10))
+        QtWidgets.QShortcut(QtGui.QKeySequence(
+            QtCore.Qt.Key_Down), self).activated.connect(lambda: self._change_volume(-10))
 
     def _connect_signals(self):
         self.sidebar.movie_selected.connect(self.on_movie_selected)
         self.sidebar.remove_movie_requested.connect(self.remove_movie)
         self.sidebar.analyze_requested.connect(self.start_new_analysis)
-        self.sidebar.cancel_analysis_requested.connect(self.parent.cancel_analysis)
-        
+        self.sidebar.cancel_analysis_requested.connect(
+            self.parent.cancel_analysis)
+
         self.form_widget.track_selected.connect(self.on_track_selected)
         self.form_widget.field_validated.connect(self.validate_field)
         self.form_widget.save_requested.connect(self.save_and_next)
-        
-        self.form_widget.test_lang_requested.connect(lambda: self.player_widget.seek_absolute(300000))
-        self.form_widget.test_sdh_requested.connect(lambda: self.player_widget.seek_absolute(600000))
-        self.form_widget.test_forced_requested.connect(lambda: self.player_widget.seek_absolute(900000))
-        
+
+        self.form_widget.test_lang_requested.connect(self._test_text_clicked)
+        self.form_widget.test_sdh_requested.connect(
+            lambda: self.player_widget.seek_absolute(600000))
+        self.form_widget.test_forced_requested.connect(
+            lambda: self.player_widget.seek_absolute(900000))
+
         self.form_widget.show_srt_requested.connect(self.open_srt)
         self.form_widget.show_pgs_requested.connect(self.open_pgs)
-        
+
+    def _test_text_clicked(self):
+        if not self.current_row is None:
+            self.player_widget.seek_absolute(300000)
+
     def _toggle_play_safe(self):
         focus_widget = QtWidgets.QApplication.focusWidget()
         if isinstance(focus_widget, (QtWidgets.QLineEdit, QtWidgets.QComboBox)):
             return
         self.player_widget.toggle_play()
-        
+
     def _change_volume(self, delta):
         v = min(100, max(0, self.slider_vol.value() + delta))
         self.slider_vol.setValue(v)
@@ -143,16 +160,16 @@ class Screen3Validator(QtWidgets.QWidget):
         self.scan_files()
         self.check_for_new_data()
         super().showEvent(event)
-        
+
     def scan_files(self):
         processed_movies = set()
-        
+
         try:
             if not self.ctrl.df.empty:
                 processed_movies = set(self.ctrl.df['file_name'].unique())
         except Exception as e:
             print(f"Error in scan_files DB read: {e}")
-            
+
         files = []
         for d in [DIR_FILME, DIR_SERIEN]:
             if os.path.exists(d):
@@ -162,34 +179,36 @@ class Screen3Validator(QtWidgets.QWidget):
                             # Exclude if exact name is in DB
                             if f in processed_movies:
                                 continue
-                                
+
                             # Also exclude if we have an .mkv version of this .mp4/.avi in the DB!
                             base_name = os.path.splitext(f)[0]
                             if f"{base_name}.mkv" in processed_movies:
                                 continue
-                                
+
                             files.append(os.path.join(root, f))
-                            
+
         self.sidebar.set_scan_files(files)
 
     def check_for_new_data(self):
         print("check_for_new_data() CALLED")
         self.ctrl.refresh_data()
-        
+
         df = self.ctrl.df
         print(f"check_for_new_data: df shape = {df.shape}")
         if df.empty:
             self.auto_rows = []
         else:
             unvalidated_movies = df[~df['is_validated']]['file_name'].unique()
-            print(f"check_for_new_data: unvalidated_movies = {unvalidated_movies}")
+            print(
+                f"check_for_new_data: unvalidated_movies = {unvalidated_movies}")
             auto_mask = df['file_name'].isin(unvalidated_movies)
-            self.auto_rows = df[auto_mask].index.tolist() if auto_mask.any() else []
+            self.auto_rows = df[auto_mask].index.tolist(
+            ) if auto_mask.any() else []
             print(f"check_for_new_data: auto_rows = {self.auto_rows}")
-        
+
         self.update_movie_list()
         self.scan_files()
-        
+
         if len(self.auto_rows) > 0:
             if self.current_idx >= len(self.auto_rows):
                 self.current_idx = 0
@@ -229,33 +248,33 @@ class Screen3Validator(QtWidgets.QWidget):
     def load_row(self, autoplay=False):
         if self.current_idx >= len(self.auto_rows) or len(self.auto_rows) == 0:
             return
-            
+
         row_idx = self.auto_rows[self.current_idx]
         row = self.ctrl.df.loc[row_idx]
         self.current_row = row
         film = row['file_name']
-        
+
         if self.current_film != film:
             self.current_film = film
             self.populate_track_list(film)
-            
+
         # Select in track list
         for i in range(self.form_widget.track_list.rowCount()):
             item = self.form_widget.track_list.item(i, 0)
             if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
                 self.form_widget.track_list.setCurrentItem(item)
                 break
-                
+
         spur = row['track_id']
         typ = row['track_type']
-        
+
         self.lbl_huge_header.setText(f"🎬 {film}")
         self.lbl_huge_track.setText(f"Spur: {spur} ({typ})")
-        
+
         self.form_widget.set_form_data(row)
         ki_data = self.ctrl.get_ki_data(film, spur)
         self.form_widget.set_ki_data(ki_data)
-        
+
         self.check_all_fields_validated()
         self.play_movie(film, typ, spur, autoplay)
 
@@ -263,7 +282,7 @@ class Screen3Validator(QtWidgets.QWidget):
         self.form_widget.track_list.setRowCount(0)
         row_count = 0
         df = self.ctrl.df
-        
+
         for i, row_idx in enumerate(self.auto_rows):
             row = df.loc[row_idx]
             if row['file_name'] == movie_name:
@@ -272,23 +291,28 @@ class Screen3Validator(QtWidgets.QWidget):
                 item_spur.setData(QtCore.Qt.UserRole, i)
                 item_art = QtWidgets.QTableWidgetItem(str(row['track_type']))
                 ctype = str(row.get('subtitle_type', ''))
-                if not ctype: ctype = "Audio" if str(row['track_type']).lower() == 'audio' else "SRT"
+                if not ctype:
+                    ctype = "Audio" if str(
+                        row['track_type']).lower() == 'audio' else "SRT"
                 item_codec = QtWidgets.QTableWidgetItem(ctype)
-                
+
                 if row['is_validated']:
                     for item in (item_spur, item_art, item_codec):
                         item.setForeground(QtGui.QColor("#aaaaaa"))
                 else:
-                    val_dict = self.ctrl.get_validation_data(movie_name, row['track_id'])
+                    val_dict = self.ctrl.get_validation_data(
+                        movie_name, row['track_id'])
                     is_audio = str(row['track_type']).lower() == 'audio'
                     if is_audio:
                         all_v = val_dict.get('lang', False)
                     else:
-                        all_v = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
+                        all_v = all(val_dict.get(k, False)
+                                    for k in ['lang', 'sdh', 'forced', 'name'])
                     if all_v:
                         for item in (item_spur, item_art, item_codec):
-                            item.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
-                            
+                            item.setBackground(
+                                QtGui.QBrush(QtGui.QColor("#1b5e20")))
+
                 self.form_widget.track_list.setItem(row_count, 0, item_spur)
                 self.form_widget.track_list.setItem(row_count, 1, item_art)
                 self.form_widget.track_list.setItem(row_count, 2, item_codec)
@@ -303,8 +327,37 @@ class Screen3Validator(QtWidgets.QWidget):
                         filepath = os.path.join(root, film)
                         break
         if os.path.exists(filepath):
-            self.player_widget.play_media(filepath, track_type.lower(), int(track_id), autoplay)
-            
+            self.player_widget.play_media(
+                filepath, track_type.lower(), int(track_id), autoplay)
+
+    def _get_smart_seek_time(self, film, typ, spur):
+        seek_time_ms = 300000  # Default 5 minutes
+        if typ.lower() == 'subtitle':
+            import os
+            from ai_metatagger.config import DIR_TEST
+            base = os.path.join(
+                DIR_TEST, "..", "temp_cleanup", f"{film}_sub_{spur}")
+            paths_to_try = [f"{base}_synced.srt",
+                            f"{base}.srt", f"{base}_OCR.txt"]
+            for path in paths_to_try:
+                if os.path.exists(path):
+                    try:
+                        with open(path, 'r', encoding='utf-8') as f:
+                            lines = f.readlines()
+                            for line in lines:
+                                if '-->' in line:
+                                    start_str = line.split('-->')[0].strip()
+                                    h, m, s_ms = start_str.split(':')
+                                    s, ms = s_ms.split(',')
+                                    seek_time_ms = int(
+                                        h)*3600000 + int(m)*60000 + int(s)*1000 + int(ms)
+                                    seek_time_ms = max(0, seek_time_ms - 2000)
+                                    break
+                    except Exception:
+                        pass
+                    break
+        return seek_time_ms
+
     def _cleanup_vlc_and_file(self, film):
         player_ref = None
         if self.current_film == film:
@@ -322,40 +375,45 @@ class Screen3Validator(QtWidgets.QWidget):
                     os.remove(path)
                     break
                 except OSError as e:
-                    print(f"Cleanup retry {attempt+1}/{max_retries} failed for {path}: {e}")
-                    
+                    print(
+                        f"Cleanup retry {attempt+1}/{max_retries} failed for {path}: {e}")
+
         filepath = os.path.join(DIR_TEST, film)
-        threading.Thread(target=_do_cleanup, args=(filepath,), daemon=True).start()
+        threading.Thread(target=_do_cleanup, args=(
+            filepath,), daemon=True).start()
         return player_ref is not None
 
     def validate_field(self, field):
         film = self.current_row['file_name']
         trk_id = str(self.current_row['track_id'])
-        
+
         # Save current UI values to DataFrame so they persist when switching tracks
         form_data = self.form_widget.get_form_data()
-        
+
         # Update self.ctrl.df
-        mask = (self.ctrl.df['file_name'] == film) & (self.ctrl.df['track_id'] == self.current_row['track_id'])
+        mask = (self.ctrl.df['file_name'] == film) & (
+            self.ctrl.df['track_id'] == self.current_row['track_id'])
         if mask.any():
             self.ctrl.df.loc[mask, 'language_iso'] = form_data['lang']
             self.ctrl.df.loc[mask, 'is_hearing_impaired'] = form_data['sdh']
             self.ctrl.df.loc[mask, 'is_forced'] = form_data['forced']
             self.ctrl.df.loc[mask, 'track_name'] = form_data['title']
-            
+
         # Update current_row in memory as well
         self.current_row['language_iso'] = form_data['lang']
         self.current_row['is_hearing_impaired'] = form_data['sdh']
         self.current_row['is_forced'] = form_data['forced']
         self.current_row['track_name'] = form_data['title']
-        
+
         val_dict = self.ctrl.get_validation_data(film, trk_id)
         val_dict[field] = not val_dict.get(field, False)
-        
-        if film not in self.ctrl.state_data: self.ctrl.state_data[film] = {}
-        if trk_id not in self.ctrl.state_data[film]: self.ctrl.state_data[film][trk_id] = {'Validated': {}, 'KI': {}}
+
+        if film not in self.ctrl.state_data:
+            self.ctrl.state_data[film] = {}
+        if trk_id not in self.ctrl.state_data[film]:
+            self.ctrl.state_data[film][trk_id] = {'Validated': {}, 'KI': {}}
         self.ctrl.state_data[film][trk_id]['Validated'] = val_dict
-        
+
         # Persist validation checkboxes and current form data to SQLite so they don't reset on restart
         import json
         from ai_metatagger.utils.state_manager import DB_LOCK, init_db
@@ -371,73 +429,75 @@ class Screen3Validator(QtWidgets.QWidget):
                        is_forced = ?, 
                        track_name = ?
                    WHERE file_name = ? AND track_id = ?""",
-                (val_json, 
-                 form_data['lang'], 
-                 form_data['sdh'], 
-                 form_data['forced'], 
-                 form_data['title'], 
-                 film, 
+                (val_json,
+                 form_data['lang'],
+                 form_data['sdh'],
+                 form_data['forced'],
+                 form_data['title'],
+                 film,
                  self.current_row['track_id'])
             )
             conn.commit()
             conn.close()
-        
+
         self.check_all_fields_validated()
 
     def check_all_fields_validated(self):
         film = self.current_row['file_name']
         trk_id = str(self.current_row['track_id'])
         val_dict = self.ctrl.get_validation_data(film, trk_id)
-        
+
         is_audio = str(self.current_row['track_type']).lower() == 'audio'
         if is_audio:
             all_valid = val_dict.get('lang', False)
         else:
-            all_valid = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
-            
+            all_valid = all(val_dict.get(k, False)
+                            for k in ['lang', 'sdh', 'forced', 'name'])
+
         self.form_widget.update_validation_ui(val_dict, all_valid)
         return all_valid, val_dict
 
     def save_and_next(self):
         all_valid, val_dict = self.check_all_fields_validated()
         if not all_valid:
-            QtWidgets.QMessageBox.warning(self, "Fehlende Prüfung", "Bitte überprüfe und setze erst alle Häkchen!")
+            QtWidgets.QMessageBox.warning(
+                self, "Fehlende Prüfung", "Bitte überprüfe und setze erst alle Häkchen!")
             return
-            
+
         film = self.current_row['file_name']
         trk_id = str(self.current_row['track_id'])
-        
+
         form_data = self.form_widget.get_form_data()
-        self.ctrl.save_validation(film, trk_id, 
-                                  form_data['lang'], 
-                                  form_data['sdh'], 
-                                  form_data['forced'], 
-                                  form_data['title'], 
-                                  "", # notes
+        self.ctrl.save_validation(film, trk_id,
+                                  form_data['lang'],
+                                  form_data['sdh'],
+                                  form_data['forced'],
+                                  form_data['title'],
+                                  "",  # notes
                                   val_dict)
-                                  
+
         self.ctrl.refresh_data()
         df = self.ctrl.df
         remaining = df[(df['file_name'] == film) & (~df['is_validated'])]
-        
+
         player_ref = None
         if remaining.empty:
             player_ref = self._cleanup_vlc_and_file(film)
-            
+
         self.current_idx += 1
-        
+
         if player_ref:
             QtCore.QTimer.singleShot(600, self.check_for_new_data)
         else:
             self.check_for_new_data()
-            
+
     def remove_movie(self, film):
-        reply = QtWidgets.QMessageBox.question(self, 'Film entfernen', f'Willst du "{film}" wirklich ignorieren?', 
+        reply = QtWidgets.QMessageBox.question(self, 'Film entfernen', f'Willst du "{film}" wirklich ignorieren?',
                                                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
         if reply == QtWidgets.QMessageBox.Yes:
             had_player = self._cleanup_vlc_and_file(film)
             self.ctrl.remove_movie(film)
-            
+
             if had_player:
                 self.current_idx = 0
                 QtCore.QTimer.singleShot(600, self.check_for_new_data)
@@ -452,31 +512,36 @@ class Screen3Validator(QtWidgets.QWidget):
                 self.slider.setMaximum(length)
                 self.slider.setValue(time_ms)
             t, l = time_ms // 1000, length // 1000
-            self.lbl_time.setText(f"{t//60:02d}:{t%60:02d} / {l//60:02d}:{l%60:02d}")
+            self.lbl_time.setText(
+                f"{t//60:02d}:{t % 60:02d} / {l//60:02d}:{l % 60:02d}")
 
     def open_srt(self):
         if not self.current_row is None:
             film = self.current_row['file_name']
             idx = self.current_row['track_id']
-            path = os.path.join(DIR_TEST, "..", "temp_cleanup", f"{film}_sub_{idx}.srt")
+            path = os.path.join(
+                DIR_TEST, "..", "temp_cleanup", f"{film}_sub_{idx}.srt")
             if os.path.exists(path):
                 with open(path, 'r', encoding='utf-8') as f:
                     self.form_widget.toggle_srt_view(f.read())
             else:
                 self.form_widget.toggle_srt_view()
-                QtWidgets.QMessageBox.warning(self, "Nicht gefunden", "Das SRT File wurde nicht gefunden.")
-                
+                QtWidgets.QMessageBox.warning(
+                    self, "Nicht gefunden", "Das SRT File wurde nicht gefunden.")
+
     def open_pgs(self):
         if not self.current_row is None:
             film = self.current_row['file_name']
             idx = self.current_row['track_id']
-            search = os.path.join(DIR_TEST, "..", "temp_cleanup", f"{glob.escape(film)}_sub_{idx}_*.png")
+            search = os.path.join(
+                DIR_TEST, "..", "temp_cleanup", f"{glob.escape(film)}_sub_{idx}_*.png")
             files = glob.glob(search)
             if files:
                 files.sort()
                 os.startfile(files[0])
             else:
-                QtWidgets.QMessageBox.warning(self, "Nicht gefunden", "PGS Bilder nicht gefunden.")
+                QtWidgets.QMessageBox.warning(
+                    self, "Nicht gefunden", "PGS Bilder nicht gefunden.")
 
     def start_new_analysis(self, paths):
         if paths:

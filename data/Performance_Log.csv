@@ -315,3 +315,23 @@ Movie,TrackType,Codec,DurationSec
 "The Witcher (2019) - S01E01.mkv",audio,,1.26
 "The Witcher (2019) - S01E01.mkv",audio,,0.98
 "The Witcher (2019) - S01E01.mkv",muxing,,20.96
+"ALL",prescan,ffprobe,0.06
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.21
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,23.14
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.24
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,0.00
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,0.00
+"ALL",prescan,ffprobe,0.63
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.64
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,28.10
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,28.80
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.76
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.34
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,13.87
+"ALL",prescan,ffprobe,0.06
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.21
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,23.57
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,22.43
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.40
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.27
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.90

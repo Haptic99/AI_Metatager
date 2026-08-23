@@ -10,8 +10,6 @@ DATA_DIR = os.path.join(BASE_DIR, 'data')
 TEMP_DIR = os.path.join(DATA_DIR, 'temp_cleanup')
 CONFIG_PATH = os.path.join(DATA_DIR, 'config.json')
 DB_PATH = os.path.join(DATA_DIR, 'Jellyfin_AI_Database.sqlite')
-STATE_PATH = os.path.join(DATA_DIR, 'validation_state.json')
-INFO_MATRIX_PATH = os.path.join(DATA_DIR, 'Informationsmatrix.xlsx')
 
 try:
     os.makedirs(DATA_DIR, exist_ok=True)

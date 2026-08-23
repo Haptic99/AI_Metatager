@@ -77,57 +77,66 @@ class ValidatorController:
             conn.close()
         self.refresh_data()
         
-    def calculate_accuracy(self):
-        """Calculate KI accuracy compared to user validation."""
-        total = 0
-        correct = 0
+    def get_detailed_accuracy(self):
+        """Calculate detailed KI accuracy statistics."""
+        stats = {
+            'total': 0,
+            'correct_lang': 0,
+            'correct_sdh': 0,
+            'correct_forced': 0,
+            'perfect_tracks': 0
+        }
         fields = ['lang', 'sdh', 'forced', 'name']
         
         for film, tracks in self.state_data.items():
             for trk_id, data in tracks.items():
                 ki = data.get('KI', {})
-                if not ki:
-                    continue
-                    
+                if not ki: continue
                 val = data.get('Validated', {})
+                if not all(val.get(f) for f in fields): continue
+                if self.df.empty: continue
                 
-                # Only check if all fields were validated by the user
-                if not all(val.get(f) for f in fields):
-                    continue
-                    
-                # We need the user's actual saved data from the DB to compare against KI
-                # Since the old code compared KI against the UI inputs, we compare KI against DB
-                if self.df.empty:
-                    continue
-                    
                 mask = (self.df['file_name'] == film) & (self.df['track_id'] == str(trk_id))
-                if not mask.any():
-                    continue
-                    
+                if not mask.any(): continue
+                
                 db_row = self.df[mask].iloc[0]
+                stats['total'] += 1
+                
+                is_perfect = True
                 
                 # Compare Lang
-                total += 1
                 if ki.get('lang') == db_row['language_iso']:
-                    correct += 1
+                    stats['correct_lang'] += 1
+                else:
+                    is_perfect = False
                     
                 # Compare SDH
-                total += 1
                 if bool(ki.get('sdh')) == bool(db_row['is_hearing_impaired']):
-                    correct += 1
+                    stats['correct_sdh'] += 1
+                else:
+                    is_perfect = False
                     
                 # Compare Forced
-                total += 1
                 if bool(ki.get('forced')) == bool(db_row['is_forced']):
-                    correct += 1
+                    stats['correct_forced'] += 1
+                else:
+                    is_perfect = False
                     
                 # Compare Name
-                total += 1
-                # Simplified name comparison (just if both are populated or both empty in a similar way)
-                # We don't want to penalize if KI left it empty and user left it empty
                 if str(ki.get('name', '')) == str(db_row['track_name']):
-                    correct += 1
+                    stats.setdefault('correct_name', 0)
+                    stats['correct_name'] += 1
+                else:
+                    is_perfect = False
                     
-        if total == 0:
+                if is_perfect:
+                    stats['perfect_tracks'] += 1
+                    
+        return stats
+
+    def calculate_accuracy(self):
+        stats = self.get_detailed_accuracy()
+        if stats['total'] == 0:
             return 0
-        return int((correct / total) * 100)
+        correct = stats['correct_lang'] + stats['correct_sdh'] + stats['correct_forced'] + stats.get('correct_name', 0)
+        return int((correct / max(1, stats['total'] * 4)) * 100)

@@ -2869,3 +2869,107 @@ DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\da
   -> Speichere aufgeräumte Datei (FFmpeg Remux)...
      Erfolgreich aktualisiert!
 Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv ---
+       Starte ffsubsync (KI-AutoSync) für Spur...
+  -> Prüfe Untertitel Spur 3 (Codec: subrip, Lang: ger, Titel: 'Deutsch Forced')
+[2026-08-23 20:34:25]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 5.1s). Ersetze Spur 3.
+[2026-08-23 20:34:25]      => FAKE FORCED ERKANNT! (194 Zeilen). Entferne Forced-Tag.
+[2026-08-23 20:34:25]      => Text KI Bestätigt: 'ger' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Forced')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 20:34:48]      => OCR KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 23.1s)
+  -> Prüfe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Full')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 25 Marker gefunden. Markiere als Schwerhörig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Dauer konnte nicht ermittelt werden: could not convert string to float: b''
+Lade Whisper Modell (tiny) auf cuda...
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Dauer konnte nicht ermittelt werden: could not convert string to float: b''
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\Shape of Water - Das Flüstern des Wassers (2017).mkv_sub_1_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=ger -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 forced -c copy F:\Jellyfin_AI_Cockpit\data\temp_cleanup\clean_Shape of Water - Das Flüstern des Wassers (2017).mkv
+  -> Speichere aufgeräumte Datei (FFmpeg Remux)...
+     FEHLER beim Muxen mit ffmpeg.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv ---
+       Starte ffsubsync (KI-AutoSync) für Spur...
+  -> Prüfe Untertitel Spur 3 (Codec: subrip, Lang: ger, Titel: 'Deutsch Forced')
+[2026-08-23 21:04:50]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 5.4s). Ersetze Spur 3.
+[2026-08-23 21:04:50]      => FAKE FORCED ERKANNT! (194 Zeilen). Entferne Forced-Tag.
+[2026-08-23 21:04:51]      => Text KI Bestätigt: 'ger' (Sicherheit: 100.0%, Dauer: 0.6s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Forced')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 21:05:19]      => OCR KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 28.1s)
+  -> Prüfe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Full')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 34 Marker gefunden. Markiere als Schwerhörig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 21:05:48]      => OCR KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 28.8s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): zh (19.7%)
+       Whisper KI (Spot 1433s): eng (32.1%)
+       Whisper KI (Spot 2566s): ger (98.4%)
+       Whisper KI (Spot 3699s): ger (99.3%)
+       Whisper KI (Spot 4833s): ger (96.4%)
+       Whisper KI (Spot 5966s): eng (84.4%)
+[2026-08-23 21:05:51]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.0%, Dauer: 3.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): nn (50.5%)
+       Whisper KI (Spot 1433s): eng (33.0%)
+       Whisper KI (Spot 2566s): eng (98.9%)
+       Whisper KI (Spot 3699s): eng (96.9%)
+       Whisper KI (Spot 4833s): eng (97.8%)
+       Whisper KI (Spot 5966s): eng (70.6%)
+[2026-08-23 21:05:53]      => Audio KI Bestätigt: 'eng' (Sicherheit: 79.5%, Dauer: 1.3s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\Shape of Water - Das Flüstern des Wassers (2017).mkv_sub_1_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=ger -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 forced -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=eng -disposition:s:2 hearing_impaired -c copy F:\Jellyfin_AI_Cockpit\data\temp_cleanup\clean_Shape of Water - Das Flüstern des Wassers (2017).mkv
+  -> Speichere aufgeräumte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv ---
+       Starte ffsubsync (KI-AutoSync) für Spur...
+  -> Prüfe Untertitel Spur 3 (Codec: subrip, Lang: ger, Titel: 'Deutsch Forced')
+[2026-08-23 21:20:27]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 4.9s). Ersetze Spur 3.
+[2026-08-23 21:20:27]      => FAKE FORCED ERKANNT! (194 Zeilen). Entferne Forced-Tag.
+[2026-08-23 21:20:28]      => Text KI Bestätigt: 'ger' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Forced')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 21:20:51]      => OCR KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 23.6s)
+  -> Prüfe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Full')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 34 Marker gefunden. Markiere als Schwerhörig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 21:21:14]      => OCR KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 22.4s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): zh (19.7%)
+       Whisper KI (Spot 1433s): eng (32.1%)
+       Whisper KI (Spot 2566s): ger (98.4%)
+       Whisper KI (Spot 3699s): ger (99.3%)
+       Whisper KI (Spot 4833s): ger (96.4%)
+       Whisper KI (Spot 5966s): eng (84.4%)
+[2026-08-23 21:21:17]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.0%, Dauer: 3.4s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): nn (50.5%)
+       Whisper KI (Spot 1433s): eng (33.0%)
+       Whisper KI (Spot 2566s): eng (98.9%)
+       Whisper KI (Spot 3699s): eng (96.9%)
+       Whisper KI (Spot 4833s): eng (97.8%)
+       Whisper KI (Spot 5966s): eng (70.6%)
+[2026-08-23 21:21:18]      => Audio KI Bestätigt: 'eng' (Sicherheit: 79.5%, Dauer: 1.3s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\Shape of Water - Das Flüstern des Wassers (2017).mkv_sub_1_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=ger -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 forced -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=eng -disposition:s:2 hearing_impaired -c copy F:\Jellyfin_AI_Cockpit\data\temp_cleanup\clean_Shape of Water - Das Flüstern des Wassers (2017).mkv
+  -> Speichere aufgeräumte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...

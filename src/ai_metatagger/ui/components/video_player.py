@@ -33,12 +33,7 @@ class VideoPlayerWidget(QtWidgets.QWidget):
         
     def _init_vlc(self):
         if self.vlc_instance is None:
-            self.vlc_instance = vlc.Instance(
-                "--no-xlib",
-                "--avcodec-hw=none",
-                "--drop-late-frames",
-                "--quiet",
-            )
+            self.vlc_instance = vlc.Instance("--no-xlib")
             self.media_player = self.vlc_instance.media_player_new()
             self._stopping = False
             
@@ -73,7 +68,12 @@ class VideoPlayerWidget(QtWidgets.QWidget):
             return
             
         if typ == 'audio':
-            self.media_player.audio_set_track(spur_id)
+            aud_tracks = self.media_player.audio_get_track_description()
+            if aud_tracks:
+                valid_auds = [t[0] for t in aud_tracks if t[0] >= 0]
+                if spur_id - 1 < len(valid_auds):
+                    vlc_id = valid_auds[spur_id - 1]
+                    self.media_player.audio_set_track(vlc_id)
             self.media_player.video_set_spu(-1)
         elif typ == 'subtitle':
             self.media_player.video_set_spu(spur_id)
