@@ -1,0 +1,7 @@
+__pycache__/
+Daten/
+temp_cleanup/
+*.pyc
+config.json
+crash_log.txt
+*.log
