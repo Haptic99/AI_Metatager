@@ -1550,3 +1550,429 @@ DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\da
        => OCR KI Gesamtergebnis: 'sv' (Sicherheit: 100.0%)
 [2026-08-23 14:27:45]      => OCR KI Korrektur: War 'und', ist jetzt 'sv' (Sicherheit: 100.0%, Dauer: 17.0s)
   -> PrÃ¼fe Untertitel Spur 30 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Black Swan (2010).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (93.3%)
+       Whisper KI (Spot 1281s): ger (99.1%)
+       Whisper KI (Spot 2262s): ger (98.9%)
+       Whisper KI (Spot 3243s): ger (98.8%)
+       Whisper KI (Spot 4225s): eng (54.5%)
+       Whisper KI (Spot 5206s): ger (95.9%)
+[2026-08-23 14:39:50]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 2.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (93.7%)
+       Whisper KI (Spot 1281s): eng (92.9%)
+       Whisper KI (Spot 2262s): eng (98.9%)
+       Whisper KI (Spot 3243s): eng (88.7%)
+       Whisper KI (Spot 4225s): eng (46.6%)
+       Whisper KI (Spot 5206s): eng (83.0%)
+[2026-08-23 14:39:52]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.7s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Dark Knight Rises (2012).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'English-SRT')
+[2026-08-23 14:40:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 9.6s). Ersetze Spur 3.
+[2026-08-23 14:40:39]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 96.0)
+       => SDH-Erkennung (PGS): 6 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 14:40:56]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 16.2s)
+     => BILD-UNTERTITEL (Spur 4): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 83.5)
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 14:41:11]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 15.7s)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 94.8)
+       => SDH-Erkennung (PGS): 6 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 14:41:28]      => OCR KI Korrektur: War 'und', ist jetzt 'ger' (Sicherheit: 100.0%, Dauer: 16.7s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 94.6)
+       => SDH-Erkennung (PGS): 5 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'it' (Sicherheit: 100.0%)
+[2026-08-23 14:41:45]      => OCR KI Korrektur: War 'und', ist jetzt 'it' (Sicherheit: 100.0%, Dauer: 17.2s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.8)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 14:42:02]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 17.0s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.0)
+       => OCR KI Gesamtergebnis: 'nl' (Sicherheit: 100.0%)
+[2026-08-23 14:42:19]      => OCR KI Korrektur: War 'und', ist jetzt 'nl' (Sicherheit: 100.0%, Dauer: 17.1s)
+  -> PrÃ¼fe Untertitel Spur 10 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Favourite - Intrigen und Irrsinn (2018).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'English-SRT')
+[2026-08-23 14:49:29]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 5.5s). Ersetze Spur 3.
+[2026-08-23 14:49:29]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.7)
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 14:49:41]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 11.6s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 95.5)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 14:49:52]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 11.2s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       Whisper KI (Spot 420s): ger (99.1%)
+       Whisper KI (Spot 390s): ger (98.9%)
+       Whisper KI (Spot 1200s): ger (98.5%)
+       Whisper KI (Spot 1590s): ger (98.8%)
+       Whisper KI (Spot 1230s): ger (99.0%)
+       Whisper KI (Spot 4440s): ger (98.3%)
+[2026-08-23 14:49:55]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 98.8%, Dauer: 2.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       Whisper KI (Spot 420s): eng (93.4%)
+       Whisper KI (Spot 390s): eng (85.9%)
+       Whisper KI (Spot 1200s): eng (93.8%)
+       Whisper KI (Spot 1590s): eng (90.3%)
+       Whisper KI (Spot 1230s): cy (65.2%)
+       Whisper KI (Spot 4440s): eng (97.4%)
+[2026-08-23 14:49:56]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 92.1%, Dauer: 1.5s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Favourite - Intrigen und Irrsinn (2018).mkv -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\The Favourite - Intrigen und Irrsinn (2018).mkv_sub_3_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=eng -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=fre -disposition:s:1 0 -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=spa -disposition:s:2 0 -c copy F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\clean_The Favourite - Intrigen und Irrsinn (2018).mkv
+  -> Speichere aufgerÃ¤umte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:10:21]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 2.2s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:24:16]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 2.4s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:32:04]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 1.8s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:35:28]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 1.8s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:39:31]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 2.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 15:39:33]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.5s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 15:39:34]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 90.6%, Dauer: 1.5s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:53:14]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 1.9s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 15:53:17]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.4s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 15:53:19]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 90.6%, Dauer: 1.4s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Favourite - Intrigen und Irrsinn (2018).mkv ---
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 15:58:32]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 2.6s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 15:58:35]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.6s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 15:58:37]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 90.6%, Dauer: 1.5s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Black Swan (2010).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (93.3%)
+       Whisper KI (Spot 1281s): ger (99.1%)
+       Whisper KI (Spot 2262s): ger (98.9%)
+       Whisper KI (Spot 3243s): ger (98.8%)
+       Whisper KI (Spot 4225s): eng (54.5%)
+       Whisper KI (Spot 5206s): ger (95.9%)
+[2026-08-23 16:05:50]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (93.7%)
+       Whisper KI (Spot 1281s): eng (92.9%)
+       Whisper KI (Spot 2262s): eng (98.9%)
+       Whisper KI (Spot 3243s): eng (88.7%)
+       Whisper KI (Spot 4225s): eng (46.6%)
+       Whisper KI (Spot 5206s): eng (83.0%)
+[2026-08-23 16:05:52]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.7s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Lord Of War.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (98.2%)
+       Whisper KI (Spot 1419s): ger (96.7%)
+       Whisper KI (Spot 2539s): ger (21.9%)
+       Whisper KI (Spot 3658s): ger (96.6%)
+       Whisper KI (Spot 4778s): ger (99.7%)
+       Whisper KI (Spot 5897s): ru (73.3%)
+[2026-08-23 16:05:58]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 82.6%, Dauer: 1.5s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Perfume The Story Of A Murderer (2006).mkv ---
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Perfume The Story Of A Murderer (2006).mkv ---
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 16:08:34]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 12.9s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Chinese (Simplified)')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 85.7%)
+[2026-08-23 16:08:43]      => OCR KI BestÃ¤tigt: 'zh-Hans' (Sicherheit: 85.7%, Dauer: 8.4s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Chinese (Traditional)')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 71.4%)
+[2026-08-23 16:08:52]      => OCR KI BestÃ¤tigt: 'zh-Hant' (Sicherheit: 71.4%, Dauer: 9.6s)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: 'French')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'et' (Sicherheit: 100.0%)
+[2026-08-23 16:09:02]      => OCR KI Erkennung 'et' ignoriert, da Titel auf 'fre' hindeutet.
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: ger, Titel: 'German')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 16:09:13]      => OCR KI BestÃ¤tigt: 'ger' (Sicherheit: 100.0%, Dauer: 11.1s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: pol, Titel: 'Polish')
+       Starte Precision-OCR (Modell: pol+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'pl' (Sicherheit: 100.0%)
+[2026-08-23 16:09:21]      => OCR KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 7.7s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: rus, Titel: 'Russian')
+       Starte Precision-OCR (Modell: rus+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ru' (Sicherheit: 100.0%)
+[2026-08-23 16:09:27]      => OCR KI Korrektur: War 'rus', ist jetzt 'ru' (Sicherheit: 100.0%, Dauer: 6.4s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (98.9%)
+       Whisper KI (Spot 1675s): ger (98.8%)
+       Whisper KI (Spot 3050s): ger (99.1%)
+       Whisper KI (Spot 4426s): ger (99.5%)
+       Whisper KI (Spot 5801s): zh (30.7%)
+       Whisper KI (Spot 7177s): la (53.7%)
+[2026-08-23 16:09:30]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 99.1%, Dauer: 3.0s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (97.4%)
+       Whisper KI (Spot 1675s): eng (95.2%)
+       Whisper KI (Spot 3050s): eng (95.8%)
+       Whisper KI (Spot 4426s): eng (75.8%)
+       Whisper KI (Spot 5801s): eng (38.9%)
+       Whisper KI (Spot 7177s): la (29.1%)
+[2026-08-23 16:09:32]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 80.6%, Dauer: 1.6s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Prestige - Meister der Magie (2006).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'Stripped SRT')
+[2026-08-23 16:09:51]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 6.8s). Ersetze Spur 3.
+[2026-08-23 16:09:51]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: subrip, Lang: eng, Titel: 'SDH SRT')
+[2026-08-23 16:09:51]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 6.8s). Ersetze Spur 4.
+[2026-08-23 16:09:51]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 96.0)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 16:10:03]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 12.3s)
+     => BILD-UNTERTITEL (Spur 5): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: jpn+eng (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 16:10:15]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 11.6s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.6)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 16:10:25]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 10.6s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.0)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 16:10:38]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 12.4s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.3)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 16:10:48]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 10.1s)
+  -> PrÃ¼fe Untertitel Spur 10 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 90.7)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 16:11:00]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 11.9s)
+  -> PrÃ¼fe Untertitel Spur 11 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.7)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'it' (Sicherheit: 100.0%)
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: ger, Titel: 'Deutsch Forced')
+[2026-08-23 16:11:40]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 5.4s). Ersetze Spur 3.
+[2026-08-23 16:11:40]      => FAKE FORCED ERKANNT! (194 Zeilen). Entferne Forced-Tag.
+[2026-08-23 16:11:40]      => Text KI BestÃ¤tigt: 'ger' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Forced')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 16:11:49]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 9.1s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Full')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 12 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 16:11:57]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 8.1s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): zh (19.7%)
+       Whisper KI (Spot 1433s): eng (32.1%)
+       Whisper KI (Spot 2566s): ger (98.4%)
+       Whisper KI (Spot 3699s): ger (99.3%)
+       Whisper KI (Spot 4833s): ger (96.4%)
+       Whisper KI (Spot 5966s): eng (84.4%)
+[2026-08-23 16:11:59]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 98.0%, Dauer: 2.2s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): nn (50.5%)
+       Whisper KI (Spot 1433s): eng (33.0%)
+       Whisper KI (Spot 2566s): eng (98.9%)
+       Whisper KI (Spot 3699s): eng (96.9%)
+       Whisper KI (Spot 4833s): eng (97.8%)
+       Whisper KI (Spot 5966s): eng (70.6%)
+[2026-08-23 16:12:01]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 79.5%, Dauer: 1.8s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\Shape of Water - Das Flüstern des Wassers (2017).mkv_sub_3_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=ger -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 forced -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=eng -disposition:s:2 hearing_impaired -c copy F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\clean_Shape of Water - Das Flüstern des Wassers (2017).mkv
+  -> Speichere aufgerÃ¤umte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
