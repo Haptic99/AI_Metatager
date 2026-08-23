@@ -7,12 +7,14 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Data paths
 DATA_DIR = os.path.join(BASE_DIR, 'data')
+TEMP_DIR = os.path.join(DATA_DIR, 'temp_cleanup')
 CONFIG_PATH = os.path.join(DATA_DIR, 'config.json')
 DB_PATH = os.path.join(DATA_DIR, 'Jellyfin_AI_Database.sqlite')
 STATE_PATH = os.path.join(DATA_DIR, 'validation_state.json')
 INFO_MATRIX_PATH = os.path.join(DATA_DIR, 'Informationsmatrix.xlsx')
 
 os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(TEMP_DIR, exist_ok=True)
 
 def load_config():
     if os.path.exists(CONFIG_PATH):

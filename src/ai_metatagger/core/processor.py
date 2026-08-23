@@ -6,17 +6,18 @@ import shutil
 import re
 import subprocess
 import json
+import concurrent.futures
 
 from ai_metatagger.core.logger import write_log, write_review
 from ai_metatagger.core.ffmpeg_tools import get_streams
-from ai_metatagger.core.subtitle_tools import is_same_lang_family, map_lang, get_clean_title, is_duplicate_text, read_text_subtitle, auto_sync_subtitle
+from ai_metatagger.core.subtitle_tools import is_same_lang_family, is_hearing_impaired, map_lang, get_clean_title, is_duplicate_text, read_text_subtitle, auto_sync_subtitle
 from ai_metatagger.core.audio_analyzer import detect_audio_language_whisper
 import ai_metatagger.core.audio_analyzer as audio_analyzer
 from ai_metatagger.core.ocr_analyzer import analyze_subtitle_pgs
 import ai_metatagger.core.ocr_analyzer as ocr_analyzer
 
 
-from ai_metatagger.config import DATA_DIR, DIR_SERIEN, TESSERACT_PATH, FFSUBSYNC_PATH, MKVPROPEDIT, CONFIG
+from ai_metatagger.config import DATA_DIR, DIR_SERIEN, TESSERACT_PATH, FFSUBSYNC_PATH, MKVPROPEDIT, CONFIG, TEMP_DIR
 
 if os.name == 'nt':
     class NoWindowPopen(subprocess.Popen):
@@ -41,11 +42,6 @@ if os.path.exists(TESSERACT_PATH):
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
 MEDIA_DIR = DIR_SERIEN
-TEMP_DIR = os.path.join(DATA_DIR, "temp_cleanup")
-if not os.path.exists(TEMP_DIR):
-    os.makedirs(TEMP_DIR, exist_ok=True)
-audio_analyzer.TEMP_DIR = TEMP_DIR
-ocr_analyzer.TEMP_DIR = TEMP_DIR
 
 LOG_PATH = os.path.join(DATA_DIR, "Master_Cleanup_Log.txt")
 REVIEW_LOG = os.path.join(DATA_DIR, "Bitte_Pruefen.txt")
@@ -108,8 +104,6 @@ def process_file(filepath, progress_callback=None):
     # PRE-PASS: Parallel extraction and sync
     sync_results = {}
     sync_tasks = []
-    import concurrent.futures
-    import time
     for idx, s in sub_streams:
         if s.get('codec_name') in ['subrip', 'ass']:
             movie_base = os.path.basename(filepath)
@@ -170,13 +164,11 @@ def process_file(filepath, progress_callback=None):
                     try:
                         if abs(float(sync_offset)) > CONFIG.get("sync_offset_threshold", 2.0) or (sync_scale != "1.000" and sync_scale != "1.0"):
                             write_review(f"[{os.path.basename(filepath)}] Auto-Sync Spur {idx}: GroÃŸe Verschiebung ({sync_offset}s, Speed: {sync_scale}x)")
-                    except Exception: pass
+                    except Exception as e: write_log(f"Warnung in {__name__}: {e}")
                     needs_muxing = True
                     needs_ffmpeg = True
                     extracted_text, line_count = read_text_subtitle(synced_sub)
-                    if extracted_text:
-                        sdh_markers = len(re.findall(r'\[.*?\]|\(.*?\)|^[A-Z\s]{2,}:', extracted_text, flags=re.MULTILINE))
-                        is_hi = sdh_markers >= max(8, line_count * 0.015)
+                    is_hi = is_hearing_impaired(extracted_text, line_count)
                     input_idx = len(input_files)
                     input_files.append(synced_sub)
                     ffmpeg_args.extend(["-i", synced_sub])
@@ -184,9 +176,7 @@ def process_file(filepath, progress_callback=None):
                     synced_srt_paths[idx] = synced_sub
                 else:
                     extracted_text, line_count = read_text_subtitle(out_sub)
-                    if extracted_text:
-                        sdh_markers = len(re.findall(r'\[.*?\]|\(.*?\)|^[A-Z\s]{2,}:', extracted_text, flags=re.MULTILINE))
-                        is_hi = sdh_markers >= max(8, line_count * 0.015)
+                    is_hi = is_hearing_impaired(extracted_text, line_count)
                     synced_srt_paths[idx] = out_sub
                 
                 if is_forced_meta and line_count > 120:
@@ -199,7 +189,6 @@ def process_file(filepath, progress_callback=None):
                     is_forced_meta = True
                     
                 if extracted_text:
-                    import time
                     start_t = time.time()
                     try:
                         res = detect_langs(extracted_text[:1500].replace("\n", " "))
@@ -219,10 +208,9 @@ def process_file(filepath, progress_callback=None):
                                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Text): KI sehr unsicher ({conf:.1f}% fÃ¼r '{det_lang}')")
                                 elif det_lang not in expected and det_lang != 'und':
                                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Text): Exotische Sprache erkannt ('{det_lang}')")
-                    except Exception: pass
+                    except Exception as e: write_log(f"Warnung in {__name__}: {e}")
                     
         else:
-            import time
             start_t = time.time()
             detected_pgs_lang, is_forced_meta, conf, is_hi = analyze_subtitle_pgs(filepath, idx, track_id_map[idx], codec, duration, is_forced_meta, old_lang, old_title, progress_callback)
             if progress_callback and progress_callback('subtitle', idx, 'step', codec, 0, 1): return
@@ -245,7 +233,7 @@ def process_file(filepath, progress_callback=None):
                         write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Bild): KI sehr unsicher ({c_val:.1f}% fÃ¼r '{detected_pgs_lang}')")
                     elif detected_pgs_lang not in expected and detected_pgs_lang != 'und':
                         write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Bild): Exotische Sprache erkannt ('{detected_pgs_lang}')")
-                except Exception: pass
+                except Exception as e: write_log(f"Warnung in {__name__}: {e}")
                     
         is_dup = False
         for p_lang, p_text in processed_subs:
@@ -345,7 +333,6 @@ def process_file(filepath, progress_callback=None):
         new_lang = map_lang(old_lang, old_title)
         
         write_log(f"  -> Audio Spur {idx} (Bisher: '{new_lang}'). Starte Whisper Analyse...")
-        import time
         start_t = time.time()
         detected, conf = detect_audio_language_whisper(filepath, idx, best_srt)
         dur = time.time() - start_t
@@ -363,7 +350,7 @@ def process_file(filepath, progress_callback=None):
                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Audio): KI sehr unsicher ({c_val:.1f}% fÃ¼r '{detected}')")
                 elif detected not in expected and detected != 'und':
                     write_review(f"[{os.path.basename(filepath)}] Spur {idx} (Audio): Exotische Sprache erkannt ('{detected}')")
-            except Exception: pass
+            except Exception as e: write_log(f"Warnung in {__name__}: {e}")
                 
         if new_lang != old_lang or old_title: needs_muxing = True
             
@@ -514,8 +501,7 @@ def process_file(filepath, progress_callback=None):
                 success = True
                 break
             except Exception as e:
-                import time
-                time.sleep(2)
+                 time.sleep(2)
                 
         if success:
             write_log("     Erfolgreich aktualisiert!")

@@ -2,16 +2,18 @@
 import re
 import json
 import subprocess
+import concurrent.futures
+from PIL import Image
 import pytesseract
+from pytesseract import Output
 from langdetect import detect_langs
-from ai_metatagger.config import TESSERACT_PATH, CONFIG
+from ai_metatagger.config import TESSERACT_PATH, CONFIG, TEMP_DIR
 from ai_metatagger.core.logger import write_log, write_review
 from ai_metatagger.core.subtitle_tools import map_lang
 
 if os.path.exists(TESSERACT_PATH):
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
-TEMP_DIR = None
 
 def get_subtitle_timestamps(filepath, stream_idx):
     cmd = ["ffprobe", "-v", "quiet", "-select_streams", str(stream_idx), "-show_entries", "packet=pts_time", "-of", "json", filepath]
@@ -24,7 +26,7 @@ def get_subtitle_timestamps(filepath, stream_idx):
             pts = p.get('pts_time')
             if pts:
                 try: timestamps.append(float(pts))
-                except Exception: pass
+                except Exception as e: write_log(f"Warnung in {__name__}: {e}")
         return timestamps
     except Exception as e:
         write_log(f'Error in get_subtitle_timestamps: {e}')
@@ -82,7 +84,6 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
             out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_test.png")
             if extract_subtitle_image(filepath, stream_idx, ts, out_img):
                 try:
-                    from PIL import Image
                     with Image.open(out_img) as img:
                         bbox = img.getbbox()
                         if bbox:
@@ -91,12 +92,11 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                             cropped.save(out_img)
                             first_img = out_img
                             break
-                except Exception: pass
+                except Exception as e: write_log(f"Warnung in {__name__}: {e}")
                 
         if first_img and old_lang == "und":
             best_conf = 0
             best_lang = tess_lang
-            from pytesseract import Output
             for g in ["eng+deu+fra+spa+ita", "chi_sim+chi_tra+eng", "kor+eng", "rus+ara+heb+ell+eng", "jpn+eng", "tur+pol+hin+tha"]:
                 try:
                     data = pytesseract.image_to_data(first_img, lang=g, output_type=Output.DICT)
@@ -106,7 +106,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
                         if avg > best_conf:
                             best_conf = avg
                             best_lang = g
-                except Exception: pass
+                except Exception as e: write_log(f"Warnung in {__name__}: {e}")
             if best_lang:
                 tess_lang = best_lang
                 write_log(f"       => Auto-Script erkannt! Benutze Sprachmodell: {tess_lang} (Confidence: {best_conf:.1f})")
@@ -117,7 +117,6 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
             out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_{i:03d}.png")
             if extract_subtitle_image(filepath, stream_idx, ts, out_img):
                 try:
-                    from PIL import Image
                     with Image.open(out_img) as img:
                         bbox = img.getbbox()
                         if bbox:
@@ -131,7 +130,6 @@ def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, i
             return ""
             
         combined_text = ""
-        import concurrent.futures
         with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
             futures = [executor.submit(extract_and_ocr, ts, i) for i, ts in enumerate(sample_timestamps)]
             for future in concurrent.futures.as_completed(futures):

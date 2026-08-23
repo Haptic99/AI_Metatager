@@ -3,12 +3,11 @@ import subprocess
 import whisper
 import torch
 from collections import defaultdict
-from ai_metatagger.config import WHISPER_MODEL_SIZE
+from ai_metatagger.config import WHISPER_MODEL_SIZE, TEMP_DIR
 from ai_metatagger.core.logger import write_log
 from ai_metatagger.core.subtitle_tools import find_dense_audio_spots, map_lang
 
 _WHISPER_MODEL = None
-TEMP_DIR = None  # Will be set by processor
 
 def get_whisper_model():
     global _WHISPER_MODEL
@@ -62,7 +61,7 @@ def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
                 prob = probs[lang] * 100
                 detected_langs.append((map_lang(lang), prob))
                 write_log(f"       Whisper KI (Spot {int(spot)}s): {map_lang(lang)} ({prob:.1f}%)", console=False)
-            except Exception: pass
+            except Exception as e: write_log(f"Warnung in {__name__}: {e}")
             finally:
                 if os.path.exists(temp_audio): 
                     try:

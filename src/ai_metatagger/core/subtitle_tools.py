@@ -112,3 +112,10 @@ def find_dense_audio_spots(srt_path, num_spots=3, duration_sec=30):
     except Exception as e:
         write_log(f'Error in find_dense_audio_spots: {e}')
         return []
+
+
+def is_hearing_impaired(extracted_text, line_count):
+    if not extracted_text or line_count == 0:
+        return False
+    sdh_markers = len(re.findall(r'\[.*?\]|\(.*?\)|^[A-Z\s]{2,}:', extracted_text, flags=re.MULTILINE))
+    return sdh_markers >= max(8, line_count * 0.015)
