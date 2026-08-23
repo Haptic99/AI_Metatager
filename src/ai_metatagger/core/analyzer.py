@@ -298,7 +298,7 @@ def extract_subtitle_image(filepath, stream_idx, ts, out_img):
     except:
         return False
 
-def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_meta, old_lang="und", old_title="", progress_callback=None):
+def analyze_subtitle_pgs(filepath, stream_idx, track_id, codec_name, duration, is_forced_meta, old_lang="und", old_title="", progress_callback=None):
     tess_map = {"chi":"chi_sim+chi_tra+eng", "zho":"chi_sim+chi_tra+eng", "rus":"rus+eng", "ara":"ara+eng", "heb":"heb+eng", "gre":"ell+eng", "ell":"ell+eng", "jpn":"jpn+eng", "kor":"kor+eng", "tur":"tur+eng", "pol":"pol+eng", "hin":"hin+eng"}
     tess_lang = tess_map.get(old_lang, "eng+deu+fra+spa+ita")
     
@@ -332,7 +332,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
         first_img = None
         for i, ts in enumerate(sample_timestamps[:50]):
             movie_base = os.path.basename(filepath)
-            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[stream_idx]}_test.png")
+            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_test.png")
             if extract_subtitle_image(filepath, stream_idx, ts, out_img):
                 try:
                     from PIL import Image
@@ -367,7 +367,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
 
         def extract_and_ocr(ts, i):
             movie_base = os.path.basename(filepath)
-            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[stream_idx]}_{i:03d}.png")
+            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_{i:03d}.png")
             if extract_subtitle_image(filepath, stream_idx, ts, out_img):
                 try:
                     from PIL import Image
@@ -393,7 +393,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
                 
         # Schreibe alles in eine Textdatei fÃ¼r spÃ¤tere ÃœberprÃ¼fungen
         movie_base = os.path.basename(filepath)
-        ocr_file = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[stream_idx]}_OCR.txt")
+        ocr_file = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_OCR.txt")
         with open(ocr_file, "w", encoding="utf-8") as f:
             f.write(combined_text)
             
@@ -598,7 +598,7 @@ def process_file(filepath, progress_callback=None):
         else:
             import time
             start_t = time.time()
-            detected_pgs_lang, is_forced_meta, conf, is_hi = analyze_subtitle_pgs(filepath, idx, codec, duration, is_forced_meta, old_lang, old_title, progress_callback)
+            detected_pgs_lang, is_forced_meta, conf, is_hi = analyze_subtitle_pgs(filepath, idx, track_id_map[idx], codec, duration, is_forced_meta, old_lang, old_title, progress_callback)
             if progress_callback and progress_callback('subtitle', idx, 'step', codec, 0, 1): return
             dur = time.time() - start_t
             if detected_pgs_lang != 'und':
