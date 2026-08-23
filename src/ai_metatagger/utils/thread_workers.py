@@ -68,6 +68,7 @@ class AnalysisThread(QtCore.QThread):
             
             f_aud = 0
             f_sub = 0
+            pts_for_file = 0
             cmd = ["ffprobe", "-v", "quiet", "-print_format", "json", "-show_streams", path]
             try:
                 res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding='utf-8', errors='replace', creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
@@ -76,16 +77,17 @@ class AnalysisThread(QtCore.QThread):
                     ctype = s.get('codec_type')
                     if ctype == 'audio':
                         f_aud += 1
-                        total_points += w_audio
+                        pts_for_file += w_audio
                     elif ctype == 'subtitle':
                         f_sub += 1
                         codec = s.get('codec_name', '')
-                        if codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']: total_points += w_pgs
-                        else: total_points += w_srt
+                        if codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']: pts_for_file += w_pgs
+                        else: pts_for_file += w_srt
             except: pass
             
-            total_points += w_mux
-            file_stats.append({'total_tracks': f_aud + f_sub})
+            pts_for_file += w_mux
+            total_points += pts_for_file
+            file_stats.append({'total_tracks': f_aud + f_sub, 'points': pts_for_file})
             
         prescan_dur = time.time() - prescan_start
         try:
