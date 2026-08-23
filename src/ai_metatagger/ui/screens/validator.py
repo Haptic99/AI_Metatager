@@ -102,6 +102,16 @@ class Screen3Validator(QtWidgets.QWidget):
         controls.addWidget(self.slider)
         self.lbl_time = QtWidgets.QLabel("00:00 / 00:00")
         controls.addWidget(self.lbl_time)
+        
+        self.vol_icon = QtWidgets.QLabel("Vol:")
+        controls.addWidget(self.vol_icon)
+        self.slider_vol = QtWidgets.QSlider(QtCore.Qt.Horizontal)
+        self.slider_vol.setMaximum(100)
+        self.slider_vol.setValue(100)
+        self.slider_vol.setMaximumWidth(100)
+        self.slider_vol.valueChanged.connect(self.set_volume)
+        controls.addWidget(self.slider_vol)
+        
         left_layout.addLayout(controls)
         center_layout.addLayout(left_layout, stretch=2)
         # Form Area
@@ -148,7 +158,8 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_valid_lang.clicked.connect(lambda: self.validate_field('lang'))
         self.form_grid.addWidget(self.btn_valid_lang, 1, 4)
         # 2. SDH
-        self.form_grid.addWidget(QtWidgets.QLabel("SDH:"), 2, 0)
+        self.lbl_sdh_title = QtWidgets.QLabel("SDH:")
+        self.form_grid.addWidget(self.lbl_sdh_title, 2, 0)
         self.lbl_ki_sdh = QtWidgets.QLabel("-")
         self.form_grid.addWidget(self.lbl_ki_sdh, 2, 1)
         self.chk_sdh = QtWidgets.QCheckBox("Ja")
@@ -160,7 +171,8 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_valid_sdh.clicked.connect(lambda: self.validate_field('sdh'))
         self.form_grid.addWidget(self.btn_valid_sdh, 2, 4)
         # 3. Forced
-        self.form_grid.addWidget(QtWidgets.QLabel("Forced:"), 3, 0)
+        self.lbl_forced_title = QtWidgets.QLabel("Forced:")
+        self.form_grid.addWidget(self.lbl_forced_title, 3, 0)
         self.lbl_ki_forced = QtWidgets.QLabel("-")
         self.form_grid.addWidget(self.lbl_ki_forced, 3, 1)
         self.chk_forced = QtWidgets.QCheckBox("Ja")
@@ -172,7 +184,8 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_valid_forced.clicked.connect(lambda: self.validate_field('forced'))
         self.form_grid.addWidget(self.btn_valid_forced, 3, 4)
         # 4. Name
-        self.form_grid.addWidget(QtWidgets.QLabel("Spezial Name:"), 4, 0)
+        self.lbl_name_title = QtWidgets.QLabel("Spezial Name:")
+        self.form_grid.addWidget(self.lbl_name_title, 4, 0)
         self.lbl_ki_name = QtWidgets.QLabel("-")
         self.form_grid.addWidget(self.lbl_ki_name, 4, 1)
         self.txt_titel = QtWidgets.QLineEdit()
@@ -210,6 +223,8 @@ class Screen3Validator(QtWidgets.QWidget):
         QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Left), self).activated.connect(lambda: self.seek(-5000))
         QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Right), self).activated.connect(lambda: self.seek(5000))
         QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Space), self).activated.connect(self.toggle_play)
+        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Up), self).activated.connect(lambda: self.change_volume(10))
+        QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Down), self).activated.connect(lambda: self.change_volume(-10))
         # Timer for UI updates
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(500)
@@ -431,6 +446,14 @@ class Screen3Validator(QtWidgets.QWidget):
                 break
         spur = row['track_id']
         typ = row['track_type']
+        
+        is_audio = str(row['track_type']).lower() == 'audio'
+        for i in range(self.form_grid.count()):
+            widget_item = self.form_grid.itemAt(i)
+            if widget_item and widget_item.widget():
+                r_idx, c_idx, rSpan, cSpan = self.form_grid.getItemPosition(i)
+                if r_idx in [2, 3, 4]:
+                    widget_item.widget().setVisible(not is_audio)
         # Highlight in list
         for i in range(self.movie_list.count()):
             if self.movie_list.item(i).text() == film:
@@ -654,3 +677,11 @@ class Screen3Validator(QtWidgets.QWidget):
             
             # Refresh
             self.check_for_new_data()
+
+    def set_volume(self, val):
+        if self.media_player:
+            self.media_player.audio_set_volume(val)
+            
+    def change_volume(self, delta):
+        new_vol = max(0, min(100, self.slider_vol.value() + delta))
+        self.slider_vol.setValue(new_vol)
