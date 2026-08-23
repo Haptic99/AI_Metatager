@@ -1,6 +1,4 @@
 @echo off
-cd /d "%~dp0"
-"C:\Program Files\Python313\python.exe" Cockpit_V2.py
-echo.
-echo PROGRAM BEENDET ODER ABGESTUERZT:
+set PYTHONPATH=%~dp0src
+python -m ai_metatagger.main
 pause

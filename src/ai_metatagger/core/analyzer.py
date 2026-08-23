@@ -39,12 +39,12 @@ if os.path.exists(TESSERACT_PATH):
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
 MEDIA_DIR = r"F:\Jellyfin\Serien"
-TEMP_DIR = r"F:\Jellyfin_AI_Cockpit\temp_cleanup"
+TEMP_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "temp_cleanup")
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 
-LOG_PATH = r"F:\Jellyfin_AI_Cockpit\Daten\Master_Cleanup_Log.txt"
-REVIEW_LOG = r"F:\Jellyfin_AI_Cockpit\Daten\Bitte_Pruefen.txt"
+LOG_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Master_Cleanup_Log.txt")
+REVIEW_LOG = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Bitte_Pruefen.txt")
 
 def write_review(msg):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -53,8 +53,8 @@ def write_review(msg):
         with open(REVIEW_LOG, 'a', encoding='utf-8') as f:
             f.write(formatted_msg + "\n")
     except: pass
-KORREKTUR_LOG = r"F:\Jellyfin_AI_Cockpit\Daten\Master_Korrektur_Log.txt"
-SYNC_LOG = r"F:\Jellyfin_AI_Cockpit\Daten\Master_Sync_Log.txt"
+KORREKTUR_LOG = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Master_Korrektur_Log.txt")
+SYNC_LOG = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "Master_Sync_Log.txt")
 FFSUBSYNC_PATH = r"C:\Users\dmart\AppData\Roaming\Python\Python313\Scripts\ffsubsync.exe"
 
 def write_log(msg, console=True, log_type="cleanup"):

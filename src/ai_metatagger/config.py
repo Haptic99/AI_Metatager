@@ -1,0 +1,37 @@
+﻿import os
+import sys
+import json
+
+# Absolute path to the project root directory (two levels up from this file)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+# Data paths
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+CONFIG_PATH = os.path.join(DATA_DIR, 'config.json')
+DB_PATH = os.path.join(DATA_DIR, 'Jellyfin_AI_Database.sqlite')
+STATE_PATH = os.path.join(DATA_DIR, 'validation_state.json')
+INFO_MATRIX_PATH = os.path.join(DATA_DIR, 'Informationsmatrix.xlsx')
+
+os.makedirs(DATA_DIR, exist_ok=True)
+
+def load_config():
+    if os.path.exists(CONFIG_PATH):
+        try:
+            with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Error loading config.json: {e}")
+    return {}
+
+def save_config(config_dict):
+    with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
+        json.dump(config_dict, f, indent=4)
+
+CONFIG = load_config()
+
+DIR_FILME = CONFIG.get("Verzeichnis_Filme", "")
+DIR_SERIEN = CONFIG.get("Verzeichnis_Serien", "")
+DIR_TEST = CONFIG.get("Verzeichnis_Test", "")
+
+PYTHON_EXE = CONFIG.get("Pfad_Python", sys.executable)
+MKVPROPEDIT = CONFIG.get("Pfad_mkvpropedit", "mkvpropedit")

@@ -1,12 +1,13 @@
-﻿@echo off
+@echo off
 echo =========================================
 echo Baue AI Metatagger EXE...
 echo =========================================
-python -m pyinstaller --noconsole --onedir --name "AI_Metatagger" Cockpit_V2.py
+set PYTHONPATH=%~dp0src
+python -m pyinstaller --noconsole --onedir --name "AI_Metatagger" src\ai_metatagger\main.py
 
 echo.
 echo Kopiere config.json in den dist Ordner...
-copy config.json dist\AI_Metatagger\config.json
+copy data\config.json dist\AI_Metatagger\config.json
 
 echo.
 echo =========================================
