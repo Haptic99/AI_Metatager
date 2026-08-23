@@ -445,9 +445,9 @@ class Screen3Validator(QtWidgets.QWidget):
                     it = self.track_list.item(i, col)
                     if it:
                         if all_valid:
-                            it.setBackground(QtGui.QColor("#1b5e20"))
+                            it.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
                         else:
-                            it.setBackground(QtGui.QColor(0,0,0,0))
+                            it.setBackground(QtGui.QBrush(QtGui.QColor(0,0,0,0)))
                 break
     def load_row(self):
         if self.current_idx >= len(self.auto_rows) or len(self.auto_rows) == 0:
@@ -576,6 +576,8 @@ class Screen3Validator(QtWidgets.QWidget):
         new_forced = self.cmb_forced.currentText() == "Ja"
         new_titel = self.txt_titel.text()
         accuracy_file = r"F:\Jellyfin_AI_Cockpit\Daten\KI_Accuracy.json"
+        import os
+        os.makedirs(os.path.dirname(accuracy_file), exist_ok=True)
         stats = {"total": 0, "correct_lang": 0, "correct_sdh": 0, "correct_forced": 0, "perfect_tracks": 0}
         if os.path.exists(accuracy_file):
             try:
@@ -621,7 +623,7 @@ class Screen3Validator(QtWidgets.QWidget):
             if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
                 for col in range(3):
                     self.track_list.item(i, col).setForeground(QtGui.QColor("#aaaaaa"))
-                    self.track_list.item(i, col).setBackground(QtGui.QColor(0,0,0,0))
+                    self.track_list.item(i, col).setBackground(QtGui.QBrush(QtGui.QColor(0,0,0,0)))
                 break
         self.current_idx += 1
         # Refresh auto rows
