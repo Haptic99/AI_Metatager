@@ -8,6 +8,7 @@ import pandas as pd
 from PyQt5 import QtCore
 from ai_metatagger.config import DIR_TEST, MKVPROPEDIT, PYTHON_EXE, DB_PATH
 from ai_metatagger.utils.state_manager import load_state, save_state, load_matrix, save_matrix
+from ai_metatagger.utils.subprocess_tracker import SubprocessTracker, set_active_tracker, tracked_run
 from ai_metatagger.core import processor as analyzer
 from ai_metatagger.core.audio_analyzer import unload_whisper_model
 
@@ -21,42 +22,18 @@ class AnalysisThread(QtCore.QThread):
         super().__init__()
         self.file_paths = file_paths
         self.is_cancelled = False
-        self._active_processes_lock = threading.Lock()
-        self._active_processes = []  # list of subprocess.Popen instances
+        self._tracker = SubprocessTracker()
 
-    def _register_process(self, proc):
-        """Register a running subprocess for cleanup on cancellation."""
-        with self._active_processes_lock:
-            self._active_processes.append(proc)
-
-    def _unregister_process(self, proc):
-        """Remove a completed subprocess from the tracking list."""
-        with self._active_processes_lock:
-            try:
-                self._active_processes.remove(proc)
-            except ValueError:
-                pass
-
-    def _run_tracked(self, cmd, **kwargs):
-        """Run a subprocess while tracking it for cancellation.
-        Returns the CompletedProcess-like result.
-        Raises subprocess.SubprocessError on failure if check=True.
-        """
-        kwargs.setdefault('creationflags', subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
-        proc = subprocess.Popen(cmd, **kwargs)
-        self._register_process(proc)
-        try:
-            stdout, stderr = proc.communicate()
-            return subprocess.CompletedProcess(cmd, proc.returncode, stdout, stderr)
-        finally:
-            self._unregister_process(proc)
+    def stop(self):
+        """Signal cancellation and terminate all running subprocesses."""
+        self.is_cancelled = True
+        self._tracker.cancel()
 
     def extract_metadata(self, filepath):
         data = getattr(self, 'ffprobe_cache', {}).get(filepath)
         if not data:
             cmd = ["ffprobe", "-v", "error", "-show_streams", "-of", "json", filepath]
-            res = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8',
-                                 creationflags=subprocess.CREATE_NO_WINDOW)
+            res = tracked_run(cmd, capture_output=True, text=True, encoding='utf-8')
             if res.returncode != 0:
                 return []
             data = json.loads(res.stdout)
@@ -91,17 +68,15 @@ class AnalysisThread(QtCore.QThread):
             })
         return tracks
 
-    def stop(self):
-        """Signal cancellation and terminate all running subprocesses."""
-        self.is_cancelled = True
-        with self._active_processes_lock:
-            for proc in self._active_processes:
-                try:
-                    proc.terminate()
-                except OSError:
-                    pass
-
     def run(self):
+        # Activate subprocess tracker so all subprocess calls are cancellable
+        set_active_tracker(self._tracker)
+        try:
+            self._run_analysis()
+        finally:
+            set_active_tracker(None)
+
+    def _run_analysis(self):
         total = len(self.file_paths)
         if not os.path.exists(DIR_TEST):
             os.makedirs(DIR_TEST)
@@ -271,7 +246,10 @@ class AnalysisThread(QtCore.QThread):
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                            creationflags=subprocess.CREATE_NO_WINDOW)
             self.progress_update.emit(i, total, f"Analysiere {basename}...")
-            analyzer.process_file(dest_path, progress_callback=progress_callback)
+            new_dest = analyzer.process_file(dest_path, progress_callback=progress_callback)
+            if new_dest:
+                dest_path = new_dest
+                basename = os.path.basename(dest_path)
 
             new_tracks = self.extract_metadata(dest_path)
             if os.path.exists(DB_PATH):
@@ -281,20 +259,27 @@ class AnalysisThread(QtCore.QThread):
                                            'track_name', 'is_default', 'subtitle_type',
                                            'is_hearing_impaired', 'is_forced', 'notes', 'is_validated'])
 
-            # SCHUTZ VOR ÜBERSCHREIBEN BEREITS VALIDIERTER SPUREN
-            other_movies = df[df['file_name'] != basename]
-            current_movie = df[df['file_name'] == basename]
-            validated_tracks = current_movie[current_movie['is_validated'] == True]
-            valid_spur_nums = validated_tracks['track_id'].tolist() if not validated_tracks.empty else []
-            filtered_new_tracks = [t for t in new_tracks if t['track_id'] not in valid_spur_nums]
-            df = pd.concat([other_movies, validated_tracks, pd.DataFrame(filtered_new_tracks)], ignore_index=True)
-            save_matrix(df)
+            from ai_metatagger.utils.state_manager import init_db, DB_LOCK, append_tracks
+            # Wenn ein Film neu analysiert wird, löschen wir alle alten Spuren aus der DB,
+            # damit er wieder als unvalidiert in der Liste auftaucht.
+            with DB_LOCK:
+                conn = init_db()
+                cursor = conn.cursor()
+                cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (basename,))
+                conn.commit()
+                conn.close()
+                
+            if new_tracks:
+                print(f"AnalysisThread: appending {len(new_tracks)} tracks to DB")
+                append_tracks(pd.DataFrame(new_tracks))
+            else:
+                print(f"AnalysisThread: NO TRACKS TO APPEND! new_tracks is empty!")
 
             # STATE UPDATE
             state_data = load_state()
             if basename not in state_data:
                 state_data[basename] = {}
-            for trk in filtered_new_tracks:
+            for trk in new_tracks:
                 trk_id = str(trk['track_id'])
                 if trk_id not in state_data[basename]:
                     state_data[basename][trk_id] = {

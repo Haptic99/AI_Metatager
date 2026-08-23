@@ -1,3 +1,8 @@
+"""Thread-safe logging module for AI Metatagger.
+
+Provides functions to write to the main log, review log, correction log,
+and sync log. All file writes are protected by a threading.Lock.
+"""
 import os
 import sys
 import datetime
@@ -12,7 +17,12 @@ KORREKTUR_LOG = os.path.join(DATA_DIR, 'Master_Korrektur_Log.txt')
 SYNC_LOG = os.path.join(DATA_DIR, 'Master_Sync_Log.txt')
 
 
-def write_review(msg):
+def write_review(msg: str) -> None:
+    """Write a message to the review log (items requiring manual review).
+
+    Args:
+        msg: The review message to log.
+    """
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     formatted_msg = f'[{timestamp}] {msg}'
     try:
@@ -23,7 +33,14 @@ def write_review(msg):
         print(f'Error writing to review log: {e}')
 
 
-def write_log(msg, console=True, log_type='cleanup'):
+def write_log(msg: str, console: bool = True, log_type: str = 'cleanup') -> None:
+    """Write a message to the main analysis log.
+
+    Args:
+        msg: The log message.
+        console: If True, also print to stdout.
+        log_type: Log category ('cleanup', 'sync', 'korrektur').
+    """
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     formatted_msg = f'[{timestamp}] {msg}' if log_type != 'cleanup' else msg
 

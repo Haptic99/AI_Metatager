@@ -2011,3 +2011,861 @@ Lade Whisper Modell (tiny) in den Speicher...
 [2026-08-23 17:28:10]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.2s)
   -> Schnelles Metadaten-Update (mkvpropedit)...
      Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 18:24:21]      => Audio KI Bestätigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 18:24:22]      => Audio KI Bestätigt: 'eng' (Sicherheit: 90.6%, Dauer: 0.9s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 18:26:18]      => Audio KI Bestätigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 18:26:19]      => Audio KI Bestätigt: 'eng' (Sicherheit: 90.6%, Dauer: 0.9s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 18:26:27]      => Audio KI Bestätigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.6s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 18:26:28]      => Audio KI Bestätigt: 'eng' (Sicherheit: 90.6%, Dauer: 0.9s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Lord Of War.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (98.2%)
+       Whisper KI (Spot 1419s): ger (96.7%)
+       Whisper KI (Spot 2539s): ger (21.9%)
+       Whisper KI (Spot 3658s): ger (96.6%)
+       Whisper KI (Spot 4778s): ger (99.7%)
+       Whisper KI (Spot 5897s): ru (73.3%)
+[2026-08-23 18:26:32]      => Audio KI Bestätigt: 'ger' (Sicherheit: 82.6%, Dauer: 1.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 18:50:14]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.3s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'CHS')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_3_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+[2026-08-23 18:51:00]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 100.0%, Dauer: 26.2s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'CHT')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_4_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 71.4%)
+[2026-08-23 18:51:21]      => OCR KI Bestätigt: 'zh-Hant' (Sicherheit: 71.4%, Dauer: 21.3s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.3%)
+       Whisper KI (Spot 1320s): ger (86.6%)
+       Whisper KI (Spot 2340s): ger (98.8%)
+       Whisper KI (Spot 3360s): ger (98.8%)
+       Whisper KI (Spot 4380s): ger (91.9%)
+       Whisper KI (Spot 5400s): spa (47.0%)
+[2026-08-23 18:51:23]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.9%, Dauer: 1.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (99.7%)
+       Whisper KI (Spot 1320s): eng (87.2%)
+       Whisper KI (Spot 2340s): eng (98.5%)
+       Whisper KI (Spot 3360s): eng (99.3%)
+       Whisper KI (Spot 4380s): eng (98.3%)
+       Whisper KI (Spot 5400s): eng (87.6%)
+[2026-08-23 18:51:24]      => Audio KI Bestätigt: 'eng' (Sicherheit: 95.1%, Dauer: 1.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 18:51:29]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 0.9s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Batman Begins (2005).mkv ---
+       Starte ffsubsync (KI-AutoSync) für Spur...
+  -> Prüfe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'English-SRT')
+[2026-08-23 18:51:47]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.4s). Ersetze Spur 3.
+[2026-08-23 18:51:47]      => Text KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Batman Begins (2005).mkv_sub_4_119.png'
+       => SDH-Erkennung (PGS): 15 Marker gefunden. Markiere als Schwerhörig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 18:52:11]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 24.9s)
+     => BILD-UNTERTITEL (Spur 4): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelöscht)
+  -> Prüfe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 95.8)
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Batman Begins (2005).mkv_sub_5_071.png'
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 18:52:30]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 18.6s)
+  -> Prüfe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Batman Begins (2005).mkv_sub_6_073.png'
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 18:52:56]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 25.9s)
+     => BILD-UNTERTITEL (Spur 4): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelöscht)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       Whisper KI (Spot 1560s): ger (98.4%)
+       Whisper KI (Spot 3960s): ger (99.0%)
+       Whisper KI (Spot 5100s): ger (99.2%)
+       Whisper KI (Spot 3480s): ger (99.2%)
+       Whisper KI (Spot 5970s): ger (97.6%)
+       Whisper KI (Spot 4290s): ger (98.4%)
+[2026-08-23 18:52:57]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.6%, Dauer: 1.0s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       Whisper KI (Spot 1560s): eng (97.8%)
+       Whisper KI (Spot 3960s): eng (98.7%)
+       Whisper KI (Spot 5100s): eng (98.1%)
+       Whisper KI (Spot 3480s): eng (98.7%)
+       Whisper KI (Spot 5970s): eng (97.9%)
+       Whisper KI (Spot 4290s): eng (97.2%)
+[2026-08-23 18:52:58]      => Audio KI Bestätigt: 'eng' (Sicherheit: 98.1%, Dauer: 1.3s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Batman Begins (2005).mkv -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\Batman Begins (2005).mkv_sub_3_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=eng -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 hearing_impaired -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=fre -disposition:s:2 0 -map 0:6 -metadata:s:s:3 title= -metadata:s:s:3 language=spa -disposition:s:3 0 -c copy F:\Jellyfin_AI_Cockpit\data\temp_cleanup\clean_Batman Begins (2005).mkv
+  -> Speichere aufgeräumte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 18:53:42]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 1.7s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Vereinfachtes Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_3_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+[2026-08-23 18:54:06]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 100.0%, Dauer: 23.9s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Traditionelles Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_4_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 42.9%)
+[2026-08-23 18:54:27]      => OCR KI Bestätigt: 'zh-Hant' (Sicherheit: 42.9%, Dauer: 20.7s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (98.3%)
+       Whisper KI (Spot 1320s): ger (86.6%)
+       Whisper KI (Spot 2340s): ger (98.8%)
+       Whisper KI (Spot 3360s): ger (98.8%)
+       Whisper KI (Spot 4380s): ger (91.9%)
+       Whisper KI (Spot 5400s): spa (47.0%)
+[2026-08-23 18:54:28]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.9%, Dauer: 0.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (99.7%)
+       Whisper KI (Spot 1320s): eng (87.2%)
+       Whisper KI (Spot 2340s): eng (98.5%)
+       Whisper KI (Spot 3360s): eng (99.3%)
+       Whisper KI (Spot 4380s): eng (98.3%)
+       Whisper KI (Spot 5400s): eng (87.6%)
+[2026-08-23 18:54:29]      => Audio KI Bestätigt: 'eng' (Sicherheit: 95.1%, Dauer: 1.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Blow 2001.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (39.7%)
+       Whisper KI (Spot 1434s): ger (98.8%)
+       Whisper KI (Spot 2568s): ger (98.8%)
+       Whisper KI (Spot 3703s): ger (43.1%)
+       Whisper KI (Spot 4837s): eng (59.2%)
+       Whisper KI (Spot 5972s): ger (97.6%)
+[2026-08-23 18:54:36]      => Audio KI Bestätigt: 'ger' (Sicherheit: 84.6%, Dauer: 1.0s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 18:54:58]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 1.7s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Vereinfachtes Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_3_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+[2026-08-23 18:55:23]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 100.0%, Dauer: 25.4s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Traditionelles Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_4_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 57.1%)
+[2026-08-23 18:55:47]      => OCR KI Bestätigt: 'zh-Hant' (Sicherheit: 57.1%, Dauer: 23.6s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (98.3%)
+       Whisper KI (Spot 1320s): ger (86.6%)
+       Whisper KI (Spot 2340s): ger (98.8%)
+       Whisper KI (Spot 3360s): ger (98.8%)
+       Whisper KI (Spot 4380s): ger (91.9%)
+       Whisper KI (Spot 5400s): spa (47.0%)
+[2026-08-23 18:55:48]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.9%, Dauer: 1.0s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (99.7%)
+       Whisper KI (Spot 1320s): eng (87.2%)
+       Whisper KI (Spot 2340s): eng (98.5%)
+       Whisper KI (Spot 3360s): eng (99.3%)
+       Whisper KI (Spot 4380s): eng (98.3%)
+       Whisper KI (Spot 5400s): eng (87.6%)
+[2026-08-23 18:55:49]      => Audio KI Bestätigt: 'eng' (Sicherheit: 95.1%, Dauer: 1.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Blow 2001.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (39.7%)
+       Whisper KI (Spot 1434s): ger (98.8%)
+       Whisper KI (Spot 2568s): ger (98.8%)
+       Whisper KI (Spot 3703s): ger (43.1%)
+       Whisper KI (Spot 4837s): eng (59.2%)
+       Whisper KI (Spot 5972s): ger (97.6%)
+[2026-08-23 18:55:56]      => Audio KI Bestätigt: 'ger' (Sicherheit: 84.6%, Dauer: 1.0s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:05:46]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.5s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:07:15]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 1.9s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:11:53]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 1.8s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Blow 2001.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): eng (39.7%)
+       Whisper KI (Spot 1434s): ger (98.8%)
+       Whisper KI (Spot 2568s): ger (98.8%)
+       Whisper KI (Spot 3703s): ger (43.1%)
+       Whisper KI (Spot 4837s): eng (59.2%)
+       Whisper KI (Spot 5972s): ger (97.6%)
+[2026-08-23 19:15:22]      => Audio KI Bestätigt: 'ger' (Sicherheit: 84.6%, Dauer: 2.1s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:18:18]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.0s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:18:46]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.0s)
+  -> Datei ist bereits perfekt aufgeräumt und formatiert.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:23:34]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 1.9s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:23:48]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Vereinfachtes Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_1_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+[2026-08-23 19:24:58]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 100.0%, Dauer: 23.5s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Traditionelles Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_2_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 42.9%)
+[2026-08-23 19:25:18]      => OCR KI Bestätigt: 'zh-Hant' (Sicherheit: 42.9%, Dauer: 20.2s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.3%)
+       Whisper KI (Spot 1320s): ger (86.6%)
+       Whisper KI (Spot 2340s): ger (98.8%)
+       Whisper KI (Spot 3360s): ger (98.8%)
+       Whisper KI (Spot 4380s): ger (91.9%)
+       Whisper KI (Spot 5400s): spa (47.0%)
+[2026-08-23 19:25:20]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.9%, Dauer: 1.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (99.7%)
+       Whisper KI (Spot 1320s): eng (87.2%)
+       Whisper KI (Spot 2340s): eng (98.5%)
+       Whisper KI (Spot 3360s): eng (99.3%)
+       Whisper KI (Spot 4380s): eng (98.3%)
+       Whisper KI (Spot 5400s): eng (87.6%)
+[2026-08-23 19:25:21]      => Audio KI Bestätigt: 'eng' (Sicherheit: 95.1%, Dauer: 1.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:26:34]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 1.5s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Vereinfachtes Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_1_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+[2026-08-23 19:26:58]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 100.0%, Dauer: 23.8s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Traditionelles Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+Warnung in OCR extract_and_ocr: [Errno 2] No such file or directory: 'F:\\Jellyfin_AI_Cockpit\\data\\temp_cleanup\\Ananas Express (2008).mkv_sub_2_107.png'
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 57.1%)
+[2026-08-23 19:27:21]      => OCR KI Bestätigt: 'zh-Hant' (Sicherheit: 57.1%, Dauer: 22.9s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (98.3%)
+       Whisper KI (Spot 1320s): ger (86.6%)
+       Whisper KI (Spot 2340s): ger (98.8%)
+       Whisper KI (Spot 3360s): ger (98.8%)
+       Whisper KI (Spot 4380s): ger (91.9%)
+       Whisper KI (Spot 5400s): spa (47.0%)
+[2026-08-23 19:27:22]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.9%, Dauer: 1.0s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (99.7%)
+       Whisper KI (Spot 1320s): eng (87.2%)
+       Whisper KI (Spot 2340s): eng (98.5%)
+       Whisper KI (Spot 3360s): eng (99.3%)
+       Whisper KI (Spot 4380s): eng (98.3%)
+       Whisper KI (Spot 5400s): eng (87.6%)
+[2026-08-23 19:27:23]      => Audio KI Bestätigt: 'eng' (Sicherheit: 95.1%, Dauer: 1.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:38:34]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.2s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Vereinfachtes Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Dauer konnte nicht ermittelt werden: could not convert string to float: b''
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Dauer konnte nicht ermittelt werden: could not convert string to float: b''
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     FEHLER beim Ausführen von mkvpropedit.
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:42:04]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.2s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Vereinfachtes Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+[2026-08-23 19:42:27]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 100.0%, Dauer: 23.0s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Traditionelles Chinesisch')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 57.1%)
+[2026-08-23 19:42:47]      => OCR KI Bestätigt: 'zh-Hans' (Sicherheit: 57.1%, Dauer: 20.1s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (98.3%)
+       Whisper KI (Spot 1320s): ger (86.6%)
+       Whisper KI (Spot 2340s): ger (98.8%)
+       Whisper KI (Spot 3360s): ger (98.8%)
+       Whisper KI (Spot 4380s): ger (91.9%)
+       Whisper KI (Spot 5400s): spa (47.0%)
+[2026-08-23 19:42:48]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.9%, Dauer: 0.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (99.7%)
+       Whisper KI (Spot 1320s): eng (87.2%)
+       Whisper KI (Spot 2340s): eng (98.5%)
+       Whisper KI (Spot 3360s): eng (99.3%)
+       Whisper KI (Spot 4380s): eng (98.3%)
+       Whisper KI (Spot 5400s): eng (87.6%)
+[2026-08-23 19:42:49]      => Audio KI Bestätigt: 'eng' (Sicherheit: 95.1%, Dauer: 1.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ali G Indahouse.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.0%)
+       Whisper KI (Spot 1070s): ger (98.4%)
+       Whisper KI (Spot 1840s): ger (87.7%)
+       Whisper KI (Spot 2611s): ger (97.8%)
+       Whisper KI (Spot 3381s): eng (84.4%)
+       Whisper KI (Spot 4151s): ger (97.6%)
+[2026-08-23 19:49:06]      => Audio KI Bestätigt: 'ger' (Sicherheit: 96.1%, Dauer: 2.3s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Blow 2001.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): eng (39.7%)
+       Whisper KI (Spot 1434s): ger (98.8%)
+       Whisper KI (Spot 2568s): ger (98.8%)
+       Whisper KI (Spot 3703s): ger (43.1%)
+       Whisper KI (Spot 4837s): eng (59.2%)
+       Whisper KI (Spot 5972s): ger (97.6%)
+[2026-08-23 19:57:00]      => Audio KI Bestätigt: 'ger' (Sicherheit: 84.6%, Dauer: 2.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ocean's 13.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Scary Movie 2.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (99.1%)
+       Whisper KI (Spot 1024s): ger (99.1%)
+       Whisper KI (Spot 1749s): ger (98.6%)
+       Whisper KI (Spot 2474s): ger (96.2%)
+       Whisper KI (Spot 3199s): ger (98.0%)
+       Whisper KI (Spot 3924s): ger (97.2%)
+[2026-08-23 19:57:08]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.0%, Dauer: 0.9s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Scary Movie 4.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (97.8%)
+       Whisper KI (Spot 1095s): ger (97.4%)
+       Whisper KI (Spot 1890s): ger (96.1%)
+       Whisper KI (Spot 2686s): ger (96.4%)
+       Whisper KI (Spot 3481s): ger (86.6%)
+       Whisper KI (Spot 4276s): ger (98.1%)
+[2026-08-23 19:57:14]      => Audio KI Bestätigt: 'ger' (Sicherheit: 95.4%, Dauer: 1.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Taxi 5.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (98.0%)
+       Whisper KI (Spot 1221s): ger (99.1%)
+       Whisper KI (Spot 2143s): ger (97.8%)
+       Whisper KI (Spot 3065s): ger (98.0%)
+       Whisper KI (Spot 3987s): ger (99.0%)
+       Whisper KI (Spot 4908s): ger (96.9%)
+[2026-08-23 19:57:21]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.2%, Dauer: 1.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Terrifier 3 Deutsch.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): ger (56.6%)
+       Whisper KI (Spot 1447s): ger (99.5%)
+       Whisper KI (Spot 2594s): nn (30.1%)
+       Whisper KI (Spot 3741s): ger (99.4%)
+       Whisper KI (Spot 4889s): ger (98.5%)
+       Whisper KI (Spot 6036s): eng (54.9%)
+[2026-08-23 19:57:34]      => Audio KI Bestätigt: 'ger' (Sicherheit: 88.5%, Dauer: 1.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Fast and the Furious 3 (2006).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): hi (15.6%)
+       Whisper KI (Spot 1241s): ru (37.8%)
+       Whisper KI (Spot 2182s): eng (50.6%)
+       Whisper KI (Spot 3123s): ger (99.2%)
+       Whisper KI (Spot 4064s): ja (50.8%)
+       Whisper KI (Spot 5005s): ger (99.1%)
+[2026-08-23 19:57:38]      => Audio KI Bestätigt: 'ger' (Sicherheit: 99.2%, Dauer: 1.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Witcher (2019) - S01E01.mkv ---
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+  -> Prüfe Untertitel Spur 10 (Codec: subrip, Lang: eng, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.1s). Ersetze Spur 10.
+[2026-08-23 20:00:35]      => Text KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> Prüfe Untertitel Spur 11 (Codec: subrip, Lang: ara, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.1s). Ersetze Spur 11.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'ara', ist jetzt 'ar' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 12 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.1s). Ersetze Spur 12.
+[2026-08-23 20:00:35]      => Text KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 13 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.1s). Ersetze Spur 13.
+[2026-08-23 20:00:35]      => Text KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 14 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 9.0s). Ersetze Spur 14.
+[2026-08-23 20:00:35]      => Text KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 15 (Codec: subrip, Lang: hin, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.020s, Speed: 0.999x, Dauer: 8.1s). Ersetze Spur 15.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'hin', ist jetzt 'hi' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 16 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Speed: 0.999x, Dauer: 8.1s). Ersetze Spur 16.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'fre', ist jetzt 'eng' (Sicherheit: 85.1%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 17 (Codec: subrip, Lang: pol, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.9s). Ersetze Spur 17.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 18 (Codec: subrip, Lang: pol, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 9.2s). Ersetze Spur 18.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 19 (Codec: subrip, Lang: und, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: -6.500s, Speed: 1.043x, Dauer: 8.3s). Ersetze Spur 19.
+     => FORCED ERKANNT (2 Zeilen). Setze Forced-Tag.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'und', ist jetzt 'tl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 20 (Codec: subrip, Lang: chi, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.4s). Ersetze Spur 20.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'chi', ist jetzt 'ko' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 21 (Codec: subrip, Lang: und, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: -0.160s, Speed: 0.999x, Dauer: 7.5s). Ersetze Spur 21.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'und', ist jetzt 'tl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 22 (Codec: subrip, Lang: ukr, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.2s). Ersetze Spur 22.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'ukr', ist jetzt 'uk' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 23 (Codec: subrip, Lang: ukr, Titel: '')
+[2026-08-23 20:00:35]      => Auto-Sync erfolgreich! (Verschiebung: 0.120s, Speed: 1.001x, Dauer: 7.6s). Ersetze Spur 23.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-23 20:00:35]      => Text KI Korrektur: War 'ukr', ist jetzt 'uk' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 960s): ger (99.4%)
+       Whisper KI (Spot 1170s): ger (98.2%)
+       Whisper KI (Spot 900s): ger (99.2%)
+       Whisper KI (Spot 1020s): ger (99.0%)
+       Whisper KI (Spot 810s): ger (98.1%)
+       Whisper KI (Spot 990s): ger (98.7%)
+[2026-08-23 20:00:37]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.8%, Dauer: 2.0s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): eng (97.7%)
+       Whisper KI (Spot 1170s): eng (97.4%)
+       Whisper KI (Spot 900s): eng (98.0%)
+       Whisper KI (Spot 1020s): eng (97.4%)
+       Whisper KI (Spot 810s): eng (98.3%)
+       Whisper KI (Spot 990s): eng (97.6%)
+[2026-08-23 20:00:38]      => Audio KI Bestätigt: 'eng' (Sicherheit: 97.7%, Dauer: 1.3s)
+  -> Audio Spur 3 (Bisher: 'fre'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): fre (99.0%)
+       Whisper KI (Spot 1170s): fre (97.7%)
+       Whisper KI (Spot 900s): fre (98.1%)
+       Whisper KI (Spot 1020s): fre (97.9%)
+       Whisper KI (Spot 810s): fre (97.0%)
+       Whisper KI (Spot 990s): fre (97.4%)
+[2026-08-23 20:00:39]      => Audio KI Bestätigt: 'fre' (Sicherheit: 97.8%, Dauer: 1.3s)
+  -> Audio Spur 4 (Bisher: 'hin'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): hi (87.2%)
+       Whisper KI (Spot 1170s): hi (82.0%)
+       Whisper KI (Spot 900s): hi (89.8%)
+       Whisper KI (Spot 1020s): hi (94.9%)
+       Whisper KI (Spot 810s): hi (95.0%)
+       Whisper KI (Spot 990s): hi (90.1%)
+[2026-08-23 20:00:41]      => Audio KI Korrektur: War 'hin', ist jetzt 'hi' (Sicherheit: 89.8%, Dauer: 1.3s)
+  -> Audio Spur 5 (Bisher: 'pol'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): pl (97.1%)
+       Whisper KI (Spot 1170s): pl (97.8%)
+       Whisper KI (Spot 900s): pl (98.4%)
+       Whisper KI (Spot 1020s): pl (97.2%)
+       Whisper KI (Spot 810s): pl (98.9%)
+       Whisper KI (Spot 990s): pl (96.5%)
+[2026-08-23 20:00:42]      => Audio KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 97.7%, Dauer: 1.3s)
+  -> Audio Spur 6 (Bisher: 'pol'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): pl (97.8%)
+       Whisper KI (Spot 1170s): pl (97.4%)
+       Whisper KI (Spot 900s): pl (98.7%)
+       Whisper KI (Spot 1020s): pl (97.5%)
+       Whisper KI (Spot 810s): pl (98.7%)
+       Whisper KI (Spot 990s): pl (96.8%)
+[2026-08-23 20:00:43]      => Audio KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 97.8%, Dauer: 1.0s)
+  -> Audio Spur 7 (Bisher: 'pol'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): pl (90.3%)
+       Whisper KI (Spot 1170s): pl (96.9%)
+       Whisper KI (Spot 900s): pl (92.8%)
+       Whisper KI (Spot 1020s): pl (96.6%)
+       Whisper KI (Spot 810s): pl (98.5%)
+       Whisper KI (Spot 990s): pl (95.6%)
+[2026-08-23 20:00:44]      => Audio KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 95.1%, Dauer: 1.3s)
+  -> Audio Spur 8 (Bisher: 'rus'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): uk (85.5%)
+       Whisper KI (Spot 1170s): uk (87.8%)
+       Whisper KI (Spot 900s): ru (51.2%)
+       Whisper KI (Spot 1020s): uk (96.8%)
+       Whisper KI (Spot 810s): uk (69.1%)
+       Whisper KI (Spot 990s): uk (93.8%)
+[2026-08-23 20:00:46]      => Audio KI Korrektur: War 'rus', ist jetzt 'uk' (Sicherheit: 86.6%, Dauer: 1.3s)
+  -> Audio Spur 9 (Bisher: 'rus'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): uk (84.4%)
+       Whisper KI (Spot 1170s): uk (89.0%)
+       Whisper KI (Spot 900s): uk (49.7%)
+       Whisper KI (Spot 1020s): uk (97.2%)
+       Whisper KI (Spot 810s): uk (81.4%)
+       Whisper KI (Spot 990s): uk (93.5%)
+[2026-08-23 20:00:47]      => Audio KI Korrektur: War 'rus', ist jetzt 'uk' (Sicherheit: 82.5%, Dauer: 1.0s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Witcher (2019) - S01E01.mkv -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_1_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_2_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_3_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_4_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_5_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_6_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_7_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_8_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_9_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_10_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_11_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_12_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_13_synced.srt -i F:\Jellyfin_AI_Cockpit\data\temp_cleanup\The Witcher (2019) - S01E01.mkv_sub_14_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 0:3 -metadata:s:a:2 title= -metadata:s:a:2 language=fre -disposition:a:2 0 -map 0:4 -metadata:s:a:3 title= -metadata:s:a:3 language=hi -disposition:a:3 0 -map 0:5 -metadata:s:a:4 title= -metadata:s:a:4 language=pl -disposition:a:4 0 -map 0:6 -metadata:s:a:5 title= -metadata:s:a:5 language=pl -disposition:a:5 0 -map 0:7 -metadata:s:a:6 title= -metadata:s:a:6 language=pl -disposition:a:6 0 -map 0:8 -metadata:s:a:7 title= -metadata:s:a:7 language=uk -disposition:a:7 0 -map 0:9 -metadata:s:a:8 title= -metadata:s:a:8 language=uk -disposition:a:8 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=eng -disposition:s:0 hearing_impaired -map 2:0 -metadata:s:s:1 title= -metadata:s:s:1 language=ar -disposition:s:1 0 -map 3:0 -metadata:s:s:2 title= -metadata:s:s:2 language=fre -disposition:s:2 0 -map 4:0 -metadata:s:s:3 title= -metadata:s:s:3 language=fre -disposition:s:3 0 -map 5:0 -metadata:s:s:4 title= -metadata:s:s:4 language=fre -disposition:s:4 hearing_impaired -map 6:0 -metadata:s:s:5 title= -metadata:s:s:5 language=hi -disposition:s:5 forced -map 7:0 -metadata:s:s:6 title= -metadata:s:s:6 language=eng -disposition:s:6 forced -map 8:0 -metadata:s:s:7 title= -metadata:s:s:7 language=pl -disposition:s:7 0 -map 9:0 -metadata:s:s:8 title= -metadata:s:s:8 language=pl -disposition:s:8 hearing_impaired -map 10:0 -metadata:s:s:9 title= -metadata:s:s:9 language=tl -disposition:s:9 forced -map 11:0 -metadata:s:s:10 title= -metadata:s:s:10 language=ko -disposition:s:10 0 -map 12:0 -metadata:s:s:11 title= -metadata:s:s:11 language=tl -disposition:s:11 forced -map 13:0 -metadata:s:s:12 title= -metadata:s:s:12 language=uk -disposition:s:12 0 -map 14:0 -metadata:s:s:13 title= -metadata:s:s:13 language=uk -disposition:s:13 forced -c copy F:\Jellyfin_AI_Cockpit\data\temp_cleanup\clean_The Witcher (2019) - S01E01.mkv
+  -> Speichere aufgeräumte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...

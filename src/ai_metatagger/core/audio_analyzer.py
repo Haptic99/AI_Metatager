@@ -1,8 +1,17 @@
+"""Audio language detection using OpenAI Whisper for the AI Metatagger.
+
+Provides Whisper model lifecycle management (load/unload with VRAM cleanup)
+and multi-spot language detection with confidence scoring.
+"""
 import os
 import subprocess
-import whisper
-import torch
 from collections import defaultdict
+from typing import List, Optional, Tuple
+
+import torch
+import whisper
+
+from ai_metatagger.utils.subprocess_tracker import tracked_run
 from ai_metatagger.config import WHISPER_MODEL_SIZE, TEMP_DIR
 from ai_metatagger.core.logger import write_log
 from ai_metatagger.core.subtitle_tools import find_dense_audio_spots, map_lang
@@ -20,7 +29,7 @@ def get_whisper_model():
     return _WHISPER_MODEL
 
 
-def unload_whisper_model():
+def unload_whisper_model() -> None:
     """Release the cached Whisper model and free VRAM/RAM."""
     global _WHISPER_MODEL
     if _WHISPER_MODEL is not None:
@@ -31,10 +40,28 @@ def unload_whisper_model():
             torch.cuda.empty_cache()
 
 
-def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
+def detect_audio_language_whisper(
+    video_path: str,
+    audio_stream_idx: int,
+    srt_path: Optional[str],
+) -> Tuple[str, str]:
+    """Detect the language of an audio stream using Whisper multi-spot analysis.
+
+    Extracts short audio segments at multiple positions, runs Whisper language
+    detection on each, and returns the majority vote with average confidence.
+
+    Args:
+        video_path: Path to the video file.
+        audio_stream_idx: Stream index of the audio track.
+        srt_path: Optional path to a synced SRT file for smart spot selection.
+
+    Returns:
+        Tuple of (language_code, confidence_string) e.g. ('ger', '95.2%').
+        Returns ('und', '0%') if detection fails.
+    """
     num_spots = 6
     duration_sec = 30
-    spots = []
+    spots: List[float] = []
 
     if srt_path and os.path.exists(srt_path):
         spots = find_dense_audio_spots(srt_path, num_spots=num_spots, duration_sec=duration_sec)
@@ -44,7 +71,8 @@ def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
         try:
             dur_cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration",
                        "-of", "default=noprint_wrappers=1:nokey=1", video_path]
-            total_dur = float(subprocess.check_output(dur_cmd).decode('utf-8').strip())
+            res = tracked_run(dur_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            total_dur = float(res.stdout.strip())
             safe_dur = total_dur - 600 if total_dur > 600 else total_dur
             start_off = 300 if total_dur > 600 else 0
             interval = safe_dur / num_spots
@@ -59,14 +87,14 @@ def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
         write_log(f'Whisper Model Load Error: {e}')
         return 'und', '0%'
 
-    detected_langs = []
+    detected_langs: List[Tuple[str, float]] = []
 
     for spot in spots:
         temp_audio = os.path.join(TEMP_DIR, f"temp_audio_{audio_stream_idx}_{int(spot)}.wav")
         cmd = ["ffmpeg", "-v", "quiet", "-y", "-ss", str(spot), "-i", video_path,
                "-map", f"0:{audio_stream_idx}", "-t", "30",
                "-c:a", "pcm_s16le", "-ar", "16000", "-ac", "1", temp_audio]
-        subprocess.run(cmd)
+        tracked_run(cmd)
 
         if os.path.exists(temp_audio):
             try:
@@ -87,7 +115,7 @@ def detect_audio_language_whisper(video_path, audio_stream_idx, srt_path):
                     write_log(f"Temp-Datei konnte nicht gelöscht werden: {temp_audio}: {e}")
 
     if detected_langs:
-        counts = defaultdict(list)
+        counts: defaultdict = defaultdict(list)
         for l, p in detected_langs:
             counts[l].append(p)
         best_lang = max(counts.keys(), key=lambda k: len(counts[k]))

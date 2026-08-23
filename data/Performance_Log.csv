@@ -206,3 +206,112 @@ Movie,TrackType,Codec,DurationSec
 "ALL",prescan,ffprobe,0.07
 "Black Swan (2010).mkv",audio,,1.94
 "Black Swan (2010).mkv",audio,,1.21
+"ALL",prescan,ffprobe,0.10
+"Die Highligen Drei Könige (2015).mkv",audio,,1.92
+"Die Highligen Drei Könige (2015).mkv",audio,,0.93
+"ALL",prescan,ffprobe,0.06
+"Die Highligen Drei Könige (2015).mkv",audio,,1.91
+"Die Highligen Drei Könige (2015).mkv",audio,,0.95
+"ALL",prescan,ffprobe,0.09
+"Die Highligen Drei Könige (2015).mkv",audio,,1.55
+"Die Highligen Drei Könige (2015).mkv",audio,,0.95
+"Lord Of War.mkv",audio,,1.00
+"ALL",prescan,ffprobe,0.09
+"Ali G Indahouse.mp4",audio,,2.30
+"ALL",prescan,ffprobe,0.19
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,26.23
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,21.34
+"Ananas Express (2008).mkv",audio,,1.80
+"Ananas Express (2008).mkv",audio,,1.06
+"Ali G Indahouse.mp4",audio,,0.93
+"Batman Begins (2005).mkv",subtitle,subrip,0.02
+"Batman Begins (2005).mkv",subtitle,hdmv_pgs_subtitle,24.88
+"Batman Begins (2005).mkv",subtitle,hdmv_pgs_subtitle,18.62
+"Batman Begins (2005).mkv",subtitle,hdmv_pgs_subtitle,25.89
+"Batman Begins (2005).mkv",audio,,0.97
+"Batman Begins (2005).mkv",audio,,1.27
+"Batman Begins (2005).mkv",muxing,,15.93
+"ALL",prescan,ffprobe,0.21
+"Ali G Indahouse.mp4",audio,,1.75
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.87
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.67
+"Ananas Express (2008).mkv",audio,,0.92
+"Ananas Express (2008).mkv",audio,,1.02
+"Blow 2001.mp4",audio,,0.97
+"ALL",prescan,ffprobe,0.20
+"Ali G Indahouse.mp4",audio,,1.73
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,25.36
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.64
+"Ananas Express (2008).mkv",audio,,0.97
+"Ananas Express (2008).mkv",audio,,1.07
+"Blow 2001.mp4",audio,,0.97
+"ALL",prescan,ffprobe,0.08
+"Ali G Indahouse.mp4",audio,,2.46
+"ALL",prescan,ffprobe,0.07
+"Ali G Indahouse.mp4",audio,,1.94
+"ALL",prescan,ffprobe,0.07
+"Ali G Indahouse.mp4",audio,,1.81
+"ALL",prescan,ffprobe,0.08
+"Ali G Indahouse.mp4",audio,,1.98
+"ALL",prescan,ffprobe,0.07
+"Ali G Indahouse.mp4",audio,,2.00
+"ALL",prescan,ffprobe,0.07
+"ALL",prescan,ffprobe,0.05
+"Ali G Indahouse.mkv",audio,,2.00
+"ALL",prescan,ffprobe,0.06
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.51
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.19
+"Ananas Express (2008).mkv",audio,,1.84
+"Ananas Express (2008).mkv",audio,,1.13
+"ALL",prescan,ffprobe,0.12
+"Ali G Indahouse.mp4",audio,,1.53
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.76
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,22.89
+"Ananas Express (2008).mkv",audio,,1.02
+"Ananas Express (2008).mkv",audio,,1.07
+"ALL",prescan,ffprobe,0.31
+"ALL",prescan,ffprobe,0.72
+"Ali G Indahouse.mp4",audio,,2.16
+"Ananas Express (2008).mkv",audio,,0.00
+"Ananas Express (2008).mkv",audio,,0.00
+"ALL",prescan,ffprobe,0.08
+"ALL",prescan,ffprobe,0.12
+"Ali G Indahouse.mp4",audio,,2.16
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.07
+"Ananas Express (2008).mkv",audio,,0.94
+"Ananas Express (2008).mkv",audio,,1.04
+"ALL",prescan,ffprobe,0.07
+"Ali G Indahouse.mp4",audio,,2.26
+"ALL",prescan,ffprobe,0.55
+"Blow 2001.mp4",audio,,2.08
+"Scary Movie 2.mp4",audio,,0.92
+"Scary Movie 4.mp4",audio,,1.05
+"Taxi 5.mp4",audio,,1.05
+"Terrifier 3 Deutsch.mp4",audio,,1.03
+"The Fast and the Furious 3 (2006).mkv",audio,,0.99
+"ALL",prescan,ffprobe,0.07
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.22
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",audio,,1.97
+"The Witcher (2019) - S01E01.mkv",audio,,1.27
+"The Witcher (2019) - S01E01.mkv",audio,,1.27
+"The Witcher (2019) - S01E01.mkv",audio,,1.30
+"The Witcher (2019) - S01E01.mkv",audio,,1.26
+"The Witcher (2019) - S01E01.mkv",audio,,1.00
+"The Witcher (2019) - S01E01.mkv",audio,,1.26
+"The Witcher (2019) - S01E01.mkv",audio,,1.26
+"The Witcher (2019) - S01E01.mkv",audio,,0.98
+"The Witcher (2019) - S01E01.mkv",muxing,,20.96

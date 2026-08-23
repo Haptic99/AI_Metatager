@@ -22,16 +22,17 @@ Manually tagging languages, finding "SDH" (Deaf or Hard-of-Hearing) markers, and
 ## Installation 🚀
 1. Clone the repository:
    `ash
+   ` ash
    git clone https://github.com/Haptic99/AI_Metatager.git
    `
 2. Install the required Python packages:
-   `ash
+   ` ash
    pip install PyQt5 pandas python-vlc openpyxl
    `
-3. Update the directory paths in Cockpit_V2.py (e.g., DIR_FILME, MKVPROPEDIT) to match your local environment.
+3. Update the directory paths in `data/config.json` (e.g., Verzeichnis_Filme, Pfad_mkvpropedit) to match your local environment.
 
 ## Usage 🎯
 Run the cockpit interface via the provided batch script or directly:
-`ash
-python Cockpit_V2.py
-`
+```bash
+python -m ai_metatagger.main
+```
