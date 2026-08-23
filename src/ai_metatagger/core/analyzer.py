@@ -298,7 +298,7 @@ def extract_subtitle_image(filepath, stream_idx, ts, out_img):
     except:
         return False
 
-def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_meta, old_lang="und", old_title=""):
+def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_meta, old_lang="und", old_title="", progress_callback=None):
     tess_map = {"chi":"chi_sim+chi_tra+eng", "zho":"chi_sim+chi_tra+eng", "rus":"rus+eng", "ara":"ara+eng", "heb":"heb+eng", "gre":"ell+eng", "ell":"ell+eng", "jpn":"jpn+eng", "kor":"kor+eng", "tur":"tur+eng", "pol":"pol+eng", "hin":"hin+eng"}
     tess_lang = tess_map.get(old_lang, "eng+deu+fra+spa+ita")
     
@@ -595,7 +595,8 @@ def process_file(filepath, progress_callback=None):
         else:
             import time
             start_t = time.time()
-            detected_pgs_lang, is_forced_meta, conf, is_hi = analyze_subtitle_pgs(filepath, idx, codec, duration, is_forced_meta, old_lang, old_title)
+            detected_pgs_lang, is_forced_meta, conf, is_hi = analyze_subtitle_pgs(filepath, idx, codec, duration, is_forced_meta, old_lang, old_title, progress_callback)
+            if progress_callback and progress_callback('subtitle', idx, 'step', codec, 0, 1): return
             dur = time.time() - start_t
             if detected_pgs_lang != 'und':
                 if not is_same_lang_family(detected_pgs_lang, new_lang):

@@ -186,6 +186,8 @@ class AnalysisThread(QtCore.QThread):
                 else:
                     msg = f"Film {current_movie_idx+1}/{total}: '{basename}' | Speichere Film | {eta_str}"
                 self.progress_update.emit(pct, 100, msg)
+                
+            return self.is_cancelled
 
         for i, src_path in enumerate(self.file_paths):
             current_movie_idx = i
