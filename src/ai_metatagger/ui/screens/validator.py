@@ -779,32 +779,41 @@ class Screen3Validator(QtWidgets.QWidget):
         
         reply = QtWidgets.QMessageBox.question(self, 'Film entfernen', f'Willst du "{film}" wirklich aus der Validierungsliste entfernen? Die KI-Werte werden dann nicht übernommen.', QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, QtWidgets.QMessageBox.No)
         if reply == QtWidgets.QMessageBox.Yes:
-            # Stop playback if it's playing
-            if getattr(self, 'current_film', None) == film:
-                if self.media_player:
-                    self.media_player.stop()
-                    
-            # Delete file from Test_Videos
-            import glob
-            filepath = os.path.join(DIR_TEST, film)
-            if os.path.exists(filepath):
+            import threading
+            def cleanup_file(player, path):
                 try:
-                    os.remove(filepath)
+                    import time
+                    if player:
+                        player.stop()
+                        player.release()
+                    time.sleep(0.5)
+                    if os.path.exists(path):
+                        os.remove(path)
                 except Exception as e:
-                    print(f"Konnte Datei nicht löschen: {e}")
+                    print(f"Cleanup error: {e}")
+                    
+            filepath = os.path.join(DIR_TEST, film)
+            player_ref = None
+            if getattr(self, 'current_film', None) == film:
+                player_ref = self.media_player
+                self.current_film = None 
+                self.media_player = None
+                self.vlc_instance = None
+                
+            threading.Thread(target=cleanup_file, args=(player_ref, filepath), daemon=True).start()
                     
             # Set is_validated to True for all tracks of this film to hide it
             self.df.loc[self.df['file_name'] == film, 'is_validated'] = True
             save_matrix(self.df)
             
-            # Clear UI if it's the current film
-            if getattr(self, 'current_film', None) == film:
-                self.current_film = None
+            # Clear UI if it was the current film
+            if player_ref:
                 self.current_idx = 0
                 self.track_list.setRowCount(0)
-            
-            # Refresh
-            self.check_for_new_data()
+                # Wait 600ms before refreshing to avoid VLC HWND collisions
+                QtCore.QTimer.singleShot(600, self.check_for_new_data)
+            else:
+                self.check_for_new_data()
 
     def set_volume(self, val):
         if self.media_player:
