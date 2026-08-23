@@ -639,8 +639,11 @@ class Screen3Validator(QtWidgets.QWidget):
             
             def cleanup_file(player, path):
                 try:
+                    import time
                     if player:
                         player.stop()
+                        player.release()
+                    time.sleep(0.5)
                     if os.path.exists(path):
                         os.remove(path)
                 except Exception as e:
@@ -672,7 +675,12 @@ class Screen3Validator(QtWidgets.QWidget):
         self.update_movie_list()
         if self.current_idx >= len(self.auto_rows):
             self.current_idx = 0
-        self.load_row()
+            
+        # If we destroyed a player, wait a bit for it to release the HWND before loading next
+        if player_ref:
+            QtCore.QTimer.singleShot(600, self.load_row)
+        else:
+            self.load_row()
     def set_position(self, position):
         self.media_player.set_time(position)
     def seek(self, ms):
