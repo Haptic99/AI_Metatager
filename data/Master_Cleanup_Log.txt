@@ -1407,3 +1407,146 @@ DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\da
 DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Dark Knight (2008).mkv -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\sub_3_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=eng -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 hearing_impaired -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=fre -disposition:s:2 0 -map 0:6 -metadata:s:s:3 title= -metadata:s:s:3 language=ger -disposition:s:3 hearing_impaired -map 0:7 -metadata:s:s:4 title= -metadata:s:s:4 language=it -disposition:s:4 hearing_impaired -map 0:8 -metadata:s:s:5 title= -metadata:s:s:5 language=spa -disposition:s:5 0 -map 0:9 -metadata:s:s:6 title= -metadata:s:s:6 language=nl -disposition:s:6 0 -map 0:10 -metadata:s:s:7 title= -metadata:s:s:7 language=eng -disposition:s:7 0 -map 0:11 -metadata:s:s:8 title= -metadata:s:s:8 language=eng -disposition:s:8 0 -map 0:12 -metadata:s:s:9 title= -metadata:s:s:9 language=ko -disposition:s:9 0 -map 0:13 -metadata:s:s:10 title= -metadata:s:s:10 language=ar -disposition:s:10 0 -map 0:14 -metadata:s:s:11 title= -metadata:s:s:11 language=cs -disposition:s:11 0 -map 0:15 -metadata:s:s:12 title= -metadata:s:s:12 language=hr -disposition:s:12 0 -map 0:16 -metadata:s:s:13 title= -metadata:s:s:13 language=da -disposition:s:13 0 -map 0:17 -metadata:s:s:14 title= -metadata:s:s:14 language=fi -disposition:s:14 0 -map 0:18 -metadata:s:s:15 title= -metadata:s:s:15 language=el -disposition:s:15 0 -map 0:19 -metadata:s:s:16 title= -metadata:s:s:16 language=hu -disposition:s:16 0 -map 0:20 -metadata:s:s:17 title= -metadata:s:s:17 language=no -disposition:s:17 0 -map 0:21 -metadata:s:s:18 title= -metadata:s:s:18 language=pl -disposition:s:18 0 -map 0:22 -metadata:s:s:19 title= -metadata:s:s:19 language=pt -disposition:s:19 0 -map 0:23 -metadata:s:s:20 title= -metadata:s:s:20 language=ro -disposition:s:20 0 -map 0:24 -metadata:s:s:21 title= -metadata:s:s:21 language=ru -disposition:s:21 0 -map 0:25 -metadata:s:s:22 title= -metadata:s:s:22 language=sv -disposition:s:22 0 -c copy F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\clean_The Dark Knight (2008).mkv
   -> Speichere aufgerÃ¤umte Datei (FFmpeg Remux)...
      Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Dark Knight Rises (2012).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'English-SRT')
+[2026-08-23 14:21:05]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.4s). Ersetze Spur 3.
+[2026-08-23 14:21:05]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 96.0)
+       => SDH-Erkennung (PGS): 6 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 14:21:21]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 15.8s)
+     => BILD-UNTERTITEL (Spur 4): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 83.5)
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 14:21:37]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 15.5s)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 94.8)
+       => SDH-Erkennung (PGS): 6 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 14:21:52]      => OCR KI Korrektur: War 'und', ist jetzt 'ger' (Sicherheit: 100.0%, Dauer: 15.6s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 94.6)
+       => SDH-Erkennung (PGS): 5 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'it' (Sicherheit: 100.0%)
+[2026-08-23 14:22:08]      => OCR KI Korrektur: War 'und', ist jetzt 'it' (Sicherheit: 100.0%, Dauer: 15.4s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.8)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 14:22:23]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 15.5s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.0)
+       => OCR KI Gesamtergebnis: 'nl' (Sicherheit: 100.0%)
+[2026-08-23 14:22:39]      => OCR KI Korrektur: War 'und', ist jetzt 'nl' (Sicherheit: 100.0%, Dauer: 15.3s)
+  -> PrÃ¼fe Untertitel Spur 10 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 14:22:55]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 16.6s)
+     => BILD-UNTERTITEL (Spur 10): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 11 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: chi_sim+chi_tra+eng (Confidence: 77.0)
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 85.7%)
+[2026-08-23 14:23:12]      => OCR KI Korrektur: War 'und', ist jetzt 'zh-Hans' (Sicherheit: 85.7%, Dauer: 16.9s)
+  -> PrÃ¼fe Untertitel Spur 12 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 14:23:28]      => OCR KI Korrektur: War 'und', ist jetzt 'ger' (Sicherheit: 100.0%, Dauer: 16.3s)
+  -> PrÃ¼fe Untertitel Spur 13 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 49.3)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 71.4%)
+[2026-08-23 14:23:43]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 71.4%, Dauer: 14.6s)
+  -> PrÃ¼fe Untertitel Spur 14 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 94.2)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 14:23:57]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 14.3s)
+  -> PrÃ¼fe Untertitel Spur 15 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 94.2)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 14:24:14]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 16.8s)
+  -> PrÃ¼fe Untertitel Spur 16 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 89.0)
+       => OCR KI Gesamtergebnis: 'ar' (Sicherheit: 100.0%)
+[2026-08-23 14:24:28]      => OCR KI Korrektur: War 'und', ist jetzt 'ar' (Sicherheit: 100.0%, Dauer: 14.4s)
+  -> PrÃ¼fe Untertitel Spur 17 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.1)
+       => OCR KI Gesamtergebnis: 'hr' (Sicherheit: 100.0%)
+[2026-08-23 14:24:43]      => OCR KI Korrektur: War 'und', ist jetzt 'hr' (Sicherheit: 100.0%, Dauer: 14.9s)
+  -> PrÃ¼fe Untertitel Spur 18 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 91.2)
+       => OCR KI Gesamtergebnis: 'cs' (Sicherheit: 94.5%)
+[2026-08-23 14:24:58]      => OCR KI Korrektur: War 'und', ist jetzt 'cs' (Sicherheit: 94.5%, Dauer: 14.3s)
+  -> PrÃ¼fe Untertitel Spur 19 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.0)
+       => OCR KI Gesamtergebnis: 'da' (Sicherheit: 100.0%)
+[2026-08-23 14:25:14]      => OCR KI Korrektur: War 'und', ist jetzt 'da' (Sicherheit: 100.0%, Dauer: 16.3s)
+  -> PrÃ¼fe Untertitel Spur 20 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.5)
+       => OCR KI Gesamtergebnis: 'fi' (Sicherheit: 100.0%)
+[2026-08-23 14:25:29]      => OCR KI Korrektur: War 'und', ist jetzt 'fi' (Sicherheit: 100.0%, Dauer: 14.7s)
+  -> PrÃ¼fe Untertitel Spur 21 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 88.0)
+       => OCR KI Gesamtergebnis: 'el' (Sicherheit: 100.0%)
+[2026-08-23 14:25:43]      => OCR KI Korrektur: War 'und', ist jetzt 'el' (Sicherheit: 100.0%, Dauer: 14.0s)
+  -> PrÃ¼fe Untertitel Spur 22 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 76.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 85.7%)
+[2026-08-23 14:26:00]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 85.7%, Dauer: 17.7s)
+     => BILD-UNTERTITEL (Spur 22): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 23 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.0)
+       => OCR KI Gesamtergebnis: 'hu' (Sicherheit: 100.0%)
+[2026-08-23 14:26:17]      => OCR KI Korrektur: War 'und', ist jetzt 'hu' (Sicherheit: 100.0%, Dauer: 16.9s)
+  -> PrÃ¼fe Untertitel Spur 24 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 94.2)
+       => OCR KI Gesamtergebnis: 'no' (Sicherheit: 100.0%)
+[2026-08-23 14:26:32]      => OCR KI Korrektur: War 'und', ist jetzt 'no' (Sicherheit: 100.0%, Dauer: 14.6s)
+  -> PrÃ¼fe Untertitel Spur 25 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.7)
+       => OCR KI Gesamtergebnis: 'pl' (Sicherheit: 100.0%)
+[2026-08-23 14:26:46]      => OCR KI Korrektur: War 'und', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 14.5s)
+  -> PrÃ¼fe Untertitel Spur 26 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 94.2)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 14:27:01]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 14.6s)
+  -> PrÃ¼fe Untertitel Spur 27 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.0)
+       => OCR KI Gesamtergebnis: 'ro' (Sicherheit: 100.0%)
+[2026-08-23 14:27:14]      => OCR KI Korrektur: War 'und', ist jetzt 'ro' (Sicherheit: 100.0%, Dauer: 13.4s)
+  -> PrÃ¼fe Untertitel Spur 28 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'ru' (Sicherheit: 100.0%)
+[2026-08-23 14:27:28]      => OCR KI Korrektur: War 'und', ist jetzt 'ru' (Sicherheit: 100.0%, Dauer: 13.8s)
+  -> PrÃ¼fe Untertitel Spur 29 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 94.0)
+       => OCR KI Gesamtergebnis: 'sv' (Sicherheit: 100.0%)
+[2026-08-23 14:27:45]      => OCR KI Korrektur: War 'und', ist jetzt 'sv' (Sicherheit: 100.0%, Dauer: 17.0s)
+  -> PrÃ¼fe Untertitel Spur 30 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')

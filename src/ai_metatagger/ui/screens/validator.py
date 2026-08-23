@@ -315,19 +315,32 @@ class Screen3Validator(QtWidgets.QWidget):
                     self.media_player.audio_set_track(vlc_id)
             self.media_player.video_set_spu(-1)
     def populate_track_list(self, movie_name):
-        self.track_list.clear()
+        self.track_list.setRowCount(0)
+        row_count = 0
         for i, row_idx in enumerate(self.auto_rows):
             row = self.df.loc[row_idx]
             if row['file_name'] == movie_name:
-                item = QtWidgets.QListWidgetItem(f"Spur {row['track_id']} ({row['track_type']})")
-                item.setData(QtCore.Qt.UserRole, i)
-                # Check if it was already validated (not 'AUTO' in Sonstiges)
-                # But wait, self.df contains current state, so if we validated it, we updated df!
+                self.track_list.insertRow(row_count)
+                
+                item_spur = QtWidgets.QTableWidgetItem(str(row['track_id']))
+                item_spur.setData(QtCore.Qt.UserRole, i)
+                item_art = QtWidgets.QTableWidgetItem(str(row['track_type']))
+                item_codec = QtWidgets.QTableWidgetItem(str(row.get('subtitle_type', '')) if row['track_type'] == 'subtitle' else 'Audio')
+                
                 if row['is_validated'] == True:
-                    item.setForeground(QtGui.QColor("#aaaaaa"))
-                self.track_list.addItem(item)
+                    item_spur.setForeground(QtGui.QColor("#aaaaaa"))
+                    item_art.setForeground(QtGui.QColor("#aaaaaa"))
+                    item_codec.setForeground(QtGui.QColor("#aaaaaa"))
+                    
+                self.track_list.setItem(row_count, 0, item_spur)
+                self.track_list.setItem(row_count, 1, item_art)
+                self.track_list.setItem(row_count, 2, item_codec)
+                row_count += 1
     def on_track_selected(self, item):
-        self.current_idx = item.data(QtCore.Qt.UserRole)
+        # We might click column 1 or 2, get row and then column 0
+        row = item.row()
+        first_item = self.track_list.item(row, 0)
+        self.current_idx = first_item.data(QtCore.Qt.UserRole)
         self.load_row()
     def validate_field(self, field):
         film = self.current_row['file_name']
@@ -359,7 +372,6 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_save.setEnabled(all_valid)
     def load_row(self):
         if self.current_idx >= len(self.auto_rows):
-            self.lbl_info.setText("Warte auf weitere Analyse...")
             self.btn_save.setEnabled(False)
             return
         row_idx = self.auto_rows[self.current_idx]
@@ -383,6 +395,19 @@ class Screen3Validator(QtWidgets.QWidget):
             if self.movie_list.item(i).text() == film:
                 self.movie_list.setCurrentRow(i)
                 break
+        # Show/Hide Analysematerial buttons
+        self.btn_conv_srt.setVisible(False)
+        self.btn_conv_pgs.setVisible(False)
+        self.lbl_conv.setVisible(False)
+        if row['track_type'] == 'subtitle':
+            codec = str(row.get('subtitle_type', '')).lower()
+            if codec in ['subrip', 'srt']:
+                self.btn_conv_srt.setVisible(True)
+                self.lbl_conv.setVisible(True)
+            elif codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']:
+                self.btn_conv_pgs.setVisible(True)
+                self.lbl_conv.setVisible(True)
+
         self.cmb_lang.setCurrentText(str(row['language_iso']))
         self.chk_sdh.setChecked(bool(row['is_hearing_impaired']))
         self.chk_forced.setChecked(bool(row['is_forced']))
@@ -464,10 +489,11 @@ class Screen3Validator(QtWidgets.QWidget):
         self.df.at[row_idx, 'track_name'] = new_titel
         self.df.at[row_idx, 'is_validated'] = True
         self.df.to_excel(DB_PATH, index=False)
-        for i in range(self.track_list.count()):
-            item = self.track_list.item(i)
-            if item.data(QtCore.Qt.UserRole) == self.current_idx:
-                item.setForeground(QtGui.QColor("#aaaaaa"))
+        for i in range(self.track_list.rowCount()):
+            item = self.track_list.item(i, 0)
+            if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
+                for col in range(3):
+                    self.track_list.item(i, col).setForeground(QtGui.QColor("#aaaaaa"))
                 break
         self.current_idx += 1
         # Refresh auto rows
@@ -510,3 +536,29 @@ class Screen3Validator(QtWidgets.QWidget):
             self.media_player.pause()
         except:
             pass
+
+    def open_srt(self):
+        import glob
+        if self.current_row is None: return
+        film = self.current_row['file_name']
+        idx = self.current_row['track_id']
+        temp_dir = os.path.join(DIR_TEST, "..", "temp_cleanup")
+        path = os.path.join(temp_dir, f"{film}_sub_{idx}.srt")
+        if os.path.exists(path):
+            os.startfile(path)
+        else:
+            QtWidgets.QMessageBox.warning(self, "Nicht gefunden", "Das SRT File wurde nach der Analyse nicht gefunden.")
+
+    def open_pgs(self):
+        import glob
+        if self.current_row is None: return
+        film = self.current_row['file_name']
+        idx = self.current_row['track_id']
+        temp_dir = os.path.join(DIR_TEST, "..", "temp_cleanup")
+        search = os.path.join(temp_dir, f"{film}_sub_{idx}_*.png")
+        files = glob.glob(search)
+        if files:
+            files.sort()
+            os.startfile(files[0])
+        else:
+            QtWidgets.QMessageBox.warning(self, "Nicht gefunden", "Die extrahierten PGS Bilder wurden nicht gefunden.")
