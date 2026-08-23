@@ -103,7 +103,7 @@ class AnalysisThread(QtCore.QThread):
                 "Effektiver Name": "",
                 "Standardspur": False,
                 "Untertitelart": "",
-                "SchwerhÃ¶rig-Schalter": is_sdh,
+                "Schwerhörig-Schalter": is_sdh,
                 "Anzeige erzwingen-Schalter": is_forced,
                 "Sonstiges": "AUTO"
             })
@@ -133,7 +133,7 @@ class AnalysisThread(QtCore.QThread):
             if os.path.exists(MATRIX_PATH):
                 df = pd.read_excel(MATRIX_PATH)
             else:
-                df = pd.DataFrame(columns=['Name', 'ID', 'Art', 'Effektive Sprache (ISO-Code)', 'Effektiver Name', 'Standardspur', 'Untertitelart', 'SchwerhÃ¶rig-Schalter', 'Anzeige erzwingen-Schalter', 'Sonstiges'])
+                df = pd.DataFrame(columns=['Name', 'ID', 'Art', 'Effektive Sprache (ISO-Code)', 'Effektiver Name', 'Standardspur', 'Untertitelart', 'Schwerhörig-Schalter', 'Anzeige erzwingen-Schalter', 'Sonstiges'])
                 
             # SCHUTZ VOR ÃœBERSCHREIBEN BEREITS VALIDIERTER SPUREN
             other_movies = df[df['Name'] != basename]
@@ -156,7 +156,7 @@ class Screen1Selection(QtWidgets.QWidget):
         self.parent = parent
         layout = QtWidgets.QVBoxLayout(self)
         
-        lbl_title = QtWidgets.QLabel("Schritt 1: Filme & Serien auswÃ¤hlen")
+        lbl_title = QtWidgets.QLabel("Schritt 1: Filme & Serien auswählen")
         lbl_title.setFont(QtGui.QFont("Segoe UI", 18, QtGui.QFont.Bold))
         layout.addWidget(lbl_title)
         
@@ -231,7 +231,7 @@ class Screen1Selection(QtWidgets.QWidget):
                 count += 1
                 
         self.btn_next.setEnabled(count > 0)
-        self.lbl_desc.setText(f"Scan abgeschlossen ({count} Filme gefunden). WÃ¤hle Filme aus und drÃ¼cke auf Analysieren.")
+        self.lbl_desc.setText(f"Scan abgeschlossen ({count} Filme gefunden). WÃ¤hle Filme aus und drücke auf Analysieren.")
         if count > 0:
             self.list_widget.setCurrentRow(0)
         
@@ -545,7 +545,7 @@ class Screen3Validator(QtWidgets.QWidget):
                 break
         
         self.cmb_lang.setCurrentText(str(row['Effektive Sprache (ISO-Code)']))
-        self.chk_sdh.setChecked(bool(row['SchwerhÃ¶rig-Schalter']))
+        self.chk_sdh.setChecked(bool(row['Schwerhörig-Schalter']))
         self.chk_forced.setChecked(bool(row['Anzeige erzwingen-Schalter']))
         if 'Effektiver Name' in row and pd.notna(row['Effektiver Name']):
             self.txt_titel.setText(str(row['Effektiver Name']))
@@ -579,7 +579,7 @@ class Screen3Validator(QtWidgets.QWidget):
         row_idx = self.auto_rows[self.current_idx]
         
         original_lang = str(self.df.at[row_idx, 'Effektive Sprache (ISO-Code)'])
-        original_sdh = bool(self.df.at[row_idx, 'SchwerhÃ¶rig-Schalter'])
+        original_sdh = bool(self.df.at[row_idx, 'Schwerhörig-Schalter'])
         original_forced = bool(self.df.at[row_idx, 'Anzeige erzwingen-Schalter'])
         
         new_lang = self.cmb_lang.currentText()
@@ -614,7 +614,7 @@ class Screen3Validator(QtWidgets.QWidget):
             json.dump(stats, af, indent=4)
             
         self.df.at[row_idx, 'Effektive Sprache (ISO-Code)'] = new_lang
-        self.df.at[row_idx, 'SchwerhÃ¶rig-Schalter'] = new_sdh
+        self.df.at[row_idx, 'Schwerhörig-Schalter'] = new_sdh
         self.df.at[row_idx, 'Anzeige erzwingen-Schalter'] = new_forced
         self.df.at[row_idx, 'Effektiver Name'] = new_titel
         self.df.at[row_idx, 'Sonstiges'] = ""
@@ -767,7 +767,7 @@ class CockpitWizard(QtWidgets.QMainWindow):
         self.screen3.lbl_bg_status.setText(f"KI-Analyse ({current}/{total}): {msg}")
         
     def analysis_done(self):
-        self.screen3.lbl_bg_status.setText("KI-Analyse vollstÃ¤ndig abgeschlossen!")
+        self.screen3.lbl_bg_status.setText("KI-Analyse vollständig abgeschlossen!")
         self.screen3.bg_progress.setValue(self.screen3.bg_progress.maximum())
 
     def closeEvent(self, event):
