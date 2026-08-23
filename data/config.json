@@ -1,0 +1,7 @@
+{
+    "pgs_image_count": 150,
+    "Verzeichnis_Filme": "F:\\Jellyfin\\Filme",
+    "Verzeichnis_Serien": "F:\\Jellyfin\\Serien",
+    "Verzeichnis_Test": "F:\\Jellyfin_AI_Cockpit\\data\\Test_Videos",
+    "Pfad_mkvpropedit": "C:\\Program Files\\MKVToolNix\\mkvpropedit.exe"
+}
