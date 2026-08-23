@@ -210,6 +210,14 @@ class Screen3Validator(QtWidgets.QWidget):
         self.lbl_conv.setFont(QtGui.QFont("Segoe UI", 10, QtGui.QFont.Bold))
         right_layout.addWidget(self.lbl_conv)
         right_layout.addLayout(conv_layout)
+        
+        self.srt_text_edit = QtWidgets.QTextEdit()
+        self.srt_text_edit.setReadOnly(True)
+        self.srt_text_edit.setVisible(False)
+        self.srt_text_edit.setMaximumHeight(200)
+        self.srt_text_edit.setStyleSheet("background-color: #1e1e1e; border: 1px solid #555; color: #ddd; font-family: Consolas;")
+        right_layout.addWidget(self.srt_text_edit)
+        
         right_layout.addStretch()
         self.btn_save = QtWidgets.QPushButton("✔ Spur bestätigen & Weiter")
         self.btn_save.setStyleSheet("background-color: #2e7d32; font-size: 14px; padding: 12px;")
@@ -486,6 +494,8 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_conv_srt.setVisible(False)
         self.btn_conv_pgs.setVisible(False)
         self.lbl_conv.setVisible(False)
+        self.srt_text_edit.setVisible(False)
+        self.btn_conv_srt.setText("SRT ansehen")
         if str(row['track_type']).lower() == 'untertitel':
             codec = str(row.get('subtitle_type', '')).lower()
             if not codec or 'srt' in codec or 'subrip' in codec:
@@ -656,14 +666,27 @@ class Screen3Validator(QtWidgets.QWidget):
             pass
 
     def open_srt(self):
-        import glob
         if self.current_row is None: return
+        
+        # Toggle visibility if already open
+        if self.srt_text_edit.isVisible():
+            self.srt_text_edit.setVisible(False)
+            self.btn_conv_srt.setText("SRT ansehen")
+            return
+            
         film = self.current_row['file_name']
         idx = self.current_row['track_id']
         temp_dir = os.path.join(DIR_TEST, "..", "temp_cleanup")
         path = os.path.join(temp_dir, f"{film}_sub_{idx}.srt")
         if os.path.exists(path):
-            os.startfile(path)
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    text_content = f.read()
+                self.srt_text_edit.setPlainText(text_content)
+                self.srt_text_edit.setVisible(True)
+                self.btn_conv_srt.setText("SRT verbergen")
+            except Exception as e:
+                QtWidgets.QMessageBox.warning(self, "Fehler", f"Fehler beim Lesen: {e}")
         else:
             QtWidgets.QMessageBox.warning(self, "Nicht gefunden", "Das SRT File wurde nach der Analyse nicht gefunden.")
 
