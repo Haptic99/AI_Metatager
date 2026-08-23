@@ -127,7 +127,9 @@ class Screen3Validator(QtWidgets.QWidget):
         self.track_list.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.track_list.verticalHeader().setVisible(False)
         self.track_list.horizontalHeader().setStretchLastSection(True)
-        self.track_list.setMaximumHeight(150)
+        self.track_list.setMaximumHeight(250)
+        self.track_list.setStyleSheet("QTableWidget::item { padding: 2px; }")
+        self.track_list.verticalHeader().setDefaultSectionSize(24)
         self.track_list.itemClicked.connect(self.on_track_selected)
         right_layout.addWidget(self.track_list)
         self.form_grid = QtWidgets.QGridLayout()
@@ -162,8 +164,9 @@ class Screen3Validator(QtWidgets.QWidget):
         self.form_grid.addWidget(self.lbl_sdh_title, 2, 0)
         self.lbl_ki_sdh = QtWidgets.QLabel("-")
         self.form_grid.addWidget(self.lbl_ki_sdh, 2, 1)
-        self.chk_sdh = QtWidgets.QCheckBox("Ja")
-        self.form_grid.addWidget(self.chk_sdh, 2, 2)
+        self.cmb_sdh = QtWidgets.QComboBox()
+        self.cmb_sdh.addItems(["Nein", "Ja"])
+        self.form_grid.addWidget(self.cmb_sdh, 2, 2)
         self.btn_test_sdh = QtWidgets.QPushButton("▶ Marker")
         self.btn_test_sdh.clicked.connect(lambda: self.seek_absolute(600000))
         self.form_grid.addWidget(self.btn_test_sdh, 2, 3)
@@ -175,8 +178,9 @@ class Screen3Validator(QtWidgets.QWidget):
         self.form_grid.addWidget(self.lbl_forced_title, 3, 0)
         self.lbl_ki_forced = QtWidgets.QLabel("-")
         self.form_grid.addWidget(self.lbl_ki_forced, 3, 1)
-        self.chk_forced = QtWidgets.QCheckBox("Ja")
-        self.form_grid.addWidget(self.chk_forced, 3, 2)
+        self.cmb_forced = QtWidgets.QComboBox()
+        self.cmb_forced.addItems(["Nein", "Ja"])
+        self.form_grid.addWidget(self.cmb_forced, 3, 2)
         self.btn_test_forced = QtWidgets.QPushButton("▶ Forced")
         self.btn_test_forced.clicked.connect(lambda: self.seek_absolute(900000))
         self.form_grid.addWidget(self.btn_test_forced, 3, 3)
@@ -424,6 +428,19 @@ class Screen3Validator(QtWidgets.QWidget):
                     all_valid = all(val_dict.values())
             except: pass
         self.btn_save.setEnabled(all_valid)
+        
+        # Color the current track row in track_list
+        for i in range(self.track_list.rowCount()):
+            item = self.track_list.item(i, 0)
+            if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
+                for col in range(3):
+                    it = self.track_list.item(i, col)
+                    if it:
+                        if all_valid:
+                            it.setBackground(QtGui.QColor("#1b5e20"))
+                        else:
+                            it.setBackground(QtGui.QColor(0,0,0,0))
+                break
     def load_row(self):
         if self.current_idx >= len(self.auto_rows) or len(self.auto_rows) == 0:
             self.btn_save.setEnabled(False)
@@ -479,8 +496,8 @@ class Screen3Validator(QtWidgets.QWidget):
                 self.lbl_conv.setVisible(True)
 
         self.cmb_lang.setCurrentText(str(row['language_iso']))
-        self.chk_sdh.setChecked(bool(row['is_hearing_impaired']))
-        self.chk_forced.setChecked(bool(row['is_forced']))
+        self.cmb_sdh.setCurrentText("Ja" if bool(row['is_hearing_impaired']) else "Nein")
+        self.cmb_forced.setCurrentText("Ja" if bool(row['is_forced']) else "Nein")
         if 'track_name' in row and pd.notna(row['track_name']):
             self.txt_titel.setText(str(row['track_name']))
         else:
@@ -545,8 +562,8 @@ class Screen3Validator(QtWidgets.QWidget):
         original_sdh = bool(self.df.at[row_idx, 'is_hearing_impaired'])
         original_forced = bool(self.df.at[row_idx, 'is_forced'])
         new_lang = self.cmb_lang.currentText()
-        new_sdh = self.chk_sdh.isChecked()
-        new_forced = self.chk_forced.isChecked()
+        new_sdh = self.cmb_sdh.currentText() == "Ja"
+        new_forced = self.cmb_forced.currentText() == "Ja"
         new_titel = self.txt_titel.text()
         accuracy_file = r"F:\Jellyfin_AI_Cockpit\Daten\KI_Accuracy.json"
         stats = {"total": 0, "correct_lang": 0, "correct_sdh": 0, "correct_forced": 0, "perfect_tracks": 0}
@@ -594,6 +611,7 @@ class Screen3Validator(QtWidgets.QWidget):
             if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
                 for col in range(3):
                     self.track_list.item(i, col).setForeground(QtGui.QColor("#aaaaaa"))
+                    self.track_list.item(i, col).setBackground(QtGui.QColor(0,0,0,0))
                 break
         self.current_idx += 1
         # Refresh auto rows
