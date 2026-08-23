@@ -421,7 +421,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
             
     return detected_lang, is_forced, '0%', False
 
-def process_file(filepath):
+def process_file(filepath, progress_callback=None):
     write_log(f"\n--- Analysiere V5: {filepath} ---")
     
     base, ext = os.path.splitext(filepath)
@@ -501,6 +501,7 @@ def process_file(filepath):
 
     # 1. PROCESS SUBTITLES FIRST
     for idx, s in sub_streams:
+        if progress_callback: progress_callback('subtitle', idx, 'start', s.get('codec_name', ''))
         tags = s.get('tags', {})
         old_lang = tags.get('language', 'und')
         old_title = tags.get('title', '')
@@ -646,6 +647,7 @@ def process_file(filepath):
             if eng_sub_idx == -1: eng_sub_idx = out_idx
             
         mapped_subs.append((idx, is_forced_meta, mapped_input, new_lang, clean_title, s, out_idx, is_hi))
+        if progress_callback: progress_callback('subtitle', idx, 'done', s.get('codec_name', ''))
 
     # --- BILD-UNTERTITEL FILTERN ---
     final_subs = []
@@ -698,6 +700,7 @@ def process_file(filepath):
             best_srt = largest_srt
         
     for idx, s in audio_streams:
+        if progress_callback: progress_callback('audio', idx, 'start')
         tags = s.get('tags', {})
         old_lang = tags.get('language', 'und')
         old_title = tags.get('title', '')
@@ -730,6 +733,7 @@ def process_file(filepath):
         if new_lang == 'ger': has_ger_audio = True
             
         mapped_audios.append((idx, new_lang))
+        if progress_callback: progress_callback('audio', idx, 'done')
         
     for i, (orig_idx, new_lang) in enumerate(mapped_audios):
         if new_lang == 'ger' and ger_audio_idx == -1: ger_audio_idx = i
@@ -788,6 +792,7 @@ def process_file(filepath):
         write_log("  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.")
         return
 
+    if progress_callback: progress_callback('muxing', 0, 'start')
     if not needs_ffmpeg:
         write_log("  -> Schnelles Metadaten-Update (mkvpropedit)...")
         mkvprop_args = [r"C:\Program Files\MKVToolNix\mkvpropedit.exe", filepath]
@@ -879,9 +884,11 @@ def process_file(filepath):
             write_log("     Erfolgreich aktualisiert!")
         else:
             write_log(f"     FEHLER beim Ersetzen nach 5 Versuchen. Die Datei wird blockiert!")
+        if progress_callback: progress_callback('muxing', 0, 'done')
     else:
         write_log("     FEHLER beim Muxen mit ffmpeg.")
         if os.path.exists(temp_out): os.remove(temp_out)
+        if progress_callback: progress_callback('muxing', 0, 'done')
 
 def main():
     target_dir = sys.argv[1] if len(sys.argv) > 1 else MEDIA_DIR

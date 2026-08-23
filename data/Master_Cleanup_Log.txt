@@ -1,0 +1,694 @@
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Prestige - Meister der Magie (2006).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'Stripped SRT')
+[2026-08-23 12:49:12]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 7.7s). Ersetze Spur 3.
+[2026-08-23 12:49:12]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.6s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: subrip, Lang: eng, Titel: 'SDH SRT')
+[2026-08-23 12:49:12]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 7.7s). Ersetze Spur 4.
+[2026-08-23 12:49:12]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 96.0)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 12:49:25]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 12.8s)
+     => BILD-UNTERTITEL (Spur 5): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: jpn+eng (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 12:49:35]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 9.4s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.6)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 12:49:44]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 9.5s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.0)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 12:49:56]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 11.5s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.3)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 12:50:05]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 9.2s)
+  -> PrÃ¼fe Untertitel Spur 10 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 90.7)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 12:50:16]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 11.5s)
+  -> PrÃ¼fe Untertitel Spur 11 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.7)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'it' (Sicherheit: 100.0%)
+[2026-08-23 12:50:28]      => OCR KI Korrektur: War 'und', ist jetzt 'it' (Sicherheit: 100.0%, Dauer: 11.9s)
+  -> PrÃ¼fe Untertitel Spur 12 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.5)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 12:50:40]      => OCR KI Korrektur: War 'und', ist jetzt 'ger' (Sicherheit: 100.0%, Dauer: 11.6s)
+  -> PrÃ¼fe Untertitel Spur 13 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 95.8)
+       => OCR KI Gesamtergebnis: 'nl' (Sicherheit: 85.7%)
+[2026-08-23 12:50:49]      => OCR KI Korrektur: War 'und', ist jetzt 'nl' (Sicherheit: 85.7%, Dauer: 9.5s)
+  -> PrÃ¼fe Untertitel Spur 14 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.8)
+       => OCR KI Gesamtergebnis: 'sv' (Sicherheit: 100.0%)
+[2026-08-23 12:50:59]      => OCR KI Korrektur: War 'und', ist jetzt 'sv' (Sicherheit: 100.0%, Dauer: 9.6s)
+  -> PrÃ¼fe Untertitel Spur 15 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 88.8)
+       => OCR KI Gesamtergebnis: 'no' (Sicherheit: 100.0%)
+[2026-08-23 12:51:08]      => OCR KI Korrektur: War 'und', ist jetzt 'no' (Sicherheit: 100.0%, Dauer: 9.2s)
+  -> PrÃ¼fe Untertitel Spur 16 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 95.2)
+       => OCR KI Gesamtergebnis: 'da' (Sicherheit: 100.0%)
+[2026-08-23 12:51:19]      => OCR KI Korrektur: War 'und', ist jetzt 'da' (Sicherheit: 100.0%, Dauer: 11.0s)
+  -> PrÃ¼fe Untertitel Spur 17 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.5)
+       => OCR KI Gesamtergebnis: 'fi' (Sicherheit: 100.0%)
+[2026-08-23 12:51:30]      => OCR KI Korrektur: War 'und', ist jetzt 'fi' (Sicherheit: 100.0%, Dauer: 10.9s)
+  -> PrÃ¼fe Untertitel Spur 18 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 95.0)
+       => OCR KI Gesamtergebnis: 'ru' (Sicherheit: 100.0%)
+[2026-08-23 12:51:38]      => OCR KI Korrektur: War 'und', ist jetzt 'ru' (Sicherheit: 100.0%, Dauer: 8.3s)
+  -> PrÃ¼fe Untertitel Spur 19 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.5)
+       => OCR KI Gesamtergebnis: 'cs' (Sicherheit: 100.0%)
+[2026-08-23 12:51:49]      => OCR KI Korrektur: War 'und', ist jetzt 'cs' (Sicherheit: 100.0%, Dauer: 10.8s)
+  -> PrÃ¼fe Untertitel Spur 20 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.0)
+       => OCR KI Gesamtergebnis: 'pl' (Sicherheit: 100.0%)
+[2026-08-23 12:52:00]      => OCR KI Korrektur: War 'und', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 10.8s)
+  -> PrÃ¼fe Untertitel Spur 21 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 91.7)
+       => OCR KI Gesamtergebnis: 'hu' (Sicherheit: 100.0%)
+[2026-08-23 12:52:09]      => OCR KI Korrektur: War 'und', ist jetzt 'hu' (Sicherheit: 100.0%, Dauer: 8.8s)
+  -> PrÃ¼fe Untertitel Spur 22 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.0)
+       => OCR KI Gesamtergebnis: 'ro' (Sicherheit: 100.0%)
+[2026-08-23 12:52:18]      => OCR KI Korrektur: War 'und', ist jetzt 'ro' (Sicherheit: 100.0%, Dauer: 8.9s)
+  -> PrÃ¼fe Untertitel Spur 23 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.0)
+       => OCR KI Gesamtergebnis: 'hr' (Sicherheit: 100.0%)
+[2026-08-23 12:52:28]      => OCR KI Korrektur: War 'und', ist jetzt 'hr' (Sicherheit: 100.0%, Dauer: 10.6s)
+  -> PrÃ¼fe Untertitel Spur 24 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 62.5)
+       => OCR KI Gesamtergebnis: 'el' (Sicherheit: 100.0%)
+[2026-08-23 12:52:37]      => OCR KI Korrektur: War 'und', ist jetzt 'el' (Sicherheit: 100.0%, Dauer: 8.9s)
+  -> PrÃ¼fe Untertitel Spur 25 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'tr' (Sicherheit: 100.0%)
+[2026-08-23 12:52:46]      => OCR KI Korrektur: War 'und', ist jetzt 'tr' (Sicherheit: 100.0%, Dauer: 8.6s)
+  -> PrÃ¼fe Untertitel Spur 26 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 12:52:57]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 10.8s)
+  -> PrÃ¼fe Untertitel Spur 27 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 89.0)
+       => OCR KI Gesamtergebnis: 'he' (Sicherheit: 100.0%)
+[2026-08-23 12:53:06]      => OCR KI Korrektur: War 'und', ist jetzt 'he' (Sicherheit: 100.0%, Dauer: 8.9s)
+  -> PrÃ¼fe Untertitel Spur 28 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 12:53:16]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 10.7s)
+     => BILD-UNTERTITEL (Spur 28): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 29 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 85.7%)
+[2026-08-23 12:53:27]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 85.7%, Dauer: 10.9s)
+     => BILD-UNTERTITEL (Spur 29): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 30 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 71.4%)
+[2026-08-23 12:53:38]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 71.4%, Dauer: 10.8s)
+     => BILD-UNTERTITEL (Spur 30): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 31 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: kor+eng (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'ko' (Sicherheit: 100.0%)
+[2026-08-23 12:53:47]      => OCR KI Korrektur: War 'und', ist jetzt 'ko' (Sicherheit: 100.0%, Dauer: 8.5s)
+  -> PrÃ¼fe Untertitel Spur 32 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 86.0)
+       => OCR KI Gesamtergebnis: 'th' (Sicherheit: 100.0%)
+[2026-08-23 12:53:57]      => OCR KI Korrektur: War 'und', ist jetzt 'th' (Sicherheit: 100.0%, Dauer: 10.2s)
+     => BILD-UNTERTITEL (Spur 5): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+     => BILD-UNTERTITEL (Spur 28): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+     => BILD-UNTERTITEL (Spur 29): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+     => BILD-UNTERTITEL (Spur 30): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       Whisper KI (Spot 4230s): ger (98.9%)
+       Whisper KI (Spot 810s): ger (98.8%)
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Black Swan (2010).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (93.3%)
+       Whisper KI (Spot 1281s): ger (99.1%)
+       Whisper KI (Spot 2262s): ger (98.9%)
+       Whisper KI (Spot 3243s): ger (98.8%)
+       Whisper KI (Spot 4225s): eng (54.5%)
+       Whisper KI (Spot 5206s): ger (95.9%)
+[2026-08-23 13:02:10]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (93.7%)
+       Whisper KI (Spot 1281s): eng (92.9%)
+       Whisper KI (Spot 2262s): eng (98.9%)
+       Whisper KI (Spot 3243s): eng (88.7%)
+       Whisper KI (Spot 4225s): eng (46.6%)
+       Whisper KI (Spot 5206s): eng (83.0%)
+[2026-08-23 13:02:11]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.7s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Black Swan (2010).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (93.3%)
+       Whisper KI (Spot 1281s): ger (99.1%)
+       Whisper KI (Spot 2262s): ger (98.9%)
+       Whisper KI (Spot 3243s): ger (98.8%)
+       Whisper KI (Spot 4225s): eng (54.5%)
+       Whisper KI (Spot 5206s): ger (95.9%)
+[2026-08-23 13:04:43]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (93.7%)
+       Whisper KI (Spot 1281s): eng (92.9%)
+       Whisper KI (Spot 2262s): eng (98.9%)
+       Whisper KI (Spot 3243s): eng (88.7%)
+       Whisper KI (Spot 4225s): eng (46.6%)
+       Whisper KI (Spot 5206s): eng (83.0%)
+[2026-08-23 13:04:45]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.7s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Black Swan (2010).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (93.3%)
+       Whisper KI (Spot 1281s): ger (99.1%)
+       Whisper KI (Spot 2262s): ger (98.9%)
+       Whisper KI (Spot 3243s): ger (98.8%)
+       Whisper KI (Spot 4225s): eng (54.5%)
+       Whisper KI (Spot 5206s): ger (95.9%)
+[2026-08-23 13:06:57]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 2.1s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (93.7%)
+       Whisper KI (Spot 1281s): eng (92.9%)
+       Whisper KI (Spot 2262s): eng (98.9%)
+       Whisper KI (Spot 3243s): eng (88.7%)
+       Whisper KI (Spot 4225s): eng (46.6%)
+       Whisper KI (Spot 5206s): eng (83.0%)
+[2026-08-23 13:06:59]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 84.0%, Dauer: 1.8s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Das ist das Ende.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (94.0%)
+       Whisper KI (Spot 1266s): ger (33.4%)
+       Whisper KI (Spot 2233s): ger (95.8%)
+       Whisper KI (Spot 3200s): ger (97.4%)
+       Whisper KI (Spot 4167s): ger (96.1%)
+       Whisper KI (Spot 5134s): ru (73.9%)
+[2026-08-23 13:07:18]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 83.3%, Dauer: 2.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Highligen Drei Könige (2015).mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (96.4%)
+       Whisper KI (Spot 1212s): ger (98.8%)
+       Whisper KI (Spot 2125s): ger (95.0%)
+       Whisper KI (Spot 3038s): ger (96.9%)
+       Whisper KI (Spot 3950s): eng (51.3%)
+       Whisper KI (Spot 4863s): ger (98.9%)
+[2026-08-23 13:07:28]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 97.2%, Dauer: 1.6s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (98.5%)
+       Whisper KI (Spot 1212s): eng (99.1%)
+       Whisper KI (Spot 2125s): eng (97.4%)
+       Whisper KI (Spot 3038s): eng (98.7%)
+       Whisper KI (Spot 3950s): eng (51.1%)
+       Whisper KI (Spot 4863s): eng (98.8%)
+[2026-08-23 13:07:29]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 90.6%, Dauer: 1.6s)
+  -> Datei ist bereits perfekt aufgerÃ¤umt und formatiert.
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Lord Of War.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (98.2%)
+       Whisper KI (Spot 1419s): ger (96.7%)
+       Whisper KI (Spot 2539s): ger (21.9%)
+       Whisper KI (Spot 3658s): ger (96.6%)
+       Whisper KI (Spot 4778s): ger (99.7%)
+       Whisper KI (Spot 5897s): ru (73.3%)
+[2026-08-23 13:07:42]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 82.6%, Dauer: 2.0s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Perfume The Story Of A Murderer (2006).mkv ---
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:08:00]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 14.1s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Chinese (Simplified)')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 71.4%)
+[2026-08-23 13:08:13]      => OCR KI BestÃ¤tigt: 'zh-Hans' (Sicherheit: 71.4%, Dauer: 12.9s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'Chinese (Traditional)')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hant' (Sicherheit: 100.0%)
+[2026-08-23 13:08:25]      => OCR KI BestÃ¤tigt: 'zh-Hant' (Sicherheit: 100.0%, Dauer: 12.8s)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: 'French')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'et' (Sicherheit: 100.0%)
+[2026-08-23 13:08:39]      => OCR KI Erkennung 'et' ignoriert, da Titel auf 'fre' hindeutet.
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: ger, Titel: 'German')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 13:08:50]      => OCR KI BestÃ¤tigt: 'ger' (Sicherheit: 100.0%, Dauer: 11.6s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: pol, Titel: 'Polish')
+       Starte Precision-OCR (Modell: pol+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'pl' (Sicherheit: 100.0%)
+[2026-08-23 13:08:58]      => OCR KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 7.8s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: rus, Titel: 'Russian')
+       Starte Precision-OCR (Modell: rus+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ru' (Sicherheit: 100.0%)
+[2026-08-23 13:09:06]      => OCR KI Korrektur: War 'rus', ist jetzt 'ru' (Sicherheit: 100.0%, Dauer: 7.7s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (98.9%)
+       Whisper KI (Spot 1675s): ger (98.8%)
+       Whisper KI (Spot 3050s): ger (99.1%)
+       Whisper KI (Spot 4426s): ger (99.5%)
+       Whisper KI (Spot 5801s): zh (30.7%)
+       Whisper KI (Spot 7177s): la (53.7%)
+[2026-08-23 13:09:08]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 99.1%, Dauer: 1.9s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (97.4%)
+       Whisper KI (Spot 1675s): eng (95.2%)
+       Whisper KI (Spot 3050s): eng (95.8%)
+       Whisper KI (Spot 4426s): eng (75.8%)
+       Whisper KI (Spot 5801s): eng (38.9%)
+       Whisper KI (Spot 7177s): la (29.1%)
+[2026-08-23 13:09:10]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 80.6%, Dauer: 1.7s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Prestige - Meister der Magie (2006).mkv ---
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Prestige - Meister der Magie (2006).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: eng, Titel: 'Stripped SRT')
+[2026-08-23 13:13:32]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 6.8s). Ersetze Spur 3.
+[2026-08-23 13:13:33]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.2s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: subrip, Lang: eng, Titel: 'SDH SRT')
+[2026-08-23 13:13:33]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 6.8s). Ersetze Spur 4.
+[2026-08-23 13:13:33]      => Text KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 96.0)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:13:46]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 13.0s)
+     => BILD-UNTERTITEL (Spur 5): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: jpn+eng (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 13:13:57]      => OCR KI Korrektur: War 'und', ist jetzt 'fre' (Sicherheit: 100.0%, Dauer: 11.5s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.6)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 13:14:08]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 11.1s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.0)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 13:14:21]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 13.1s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 93.3)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 13:14:32]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 10.9s)
+  -> PrÃ¼fe Untertitel Spur 10 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 90.7)
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 13:14:45]      => OCR KI Korrektur: War 'und', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 13.0s)
+  -> PrÃ¼fe Untertitel Spur 11 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 92.7)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'it' (Sicherheit: 100.0%)
+[2026-08-23 13:14:58]      => OCR KI Korrektur: War 'und', ist jetzt 'it' (Sicherheit: 100.0%, Dauer: 12.7s)
+  -> PrÃ¼fe Untertitel Spur 12 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 93.5)
+       => SDH-Erkennung (PGS): 2 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'ger' (Sicherheit: 100.0%)
+[2026-08-23 13:15:13]      => OCR KI Korrektur: War 'und', ist jetzt 'ger' (Sicherheit: 100.0%, Dauer: 14.5s)
+  -> PrÃ¼fe Untertitel Spur 13 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 95.8)
+       => OCR KI Gesamtergebnis: 'nl' (Sicherheit: 85.7%)
+[2026-08-23 13:15:24]      => OCR KI Korrektur: War 'und', ist jetzt 'nl' (Sicherheit: 85.7%, Dauer: 11.9s)
+  -> PrÃ¼fe Untertitel Spur 14 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.8)
+       => OCR KI Gesamtergebnis: 'sv' (Sicherheit: 100.0%)
+[2026-08-23 13:15:37]      => OCR KI Korrektur: War 'und', ist jetzt 'sv' (Sicherheit: 100.0%, Dauer: 12.8s)
+  -> PrÃ¼fe Untertitel Spur 15 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 88.8)
+       => OCR KI Gesamtergebnis: 'no' (Sicherheit: 100.0%)
+[2026-08-23 13:15:50]      => OCR KI Korrektur: War 'und', ist jetzt 'no' (Sicherheit: 100.0%, Dauer: 13.2s)
+  -> PrÃ¼fe Untertitel Spur 16 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 95.2)
+       => OCR KI Gesamtergebnis: 'da' (Sicherheit: 100.0%)
+[2026-08-23 13:16:06]      => OCR KI Korrektur: War 'und', ist jetzt 'da' (Sicherheit: 100.0%, Dauer: 15.5s)
+  -> PrÃ¼fe Untertitel Spur 17 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.5)
+       => OCR KI Gesamtergebnis: 'fi' (Sicherheit: 100.0%)
+[2026-08-23 13:16:22]      => OCR KI Korrektur: War 'und', ist jetzt 'fi' (Sicherheit: 100.0%, Dauer: 15.7s)
+  -> PrÃ¼fe Untertitel Spur 18 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 95.0)
+       => OCR KI Gesamtergebnis: 'ru' (Sicherheit: 100.0%)
+[2026-08-23 13:16:34]      => OCR KI Korrektur: War 'und', ist jetzt 'ru' (Sicherheit: 100.0%, Dauer: 12.3s)
+  -> PrÃ¼fe Untertitel Spur 19 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.5)
+       => OCR KI Gesamtergebnis: 'cs' (Sicherheit: 100.0%)
+[2026-08-23 13:16:51]      => OCR KI Korrektur: War 'und', ist jetzt 'cs' (Sicherheit: 100.0%, Dauer: 16.9s)
+  -> PrÃ¼fe Untertitel Spur 20 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.0)
+       => OCR KI Gesamtergebnis: 'pl' (Sicherheit: 100.0%)
+[2026-08-23 13:17:08]      => OCR KI Korrektur: War 'und', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 16.9s)
+  -> PrÃ¼fe Untertitel Spur 21 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 91.7)
+       => OCR KI Gesamtergebnis: 'hu' (Sicherheit: 100.0%)
+[2026-08-23 13:17:21]      => OCR KI Korrektur: War 'und', ist jetzt 'hu' (Sicherheit: 100.0%, Dauer: 13.4s)
+  -> PrÃ¼fe Untertitel Spur 22 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 92.0)
+       => OCR KI Gesamtergebnis: 'ro' (Sicherheit: 100.0%)
+[2026-08-23 13:17:35]      => OCR KI Korrektur: War 'und', ist jetzt 'ro' (Sicherheit: 100.0%, Dauer: 13.8s)
+  -> PrÃ¼fe Untertitel Spur 23 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 91.0)
+       => OCR KI Gesamtergebnis: 'hr' (Sicherheit: 100.0%)
+[2026-08-23 13:17:51]      => OCR KI Korrektur: War 'und', ist jetzt 'hr' (Sicherheit: 100.0%, Dauer: 16.2s)
+  -> PrÃ¼fe Untertitel Spur 24 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 62.5)
+       => OCR KI Gesamtergebnis: 'el' (Sicherheit: 100.0%)
+[2026-08-23 13:18:05]      => OCR KI Korrektur: War 'und', ist jetzt 'el' (Sicherheit: 100.0%, Dauer: 14.2s)
+  -> PrÃ¼fe Untertitel Spur 25 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'tr' (Sicherheit: 100.0%)
+[2026-08-23 13:18:18]      => OCR KI Korrektur: War 'und', ist jetzt 'tr' (Sicherheit: 100.0%, Dauer: 13.0s)
+  -> PrÃ¼fe Untertitel Spur 26 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 13:18:31]      => OCR KI Korrektur: War 'und', ist jetzt 'spa' (Sicherheit: 100.0%, Dauer: 12.3s)
+  -> PrÃ¼fe Untertitel Spur 27 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: rus+ara+heb+ell+eng (Confidence: 89.0)
+       => OCR KI Gesamtergebnis: 'he' (Sicherheit: 100.0%)
+[2026-08-23 13:18:40]      => OCR KI Korrektur: War 'und', ist jetzt 'he' (Sicherheit: 100.0%, Dauer: 9.8s)
+  -> PrÃ¼fe Untertitel Spur 28 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:18:52]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 12.0s)
+     => BILD-UNTERTITEL (Spur 28): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 29 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 85.7%)
+[2026-08-23 13:19:05]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 85.7%, Dauer: 12.1s)
+     => BILD-UNTERTITEL (Spur 29): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 30 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: eng+deu+fra+spa+ita (Confidence: 0.0)
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:19:18]      => OCR KI Korrektur: War 'und', ist jetzt 'eng' (Sicherheit: 100.0%, Dauer: 13.5s)
+     => BILD-UNTERTITEL (Spur 30): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> PrÃ¼fe Untertitel Spur 31 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: kor+eng (Confidence: 96.0)
+       => OCR KI Gesamtergebnis: 'ko' (Sicherheit: 100.0%)
+[2026-08-23 13:19:27]      => OCR KI Korrektur: War 'und', ist jetzt 'ko' (Sicherheit: 100.0%, Dauer: 9.4s)
+  -> PrÃ¼fe Untertitel Spur 32 (Codec: hdmv_pgs_subtitle, Lang: und, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => Auto-Script erkannt! Benutze Sprachmodell: tur+pol+hin+tha (Confidence: 86.0)
+       => OCR KI Gesamtergebnis: 'th' (Sicherheit: 100.0%)
+[2026-08-23 13:19:38]      => OCR KI Korrektur: War 'und', ist jetzt 'th' (Sicherheit: 100.0%, Dauer: 10.4s)
+     => BILD-UNTERTITEL (Spur 5): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+     => BILD-UNTERTITEL (Spur 28): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+     => BILD-UNTERTITEL (Spur 29): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+     => BILD-UNTERTITEL (Spur 30): Text-Alternative (eng) vorhanden! (Wird vorerst nicht gelÃ¶scht)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       Whisper KI (Spot 4230s): ger (98.9%)
+       Whisper KI (Spot 810s): ger (98.8%)
+       Whisper KI (Spot 5010s): ger (97.3%)
+       Whisper KI (Spot 3960s): ger (98.8%)
+       Whisper KI (Spot 360s): ger (99.0%)
+       Whisper KI (Spot 840s): ger (98.8%)
+[2026-08-23 13:19:41]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 98.6%, Dauer: 3.3s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       Whisper KI (Spot 4230s): eng (97.3%)
+       Whisper KI (Spot 810s): eng (97.4%)
+       Whisper KI (Spot 5010s): eng (94.5%)
+       Whisper KI (Spot 3960s): eng (95.9%)
+       Whisper KI (Spot 360s): eng (94.5%)
+       Whisper KI (Spot 840s): eng (96.5%)
+[2026-08-23 13:19:43]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 96.0%, Dauer: 1.9s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Prestige - Meister der Magie (2006).mkv -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\sub_3_synced.srt -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\sub_4_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=eng -disposition:s:0 0 -map 2:0 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 hearing_impaired -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=eng -disposition:s:2 hearing_impaired -map 0:6 -metadata:s:s:3 title= -metadata:s:s:3 language=fre -disposition:s:3 0 -map 0:7 -metadata:s:s:4 title= -metadata:s:s:4 language=spa -disposition:s:4 hearing_impaired -map 0:8 -metadata:s:s:5 title= -metadata:s:s:5 language=spa -disposition:s:5 0 -map 0:9 -metadata:s:s:6 title= -metadata:s:s:6 language=pt -disposition:s:6 0 -map 0:10 -metadata:s:s:7 title= -metadata:s:s:7 language=pt -disposition:s:7 0 -map 0:11 -metadata:s:s:8 title= -metadata:s:s:8 language=it -disposition:s:8 hearing_impaired -map 0:12 -metadata:s:s:9 title= -metadata:s:s:9 language=ger -disposition:s:9 hearing_impaired -map 0:13 -metadata:s:s:10 title= -metadata:s:s:10 language=nl -disposition:s:10 0 -map 0:14 -metadata:s:s:11 title= -metadata:s:s:11 language=sv -disposition:s:11 0 -map 0:15 -metadata:s:s:12 title= -metadata:s:s:12 language=no -disposition:s:12 0 -map 0:16 -metadata:s:s:13 title= -metadata:s:s:13 language=da -disposition:s:13 0 -map 0:17 -metadata:s:s:14 title= -metadata:s:s:14 language=fi -disposition:s:14 0 -map 0:18 -metadata:s:s:15 title= -metadata:s:s:15 language=ru -disposition:s:15 0 -map 0:19 -metadata:s:s:16 title= -metadata:s:s:16 language=cs -disposition:s:16 0 -map 0:20 -metadata:s:s:17 title= -metadata:s:s:17 language=pl -disposition:s:17 0 -map 0:21 -metadata:s:s:18 title= -metadata:s:s:18 language=hu -disposition:s:18 0 -map 0:22 -metadata:s:s:19 title= -metadata:s:s:19 language=ro -disposition:s:19 0 -map 0:23 -metadata:s:s:20 title= -metadata:s:s:20 language=hr -disposition:s:20 0 -map 0:24 -metadata:s:s:21 title= -metadata:s:s:21 language=el -disposition:s:21 0 -map 0:25 -metadata:s:s:22 title= -metadata:s:s:22 language=tr -disposition:s:22 0 -map 0:26 -metadata:s:s:23 title= -metadata:s:s:23 language=spa -disposition:s:23 0 -map 0:27 -metadata:s:s:24 title= -metadata:s:s:24 language=he -disposition:s:24 0 -map 0:28 -metadata:s:s:25 title= -metadata:s:s:25 language=eng -disposition:s:25 0 -map 0:29 -metadata:s:s:26 title= -metadata:s:s:26 language=eng -disposition:s:26 0 -map 0:30 -metadata:s:s:27 title= -metadata:s:s:27 language=eng -disposition:s:27 0 -map 0:31 -metadata:s:s:28 title= -metadata:s:s:28 language=ko -disposition:s:28 0 -map 0:32 -metadata:s:s:29 title= -metadata:s:s:29 language=th -disposition:s:29 0 -c copy F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\clean_Prestige - Meister der Magie (2006).mkv
+  -> Speichere aufgerÃ¤umte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Sausage Party - Es geht um die Wurst (2016).mkv ---
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:20:58]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 12.2s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English (SDH)')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 7 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:21:07]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 9.5s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: ara, Titel: 'Arabic')
+       Starte Precision-OCR (Modell: ara+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ar' (Sicherheit: 100.0%)
+[2026-08-23 13:21:13]      => OCR KI Korrektur: War 'ara', ist jetzt 'ar' (Sicherheit: 100.0%, Dauer: 6.1s)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: bul, Titel: 'Bulgarian')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ro' (Sicherheit: 28.6%)
+[2026-08-23 13:21:24]      => OCR KI Korrektur: War 'bul', ist jetzt 'ro' (Sicherheit: 28.6%, Dauer: 11.0s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: hrv, Titel: 'Croatian')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'hr' (Sicherheit: 85.7%)
+[2026-08-23 13:21:35]      => OCR KI Korrektur: War 'hrv', ist jetzt 'hr' (Sicherheit: 85.7%, Dauer: 10.5s)
+  -> PrÃ¼fe Untertitel Spur 8 (Codec: hdmv_pgs_subtitle, Lang: cze, Titel: 'Czech')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'cs' (Sicherheit: 85.7%)
+[2026-08-23 13:21:45]      => OCR KI Korrektur: War 'cze', ist jetzt 'cs' (Sicherheit: 85.7%, Dauer: 9.7s)
+  -> PrÃ¼fe Untertitel Spur 9 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: 'French')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 13:21:54]      => OCR KI BestÃ¤tigt: 'fre' (Sicherheit: 100.0%, Dauer: 9.5s)
+  -> PrÃ¼fe Untertitel Spur 10 (Codec: hdmv_pgs_subtitle, Lang: gre, Titel: 'Greek')
+       Starte Precision-OCR (Modell: ell+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'el' (Sicherheit: 100.0%)
+[2026-08-23 13:22:00]      => OCR KI Korrektur: War 'gre', ist jetzt 'el' (Sicherheit: 100.0%, Dauer: 6.3s)
+  -> PrÃ¼fe Untertitel Spur 11 (Codec: hdmv_pgs_subtitle, Lang: heb, Titel: 'Hebrew')
+       Starte Precision-OCR (Modell: heb+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'he' (Sicherheit: 100.0%)
+[2026-08-23 13:22:07]      => OCR KI Korrektur: War 'heb', ist jetzt 'he' (Sicherheit: 100.0%, Dauer: 6.2s)
+  -> PrÃ¼fe Untertitel Spur 12 (Codec: hdmv_pgs_subtitle, Lang: hun, Titel: 'Hungarian')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'hu' (Sicherheit: 100.0%)
+[2026-08-23 13:22:16]      => OCR KI Korrektur: War 'hun', ist jetzt 'hu' (Sicherheit: 100.0%, Dauer: 9.8s)
+  -> PrÃ¼fe Untertitel Spur 13 (Codec: hdmv_pgs_subtitle, Lang: ice, Titel: 'Icelandic')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'no' (Sicherheit: 85.7%)
+[2026-08-23 13:22:26]      => OCR KI Korrektur: War 'ice', ist jetzt 'no' (Sicherheit: 85.7%, Dauer: 9.8s)
+  -> PrÃ¼fe Untertitel Spur 14 (Codec: hdmv_pgs_subtitle, Lang: pol, Titel: 'Polish')
+       Starte Precision-OCR (Modell: pol+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'pl' (Sicherheit: 100.0%)
+[2026-08-23 13:22:33]      => OCR KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 7.0s)
+  -> PrÃ¼fe Untertitel Spur 15 (Codec: hdmv_pgs_subtitle, Lang: por, Titel: 'Portuguese')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'pt' (Sicherheit: 100.0%)
+[2026-08-23 13:22:43]      => OCR KI Korrektur: War 'por', ist jetzt 'pt' (Sicherheit: 100.0%, Dauer: 9.6s)
+  -> PrÃ¼fe Untertitel Spur 16 (Codec: hdmv_pgs_subtitle, Lang: rum, Titel: 'Romanian')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ro' (Sicherheit: 100.0%)
+[2026-08-23 13:22:52]      => OCR KI Korrektur: War 'rum', ist jetzt 'ro' (Sicherheit: 100.0%, Dauer: 9.6s)
+  -> PrÃ¼fe Untertitel Spur 17 (Codec: hdmv_pgs_subtitle, Lang: rus, Titel: 'Russian')
+       Starte Precision-OCR (Modell: rus+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'ru' (Sicherheit: 100.0%)
+[2026-08-23 13:22:59]      => OCR KI Korrektur: War 'rus', ist jetzt 'ru' (Sicherheit: 100.0%, Dauer: 6.4s)
+  -> PrÃ¼fe Untertitel Spur 18 (Codec: hdmv_pgs_subtitle, Lang: srp, Titel: 'Serbian')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'hr' (Sicherheit: 100.0%)
+[2026-08-23 13:23:08]      => OCR KI Korrektur: War 'srp', ist jetzt 'hr' (Sicherheit: 100.0%, Dauer: 9.7s)
+  -> PrÃ¼fe Untertitel Spur 19 (Codec: hdmv_pgs_subtitle, Lang: slo, Titel: 'Slovak')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'sk' (Sicherheit: 100.0%)
+[2026-08-23 13:23:18]      => OCR KI Korrektur: War 'slo', ist jetzt 'sk' (Sicherheit: 100.0%, Dauer: 10.0s)
+  -> PrÃ¼fe Untertitel Spur 20 (Codec: hdmv_pgs_subtitle, Lang: slv, Titel: 'Slovenian')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'sl' (Sicherheit: 100.0%)
+[2026-08-23 13:23:28]      => OCR KI Korrektur: War 'slv', ist jetzt 'sl' (Sicherheit: 100.0%, Dauer: 10.2s)
+  -> PrÃ¼fe Untertitel Spur 21 (Codec: hdmv_pgs_subtitle, Lang: spa, Titel: 'Spanish (Castilian)')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 13:23:39]      => OCR KI BestÃ¤tigt: 'spa' (Sicherheit: 100.0%, Dauer: 10.6s)
+  -> PrÃ¼fe Untertitel Spur 22 (Codec: hdmv_pgs_subtitle, Lang: tur, Titel: 'Turkish')
+       Starte Precision-OCR (Modell: tur+eng) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'tr' (Sicherheit: 100.0%)
+[2026-08-23 13:23:46]      => OCR KI Korrektur: War 'tur', ist jetzt 'tr' (Sicherheit: 100.0%, Dauer: 6.6s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (98.5%)
+       Whisper KI (Spot 1087s): ger (98.7%)
+       Whisper KI (Spot 1875s): ger (97.9%)
+       Whisper KI (Spot 2662s): ger (98.2%)
+       Whisper KI (Spot 3450s): eng (56.6%)
+       Whisper KI (Spot 4237s): ger (98.2%)
+[2026-08-23 13:23:49]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 98.3%, Dauer: 3.1s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (99.3%)
+       Whisper KI (Spot 1087s): eng (95.5%)
+       Whisper KI (Spot 1875s): eng (98.7%)
+       Whisper KI (Spot 2662s): eng (99.5%)
+       Whisper KI (Spot 3450s): eng (55.6%)
+       Whisper KI (Spot 4237s): eng (97.2%)
+[2026-08-23 13:23:51]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 91.0%, Dauer: 1.8s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Schindlers Liste (1993).mkv ---
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 8 Marker gefunden (Limit: 3). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:28:21]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 14.1s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: spa, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 13:28:34]      => OCR KI BestÃ¤tigt: 'spa' (Sicherheit: 100.0%, Dauer: 13.4s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: spa, Titel: '')
+     => FORCED ERKANNT (100 Pakete). Setze Forced-Tag.
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-23 13:28:50]      => OCR KI BestÃ¤tigt: 'spa' (Sicherheit: 100.0%, Dauer: 15.5s)
+  -> PrÃ¼fe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 13:29:03]      => OCR KI BestÃ¤tigt: 'fre' (Sicherheit: 100.0%, Dauer: 13.0s)
+  -> PrÃ¼fe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: '')
+     => FORCED ERKANNT (96 Pakete). Setze Forced-Tag.
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-23 13:29:19]      => OCR KI BestÃ¤tigt: 'fre' (Sicherheit: 100.0%, Dauer: 16.3s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): ger (41.6%)
+       Whisper KI (Spot 2151s): ger (99.5%)
+       Whisper KI (Spot 4003s): ger (98.9%)
+       Whisper KI (Spot 5855s): ger (95.1%)
+       Whisper KI (Spot 7707s): ger (96.9%)
+       Whisper KI (Spot 9558s): ger (99.3%)
+[2026-08-23 13:29:24]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 88.5%, Dauer: 4.5s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): eng (82.9%)
+       Whisper KI (Spot 2151s): eng (87.6%)
+       Whisper KI (Spot 4003s): eng (50.4%)
+       Whisper KI (Spot 5855s): eng (81.4%)
+       Whisper KI (Spot 7707s): eng (66.4%)
+       Whisper KI (Spot 9558s): eng (90.6%)
+[2026-08-23 13:29:25]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 76.5%, Dauer: 1.5s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv ---
+       Starte ffsubsync (KI-AutoSync) fÃ¼r Spur...
+  -> PrÃ¼fe Untertitel Spur 3 (Codec: subrip, Lang: ger, Titel: 'Deutsch Forced')
+[2026-08-23 13:29:37]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 5.0s). Ersetze Spur 3.
+[2026-08-23 13:29:37]      => FAKE FORCED ERKANNT! (194 Zeilen). Entferne Forced-Tag.
+[2026-08-23 13:29:37]      => Text KI BestÃ¤tigt: 'ger' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> PrÃ¼fe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Forced')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:29:46]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 8.9s)
+  -> PrÃ¼fe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: 'English Full')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 50 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 12 Marker gefunden (Limit: 2). Markiere als SchwerhÃ¶rig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-23 13:29:54]      => OCR KI BestÃ¤tigt: 'eng' (Sicherheit: 100.0%, Dauer: 7.9s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): zh (19.7%)
+       Whisper KI (Spot 1433s): eng (32.1%)
+       Whisper KI (Spot 2566s): ger (98.4%)
+       Whisper KI (Spot 3699s): ger (99.3%)
+       Whisper KI (Spot 4833s): ger (96.4%)
+       Whisper KI (Spot 5966s): eng (84.4%)
+[2026-08-23 13:29:56]      => Audio KI BestÃ¤tigt: 'ger' (Sicherheit: 98.0%, Dauer: 1.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel fÃ¼r Audio-Analyse.
+       Whisper KI (Spot 300s): nn (50.5%)
+       Whisper KI (Spot 1433s): eng (33.0%)
+       Whisper KI (Spot 2566s): eng (98.9%)
+       Whisper KI (Spot 3699s): eng (96.9%)
+       Whisper KI (Spot 4833s): eng (97.8%)
+       Whisper KI (Spot 5966s): eng (70.6%)
+[2026-08-23 13:29:58]      => Audio KI BestÃ¤tigt: 'eng' (Sicherheit: 79.5%, Dauer: 1.6s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\Shape of Water - Das Flüstern des Wassers (2017).mkv -i F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\sub_3_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=ger -disposition:s:0 0 -map 0:4 -metadata:s:s:1 title= -metadata:s:s:1 language=eng -disposition:s:1 forced -map 0:5 -metadata:s:s:2 title= -metadata:s:s:2 language=eng -disposition:s:2 hearing_impaired -c copy F:\Jellyfin_AI_Cockpit\src\ai_metatagger\core\..\..\..\data\temp_cleanup\clean_Shape of Water - Das Flüstern des Wassers (2017).mkv
+  -> Speichere aufgerÃ¤umte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
