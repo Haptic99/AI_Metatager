@@ -55,6 +55,8 @@ class AnalysisThread(QtCore.QThread):
         file_stats = []
         total_points = 0
         w_audio = 2
+        import time
+        prescan_start = time.time()
         w_pgs = 10
         w_srt = 1
         w_mux = 2
@@ -85,20 +87,34 @@ class AnalysisThread(QtCore.QThread):
             total_points += w_mux
             file_stats.append({'total_tracks': f_aud + f_sub})
             
+        prescan_dur = time.time() - prescan_start
+        try:
+            csv_path = os.path.join(os.path.dirname(DB_PATH), "Performance_Log.csv")
+            write_header = not os.path.exists(csv_path)
+            with open(csv_path, "a", encoding="utf-8") as f:
+                if write_header: f.write("Movie,TrackType,Codec,DurationSec\n")
+                f.write(f'"ALL",prescan,ffprobe,{prescan_dur:.2f}\n')
+        except: pass
+        
         if total_points == 0: total_points = 1
         points_done = 0
+        fractional_points = 0.0
         current_movie_idx = 0
         current_track_idx = 0
         start_time = time.time()
+        track_start_times = {}
         
-        def progress_callback(track_type, idx, status, codec=''):
-            nonlocal points_done, current_track_idx
+        def progress_callback(track_type, idx, status, codec='', step_idx=0, total_steps=1):
+            nonlocal points_done, current_track_idx, fractional_points
             
             stat = file_stats[current_movie_idx]
             total_in_file = stat['total_tracks']
             basename = os.path.basename(self.file_paths[current_movie_idx])
             
             if status == 'start':
+                if step_idx == 0:
+                    track_start_times[f"{track_type}_{idx}"] = time.time()
+                fractional_points = 0.0
                 if track_type != 'muxing':
                     current_track_idx += 1
                 pct = int((points_done / total_points) * 100)
@@ -110,7 +126,36 @@ class AnalysisThread(QtCore.QThread):
                     msg = f"Film {current_movie_idx+1}/{total}: '{basename}' | Speichere Film..."
                 self.progress_update.emit(pct, 100, msg)
                 
+            elif status == 'step':
+                if track_type == 'subtitle' and codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']:
+                    if total_steps > 0:
+                        fractional_points = (step_idx / total_steps) * w_pgs
+                        pd_f = points_done + fractional_points
+                        pct = int((pd_f / total_points) * 100)
+                        
+                        elapsed = time.time() - start_time
+                        if pd_f > 0:
+                            total_est = (elapsed / pd_f) * total_points
+                            rem_sec = max(0, total_est - elapsed)
+                            mins = int(rem_sec // 60)
+                            secs = int(rem_sec % 60)
+                            eta_str = f"ca. {mins} Min {secs} Sek verbleibend"
+                        else:
+                            eta_str = "Berechne Zeit"
+                            
+                        msg = f"Film {current_movie_idx+1}/{total}: '{basename}' | Analysiere Untertitel (Spur {current_track_idx}/{total_in_file}) | {eta_str}"
+                        self.progress_update.emit(pct, 100, msg)
             elif status == 'done':
+                dur = time.time() - track_start_times.get(f"{track_type}_{idx}", time.time())
+                try:
+                    csv_path = os.path.join(os.path.dirname(DB_PATH), "Performance_Log.csv")
+                    write_header = not os.path.exists(csv_path)
+                    with open(csv_path, "a", encoding="utf-8") as f:
+                        if write_header: f.write("Movie,TrackType,Codec,DurationSec\n")
+                        f.write(f'"{basename}",{track_type},{codec},{dur:.2f}\n')
+                except: pass
+                
+                fractional_points = 0.0
                 if track_type == 'audio': points_done += w_audio
                 elif track_type == 'subtitle':
                     if codec in ['hdmv_pgs_subtitle', 'dvd_subtitle', 'dvdsub', 'pgssub']: points_done += w_pgs
