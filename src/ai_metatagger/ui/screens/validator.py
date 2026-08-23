@@ -622,7 +622,6 @@ class Screen3Validator(QtWidgets.QWidget):
         new_forced = self.cmb_forced.currentText() == "Ja"
         new_titel = self.txt_titel.text()
         accuracy_file = r"F:\Jellyfin_AI_Cockpit\data\KI_Accuracy.json"
-        import os
         os.makedirs(os.path.dirname(accuracy_file), exist_ok=True)
         stats = {"total": 0, "correct_lang": 0, "correct_sdh": 0, "correct_forced": 0, "perfect_tracks": 0}
         if os.path.exists(accuracy_file):
