@@ -633,6 +633,7 @@ class Screen3Validator(QtWidgets.QWidget):
         # Check if the movie is completely validated
         film = self.df.at[row_idx, 'file_name']
         remaining_for_film = self.df[(self.df['file_name'] == film) & (self.df['is_validated'] == False)]
+        player_ref = None
         if remaining_for_film.empty:
             # Release file lock and delete asynchronously to prevent VLC deadlocks
             import threading
@@ -650,7 +651,6 @@ class Screen3Validator(QtWidgets.QWidget):
                     print(f"Cleanup error: {e}")
                     
             filepath = os.path.join(DIR_TEST, film)
-            player_ref = None
             if getattr(self, 'current_film', None) == film:
                 player_ref = self.media_player
                 # Clear current film so load_row creates a new instance if needed
