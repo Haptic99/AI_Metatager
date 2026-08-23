@@ -625,7 +625,7 @@ class Screen3Validator(QtWidgets.QWidget):
         self.df.at[row_idx, 'is_forced'] = new_forced
         self.df.at[row_idx, 'track_name'] = new_titel
         self.df.at[row_idx, 'is_validated'] = True
-        self.df.to_excel(DB_PATH, index=False)
+        save_matrix(self.df)
         
         # Check if the movie is completely validated
         film = self.df.at[row_idx, 'file_name']
