@@ -7,7 +7,7 @@ import pandas as pd
 from PyQt5 import QtCore
 from ai_metatagger.config import DIR_TEST, MKVPROPEDIT, PYTHON_EXE, DB_PATH
 from ai_metatagger.utils.state_manager import load_state, save_state, load_matrix, save_matrix
-from ai_metatagger.core import analyzer
+from ai_metatagger.core import processor as analyzer
 class AnalysisThread(QtCore.QThread):
     progress_update = QtCore.pyqtSignal(int, int, str)
     movie_ready = QtCore.pyqtSignal()
