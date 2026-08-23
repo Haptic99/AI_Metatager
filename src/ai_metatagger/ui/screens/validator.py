@@ -415,7 +415,13 @@ class Screen3Validator(QtWidgets.QWidget):
                 import json
                 state_data = load_state()
                 val_dict = state_data[film][trk_id]['Validated']
-                all_valid = all(val_dict.values())
+                
+                is_audio = str(self.current_row['track_type']).lower() == 'audio'
+                if is_audio:
+                    # For audio, only 'lang' needs to be validated
+                    all_valid = val_dict.get('lang', False)
+                else:
+                    all_valid = all(val_dict.values())
             except: pass
         self.btn_save.setEnabled(all_valid)
     def load_row(self):
@@ -491,11 +497,24 @@ class Screen3Validator(QtWidgets.QWidget):
             self.lbl_ki_forced.setText("Ja" if ki_data.get('forced') else "Nein")
             name_val = ki_data.get('name', '')
             self.lbl_ki_name.setText(str(name_val) if name_val else "-")
+        
+            # Reset Button colors based on state
+            val_data = state_data.get(film, {}).get(trk_id, {}).get('Validated', {})
+            for field in ['lang', 'sdh', 'forced', 'name']:
+                btn = getattr(self, f"btn_valid_{field}")
+                if val_data.get(field):
+                    btn.setStyleSheet("background-color: #4caf50; color: white;")
+                else:
+                    btn.setStyleSheet("")
+            self.check_all_fields_validated()
         except Exception as e:
             self.lbl_ki_lang.setText("-")
             self.lbl_ki_sdh.setText("-")
             self.lbl_ki_forced.setText("-")
             self.lbl_ki_name.setText("-")
+            for field in ['lang', 'sdh', 'forced', 'name']:
+                getattr(self, f"btn_valid_{field}").setStyleSheet("")
+            self.check_all_fields_validated()
         filepath = os.path.join(DIR_TEST, film)
         if not os.path.exists(filepath):
             for d in [DIR_FILME, DIR_SERIEN]:
