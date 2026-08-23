@@ -530,6 +530,23 @@ class Screen3Validator(QtWidgets.QWidget):
         self.df.at[row_idx, 'track_name'] = new_titel
         self.df.at[row_idx, 'is_validated'] = True
         self.df.to_excel(DB_PATH, index=False)
+        
+        # Check if the movie is completely validated
+        film = self.df.at[row_idx, 'file_name']
+        remaining_for_film = self.df[(self.df['file_name'] == film) & (self.df['is_validated'] == False)]
+        if remaining_for_film.empty:
+            # Stop media player if it is playing this film
+            if getattr(self, 'current_film', None) == film:
+                if self.media_player:
+                    self.media_player.stop()
+            # Delete file
+            filepath = os.path.join(DIR_TEST, film)
+            if os.path.exists(filepath):
+                try:
+                    os.remove(filepath)
+                except Exception as e:
+                    print(f"Konnte Datei nicht lschen: {e}")
+                    
         for i in range(self.track_list.rowCount()):
             item = self.track_list.item(i, 0)
             if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
