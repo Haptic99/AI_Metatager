@@ -375,6 +375,16 @@ class Screen3Validator(QtWidgets.QWidget):
     def populate_track_list(self, movie_name):
         self.track_list.setRowCount(0)
         row_count = 0
+        
+        st_data = {}
+        try:
+            state_file = os.path.join(os.path.dirname(DB_PATH), 'validation_state.json')
+            if os.path.exists(state_file):
+                import json
+                with open(state_file, 'r', encoding='utf-8') as f:
+                    st_data = json.load(f)
+        except: pass
+        
         for i, row_idx in enumerate(self.auto_rows):
             row = self.df.loc[row_idx]
             if row['file_name'] == movie_name:
@@ -391,6 +401,21 @@ class Screen3Validator(QtWidgets.QWidget):
                     item_spur.setForeground(QtGui.QColor("#aaaaaa"))
                     item_art.setForeground(QtGui.QColor("#aaaaaa"))
                     item_codec.setForeground(QtGui.QColor("#aaaaaa"))
+                else:
+                    try:
+                        film = row['file_name']
+                        trk_id = str(row['track_id'])
+                        val_dict = st_data.get(film, {}).get(trk_id, {}).get('Validated', {})
+                        is_audio = str(row['track_type']).lower() == 'audio'
+                        if is_audio:
+                            all_v = val_dict.get('lang', False)
+                        else:
+                            all_v = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
+                        if all_v:
+                            item_spur.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
+                            item_art.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
+                            item_codec.setBackground(QtGui.QBrush(QtGui.QColor("#1b5e20")))
+                    except: pass
                     
                 self.track_list.setItem(row_count, 0, item_spur)
                 self.track_list.setItem(row_count, 1, item_art)
