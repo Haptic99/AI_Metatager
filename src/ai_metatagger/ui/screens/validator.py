@@ -225,7 +225,6 @@ class Screen3Validator(QtWidgets.QWidget):
         self.btn_save = QtWidgets.QPushButton("✔ Spur bestätigen & Weiter")
         self.btn_save.setStyleSheet("background-color: #2e7d32; font-size: 14px; padding: 12px;")
         self.btn_save.clicked.connect(self.save_and_next)
-        self.btn_save.setEnabled(False)
         right_layout.addWidget(self.btn_save)
         self.btn_next_screen = QtWidgets.QPushButton("Validierung abschließen ➔")
         self.btn_next_screen.clicked.connect(lambda: self.parent.stacked.setCurrentIndex(1))
@@ -309,7 +308,8 @@ class Screen3Validator(QtWidgets.QWidget):
     def check_for_new_data(self):
         if not os.path.exists(DB_PATH): return
         self.df = load_matrix()
-        auto_mask = self.df['is_validated'] == False
+        unvalidated_movies = self.df[self.df['is_validated'] == False]['file_name'].unique()
+        auto_mask = self.df['file_name'].isin(unvalidated_movies)
         if auto_mask.any():
             self.auto_rows = self.df[auto_mask].index.tolist()
             self.update_movie_list()
@@ -326,8 +326,7 @@ class Screen3Validator(QtWidgets.QWidget):
                 self.lbl_huge_header.setText("Alles erledigt!")
             if hasattr(self, 'lbl_huge_track'):
                 self.lbl_huge_track.setText("")
-            if hasattr(self, 'btn_save'):
-                self.btn_save.setEnabled(False)
+                pass
     def switch_vlc_track(self, typ, spur_index):
         if str(typ).lower() == "untertitel":
             all_rows_for_film = self.df[self.df['file_name'] == self.current_row['file_name']]
@@ -463,8 +462,6 @@ class Screen3Validator(QtWidgets.QWidget):
                 else:
                     all_valid = all(val_dict.values())
             except: pass
-        self.btn_save.setEnabled(all_valid)
-        
         # Color the current track row in track_list
         for i in range(self.track_list.rowCount()):
             item = self.track_list.item(i, 0)
@@ -479,7 +476,6 @@ class Screen3Validator(QtWidgets.QWidget):
                 break
     def load_row(self):
         if self.current_idx >= len(self.auto_rows) or len(self.auto_rows) == 0:
-            self.btn_save.setEnabled(False)
             if len(self.auto_rows) == 0:
                 self.current_film = None
                 self.track_list.setRowCount(0)
@@ -595,6 +591,28 @@ class Screen3Validator(QtWidgets.QWidget):
         elif filepath == self.current_filepath:
             self.switch_vlc_track(typ, int(spur))
     def save_and_next(self):
+        # -- Check if current track is fully validated before saving --
+        film = self.current_row['file_name']
+        trk_id = str(self.current_row['track_id'])
+        state_file = os.path.join(os.path.dirname(DB_PATH), 'validation_state.json')
+        all_valid = False
+        if os.path.exists(state_file):
+            try:
+                import json
+                with open(state_file, 'r', encoding='utf-8') as f:
+                    state_data = json.load(f)
+                val_dict = state_data.get(film, {}).get(trk_id, {}).get('Validated', {})
+                is_audio = str(self.current_row['track_type']).lower() == 'audio'
+                if is_audio:
+                    all_valid = val_dict.get('lang', False)
+                else:
+                    all_valid = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
+            except: pass
+            
+        if not all_valid:
+            QtWidgets.QMessageBox.warning(self, "Fehlende Prüfung", "Bitte überprüfe und setze erst alle Häkchen (Zeilen) für diese Spur!")
+            return
+            
         row_idx = self.auto_rows[self.current_idx]
         original_lang = str(self.df.at[row_idx, 'language_iso'])
         original_sdh = bool(self.df.at[row_idx, 'is_hearing_impaired'])
@@ -670,7 +688,8 @@ class Screen3Validator(QtWidgets.QWidget):
         self.current_idx += 1
         # Refresh auto rows
         self.df = load_matrix()
-        auto_mask = self.df['is_validated'] == False
+        unvalidated_movies = self.df[self.df['is_validated'] == False]['file_name'].unique()
+        auto_mask = self.df['file_name'].isin(unvalidated_movies)
         self.auto_rows = self.df[auto_mask].index.tolist() if auto_mask.any() else []
         self.update_movie_list()
         if self.current_idx >= len(self.auto_rows):

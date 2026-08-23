@@ -332,7 +332,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
         first_img = None
         for i, ts in enumerate(sample_timestamps[:50]):
             movie_base = os.path.basename(filepath)
-            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{stream_idx}_test.png")
+            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[stream_idx]}_test.png")
             if extract_subtitle_image(filepath, stream_idx, ts, out_img):
                 try:
                     from PIL import Image
@@ -367,7 +367,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
 
         def extract_and_ocr(ts, i):
             movie_base = os.path.basename(filepath)
-            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{stream_idx}_{i:03d}.png")
+            out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[stream_idx]}_{i:03d}.png")
             if extract_subtitle_image(filepath, stream_idx, ts, out_img):
                 try:
                     from PIL import Image
@@ -393,7 +393,7 @@ def analyze_subtitle_pgs(filepath, stream_idx, codec_name, duration, is_forced_m
                 
         # Schreibe alles in eine Textdatei fÃ¼r spÃ¤tere ÃœberprÃ¼fungen
         movie_base = os.path.basename(filepath)
-        ocr_file = os.path.join(TEMP_DIR, f"{movie_base}_sub_{stream_idx}_OCR.txt")
+        ocr_file = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[stream_idx]}_OCR.txt")
         with open(ocr_file, "w", encoding="utf-8") as f:
             f.write(combined_text)
             
@@ -484,15 +484,15 @@ def process_file(filepath, progress_callback=None):
     for idx, s in sub_streams:
         if s.get('codec_name') in ['subrip', 'ass']:
             movie_base = os.path.basename(filepath)
-            out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{idx}.srt")
+            out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}.srt")
             subprocess.run(["ffmpeg", "-v", "quiet", "-y", "-i", filepath, "-map", f"0:{idx}", out_sub])
             if os.path.exists(out_sub):
                 sync_tasks.append(idx)
                 
     def do_sync(idx):
         movie_base = os.path.basename(filepath)
-        out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{idx}.srt")
-        synced_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{idx}_synced.srt")
+        out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}.srt")
+        synced_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}_synced.srt")
         start_t = time.time()
         success, offset, scale = auto_sync_subtitle(filepath, out_sub, synced_sub)
         return idx, success, offset, scale, time.time() - start_t
@@ -526,9 +526,9 @@ def process_file(filepath, progress_callback=None):
         
         if codec in ['subrip', 'ass']:
             movie_base = os.path.basename(filepath)
-            out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{idx}.srt")
+            out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}.srt")
             movie_base = os.path.basename(filepath)
-            synced_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{idx}_synced.srt")
+            synced_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}_synced.srt")
             
             if idx in sync_results:
                 sync_success, sync_offset, sync_scale, dur = sync_results[idx]
