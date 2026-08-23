@@ -8,6 +8,9 @@ def main():
         app = QtWidgets.QApplication(sys.argv)
         app.setStyle('Fusion')
         window = CockpitWizard()
+        screen = app.primaryScreen()
+        if screen:
+            window.move(screen.geometry().topLeft())
         window.showMaximized()
         sys.exit(app.exec_())
     except Exception as e:

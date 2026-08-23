@@ -29,8 +29,8 @@ class AnalysisThread(QtCore.QThread):
             is_forced = 'FORCED' in title.upper()
             track_type = "Audio" if s.get('codec_type') == 'audio' else "Untertitel"
             codec = s.get('codec_name', '').lower()
-            if track_type == "Audio": sub_type = "Audio"
-            elif 'pgs' in codec or 'dvd' in codec: sub_type = "PGS"
+            if track_type == "Audio": sub_type = ""
+            elif 'pgs' in codec or 'dvd' in codec: sub_type = "PGSSUB"
             else: sub_type = "SRT"
             
             tracks.append({
