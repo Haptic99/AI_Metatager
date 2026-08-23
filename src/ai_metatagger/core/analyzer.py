@@ -456,6 +456,9 @@ def process_file(filepath, progress_callback=None):
                 except: duration = 0
             break
 
+    non_video_streams = [s for s in streams if s.get('codec_type') != 'video']
+    track_id_map = {s.get('index'): tid for tid, s in enumerate(non_video_streams, start=1)}
+
     audio_streams = []
     sub_streams = []
     for i, s in enumerate(streams):
