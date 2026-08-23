@@ -104,9 +104,14 @@ class Screen3Validator(QtWidgets.QWidget):
         lbl_title = QtWidgets.QLabel("Feld-für-Feld Validierung")
         lbl_title.setFont(QtGui.QFont("Segoe UI", 16, QtGui.QFont.Bold))
         right_layout.addWidget(lbl_title)
-        self.lbl_info = QtWidgets.QLabel("Film: -\\nSpur: -")
-        right_layout.addWidget(self.lbl_info)
-        self.track_list = QtWidgets.QListWidget()
+        self.track_list = QtWidgets.QTableWidget()
+        self.track_list.setColumnCount(3)
+        self.track_list.setHorizontalHeaderLabels(["Spur", "Art", "Codec"])
+        self.track_list.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.track_list.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.track_list.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.track_list.verticalHeader().setVisible(False)
+        self.track_list.horizontalHeader().setStretchLastSection(True)
         self.track_list.setMaximumHeight(150)
         self.track_list.itemClicked.connect(self.on_track_selected)
         right_layout.addWidget(self.track_list)
@@ -264,7 +269,7 @@ class Screen3Validator(QtWidgets.QWidget):
         if auto_mask.any():
             self.auto_rows = self.df[auto_mask].index.tolist()
             self.update_movie_list()
-            if self.lbl_info.text() == "Film: -\\nSpur: -":
+            if getattr(self, 'current_film', None) is None:
                 self.current_idx = 0
                 self.load_row()
     def switch_vlc_track(self, typ, spur_index):
@@ -382,14 +387,13 @@ class Screen3Validator(QtWidgets.QWidget):
             self.current_film = film
             self.populate_track_list(film)
         # Highlight in track list
-        for i in range(self.track_list.count()):
-            item = self.track_list.item(i)
-            if item.data(QtCore.Qt.UserRole) == self.current_idx:
+        for i in range(self.track_list.rowCount()):
+            item = self.track_list.item(i, 0)
+            if item and item.data(QtCore.Qt.UserRole) == self.current_idx:
                 self.track_list.setCurrentItem(item)
                 break
         spur = row['track_id']
         typ = row['track_type']
-        self.lbl_info.setText(f"Film: {film}\\nSpur: {spur} ({typ})\\nFortschritt: {self.current_idx + 1} von {len(self.auto_rows)} geladenen Spuren")
         # Highlight in list
         for i in range(self.movie_list.count()):
             if self.movie_list.item(i).text() == film:
