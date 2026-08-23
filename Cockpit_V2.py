@@ -424,9 +424,11 @@ class Screen3Validator(QtWidgets.QWidget):
         self.timer.start()
 
     def go_back(self):
-        self.media_player.stop()
+        try:
+            self.media_player.pause()
+        except:
+            pass
         self.parent.stacked.setCurrentIndex(0)
-        self.parent.screen1.scan_files()
 
     def update_movie_list(self):
         self.movie_list.clear()
@@ -659,7 +661,10 @@ class Screen3Validator(QtWidgets.QWidget):
             self.lbl_time.setText(f"{t//60:02d}:{t%60:02d} / {l//60:02d}:{l%60:02d}")
             
     def stop(self):
-        self.media_player.stop()
+        try:
+            self.media_player.pause()
+        except:
+            pass
 
 class Screen4Trainer(QtWidgets.QWidget):
     def __init__(self, parent):
