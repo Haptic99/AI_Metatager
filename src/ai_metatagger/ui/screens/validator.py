@@ -390,6 +390,23 @@ class Screen3Validator(QtWidgets.QWidget):
             self.txt_titel.setText(str(row['track_name']))
         else:
             self.txt_titel.setText("")
+            
+        try:
+            state_data = load_state()
+            trk_id = str(row['track_id'])
+            film = row['file_name']
+            ki_data = state_data.get(film, {}).get(trk_id, {}).get('KI', {})
+            
+            self.lbl_ki_lang.setText(str(ki_data.get('lang', '-')))
+            self.lbl_ki_sdh.setText("Ja" if ki_data.get('sdh') else "Nein")
+            self.lbl_ki_forced.setText("Ja" if ki_data.get('forced') else "Nein")
+            name_val = ki_data.get('name', '')
+            self.lbl_ki_name.setText(str(name_val) if name_val else "-")
+        except Exception as e:
+            self.lbl_ki_lang.setText("-")
+            self.lbl_ki_sdh.setText("-")
+            self.lbl_ki_forced.setText("-")
+            self.lbl_ki_name.setText("-")
         filepath = os.path.join(DIR_TEST, film)
         if not os.path.exists(filepath):
             for d in [DIR_FILME, DIR_SERIEN]:
