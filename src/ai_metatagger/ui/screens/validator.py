@@ -154,6 +154,7 @@ class Screen3Validator(QtWidgets.QWidget):
         self.cmb_lang.setEditable(True)
         self.form_grid.addWidget(self.cmb_lang, 1, 2)
         self.btn_test_lang = QtWidgets.QPushButton("▶ Text")
+        self.btn_test_lang.setStyleSheet('background-color: #555555; color: white;')
         self.btn_test_lang.clicked.connect(lambda: self.seek_absolute(300000))
         self.form_grid.addWidget(self.btn_test_lang, 1, 3)
         self.btn_valid_lang = QtWidgets.QPushButton("✔")
@@ -168,6 +169,7 @@ class Screen3Validator(QtWidgets.QWidget):
         self.cmb_sdh.addItems(["Nein", "Ja"])
         self.form_grid.addWidget(self.cmb_sdh, 2, 2)
         self.btn_test_sdh = QtWidgets.QPushButton("▶ Marker")
+        self.btn_test_sdh.setStyleSheet('background-color: #555555; color: white;')
         self.btn_test_sdh.clicked.connect(lambda: self.seek_absolute(600000))
         self.form_grid.addWidget(self.btn_test_sdh, 2, 3)
         self.btn_valid_sdh = QtWidgets.QPushButton("✔")
@@ -182,6 +184,7 @@ class Screen3Validator(QtWidgets.QWidget):
         self.cmb_forced.addItems(["Nein", "Ja"])
         self.form_grid.addWidget(self.cmb_forced, 3, 2)
         self.btn_test_forced = QtWidgets.QPushButton("▶ Forced")
+        self.btn_test_forced.setStyleSheet('background-color: #555555; color: white;')
         self.btn_test_forced.clicked.connect(lambda: self.seek_absolute(900000))
         self.form_grid.addWidget(self.btn_test_forced, 3, 3)
         self.btn_valid_forced = QtWidgets.QPushButton("✔")
@@ -631,17 +634,28 @@ class Screen3Validator(QtWidgets.QWidget):
         film = self.df.at[row_idx, 'file_name']
         remaining_for_film = self.df[(self.df['file_name'] == film) & (self.df['is_validated'] == False)]
         if remaining_for_film.empty:
-            # Stop media player if it is playing this film
-            if getattr(self, 'current_film', None) == film:
-                if self.media_player:
-                    self.media_player.stop()
-            # Delete file
-            filepath = os.path.join(DIR_TEST, film)
-            if os.path.exists(filepath):
+            # Release file lock and delete asynchronously to prevent VLC deadlocks
+            import threading
+            
+            def cleanup_file(player, path):
                 try:
-                    os.remove(filepath)
+                    if player:
+                        player.stop()
+                    if os.path.exists(path):
+                        os.remove(path)
                 except Exception as e:
-                    print(f"Konnte Datei nicht lschen: {e}")
+                    print(f"Cleanup error: {e}")
+                    
+            filepath = os.path.join(DIR_TEST, film)
+            player_ref = None
+            if getattr(self, 'current_film', None) == film:
+                player_ref = self.media_player
+                # Clear current film so load_row creates a new instance if needed
+                self.current_film = None 
+                self.media_player = None
+                self.vlc_instance = None
+                
+            threading.Thread(target=cleanup_file, args=(player_ref, filepath), daemon=True).start()
                     
         for i in range(self.track_list.rowCount()):
             item = self.track_list.item(i, 0)
