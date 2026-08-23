@@ -1,3 +1,9 @@
+﻿import sys
+import io
+if sys.stdout is None:
+    sys.stdout = io.StringIO()
+if sys.stderr is None:
+    sys.stderr = io.StringIO()
 import os
 import sys
 
@@ -97,7 +103,7 @@ class AnalysisThread(QtCore.QThread):
                 "Effektiver Name": "",
                 "Standardspur": False,
                 "Untertitelart": "",
-                "Schwerhörig-Schalter": is_sdh,
+                "SchwerhÃ¶rig-Schalter": is_sdh,
                 "Anzeige erzwingen-Schalter": is_forced,
                 "Sonstiges": "AUTO"
             })
@@ -127,9 +133,9 @@ class AnalysisThread(QtCore.QThread):
             if os.path.exists(MATRIX_PATH):
                 df = pd.read_excel(MATRIX_PATH)
             else:
-                df = pd.DataFrame(columns=['Name', 'ID', 'Art', 'Effektive Sprache (ISO-Code)', 'Effektiver Name', 'Standardspur', 'Untertitelart', 'Schwerhörig-Schalter', 'Anzeige erzwingen-Schalter', 'Sonstiges'])
+                df = pd.DataFrame(columns=['Name', 'ID', 'Art', 'Effektive Sprache (ISO-Code)', 'Effektiver Name', 'Standardspur', 'Untertitelart', 'SchwerhÃ¶rig-Schalter', 'Anzeige erzwingen-Schalter', 'Sonstiges'])
                 
-            # SCHUTZ VOR ÜBERSCHREIBEN BEREITS VALIDIERTER SPUREN
+            # SCHUTZ VOR ÃœBERSCHREIBEN BEREITS VALIDIERTER SPUREN
             other_movies = df[df['Name'] != basename]
             current_movie = df[df['Name'] == basename]
             validated_tracks = current_movie[current_movie['Sonstiges'] != 'AUTO']
@@ -150,7 +156,7 @@ class Screen1Selection(QtWidgets.QWidget):
         self.parent = parent
         layout = QtWidgets.QVBoxLayout(self)
         
-        lbl_title = QtWidgets.QLabel("Schritt 1: Filme & Serien auswählen")
+        lbl_title = QtWidgets.QLabel("Schritt 1: Filme & Serien auswÃ¤hlen")
         lbl_title.setFont(QtGui.QFont("Segoe UI", 18, QtGui.QFont.Bold))
         layout.addWidget(lbl_title)
         
@@ -164,13 +170,13 @@ class Screen1Selection(QtWidgets.QWidget):
         bottom_layout = QtWidgets.QHBoxLayout()
         bottom_layout.addStretch()
         
-        self.btn_jump_validator = QtWidgets.QPushButton("Direkt zum Validator (0 Filme warten) ➔")
+        self.btn_jump_validator = QtWidgets.QPushButton("Direkt zum Validator (0 Filme warten) âž”")
         self.btn_jump_validator.setStyleSheet("background-color: #2e7d32;")
         self.btn_jump_validator.setEnabled(False)
         self.btn_jump_validator.clicked.connect(self.jump_to_validator)
         bottom_layout.addWidget(self.btn_jump_validator)
         
-        self.btn_next = QtWidgets.QPushButton("Neu Analysieren & Validieren ➔")
+        self.btn_next = QtWidgets.QPushButton("Neu Analysieren & Validieren âž”")
         self.btn_next.setEnabled(False)
         self.btn_next.clicked.connect(self.go_next)
         bottom_layout.addWidget(self.btn_next)
@@ -214,10 +220,10 @@ class Screen1Selection(QtWidgets.QWidget):
             basename = os.path.basename(mkv)
             if basename not in validated_movies:
                 if basename in auto_movies_in_matrix:
-                    item = QtWidgets.QListWidgetItem(f"⚠️ {basename} (Fehlt noch, wird erneut gescannt)")
+                    item = QtWidgets.QListWidgetItem(f"âš ï¸ {basename} (Fehlt noch, wird erneut gescannt)")
                     item.setForeground(QtGui.QColor("#ff9800"))
                 else:
-                    item = QtWidgets.QListWidgetItem(f"✨ {basename} (KOMPLETT NEU)")
+                    item = QtWidgets.QListWidgetItem(f"âœ¨ {basename} (KOMPLETT NEU)")
                     item.setForeground(QtGui.QColor("#4caf50"))
                     
                 item.setData(QtCore.Qt.UserRole, mkv)
@@ -225,15 +231,15 @@ class Screen1Selection(QtWidgets.QWidget):
                 count += 1
                 
         self.btn_next.setEnabled(count > 0)
-        self.lbl_desc.setText(f"Scan abgeschlossen ({count} Filme gefunden). Wähle Filme aus und drücke auf Analysieren.")
+        self.lbl_desc.setText(f"Scan abgeschlossen ({count} Filme gefunden). WÃ¤hle Filme aus und drÃ¼cke auf Analysieren.")
         if count > 0:
             self.list_widget.setCurrentRow(0)
         
         if len(auto_movies_in_matrix) > 0:
-            self.btn_jump_validator.setText(f"Direkt zum Validator ({len(auto_movies_in_matrix)} Filme warten) ➔")
+            self.btn_jump_validator.setText(f"Direkt zum Validator ({len(auto_movies_in_matrix)} Filme warten) âž”")
             self.btn_jump_validator.setEnabled(True)
         else:
-            self.btn_jump_validator.setText("Direkt zum Validator (0 Filme warten) ➔")
+            self.btn_jump_validator.setText("Direkt zum Validator (0 Filme warten) âž”")
             self.btn_jump_validator.setEnabled(False)
 
     def go_next(self):
@@ -244,7 +250,7 @@ class Screen1Selection(QtWidgets.QWidget):
         
     def jump_to_validator(self):
         self.parent.stacked.setCurrentIndex(1)
-        self.parent.screen3.lbl_bg_status.setText("KI-Analyse übersprungen. Lade bestehende Daten...")
+        self.parent.screen3.lbl_bg_status.setText("KI-Analyse Ã¼bersprungen. Lade bestehende Daten...")
         self.parent.screen3.bg_progress.setValue(self.parent.screen3.bg_progress.maximum())
         self.parent.screen3.check_for_new_data()
 
@@ -266,7 +272,7 @@ class Screen3Validator(QtWidgets.QWidget):
         
         # Header Status
         header_layout = QtWidgets.QHBoxLayout()
-        self.btn_back_to_scan = QtWidgets.QPushButton("⬅ Zurück zur Dateiauswahl")
+        self.btn_back_to_scan = QtWidgets.QPushButton("â¬… ZurÃ¼ck zur Dateiauswahl")
         self.btn_back_to_scan.clicked.connect(self.go_back)
         header_layout.addWidget(self.btn_back_to_scan)
         
@@ -300,12 +306,12 @@ class Screen3Validator(QtWidgets.QWidget):
         
         # Big Headers
         header_row = QtWidgets.QHBoxLayout()
-        self.btn_toggle_list = QtWidgets.QPushButton("☰ Filmliste")
+        self.btn_toggle_list = QtWidgets.QPushButton("â˜° Filmliste")
         self.btn_toggle_list.setMaximumWidth(150)
         self.btn_toggle_list.clicked.connect(lambda: self.movie_list.setVisible(not self.movie_list.isVisible()))
         header_row.addWidget(self.btn_toggle_list)
         
-        self.lbl_huge_header = QtWidgets.QLabel("🎬 -")
+        self.lbl_huge_header = QtWidgets.QLabel("ðŸŽ¬ -")
         self.lbl_huge_header.setFont(QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold))
         self.lbl_huge_header.setStyleSheet("color: #4caf50;")
         header_row.addWidget(self.lbl_huge_header)
@@ -345,7 +351,7 @@ class Screen3Validator(QtWidgets.QWidget):
         
         # Form Area
         right_layout = QtWidgets.QVBoxLayout()
-        lbl_title = QtWidgets.QLabel("Feld-für-Feld Validierung")
+        lbl_title = QtWidgets.QLabel("Feld-fÃ¼r-Feld Validierung")
         lbl_title.setFont(QtGui.QFont("Segoe UI", 16, QtGui.QFont.Bold))
         right_layout.addWidget(lbl_title)
         
@@ -359,7 +365,7 @@ class Screen3Validator(QtWidgets.QWidget):
         self.cmb_lang.addItems(["de", "eng", "fre", "spa", "ita", "chi", "ko", "jpn", "und"])
         self.cmb_lang.setEditable(True)
         lang_layout.addWidget(self.cmb_lang)
-        self.btn_test_lang = QtWidgets.QPushButton("▶ Zeige Text")
+        self.btn_test_lang = QtWidgets.QPushButton("â–¶ Zeige Text")
         self.btn_test_lang.clicked.connect(lambda: self.seek_absolute(300000))
         lang_layout.addWidget(self.btn_test_lang)
         form.addRow("Sprache:", lang_layout)
@@ -367,7 +373,7 @@ class Screen3Validator(QtWidgets.QWidget):
         sdh_layout = QtWidgets.QHBoxLayout()
         self.chk_sdh = QtWidgets.QCheckBox("Ja")
         sdh_layout.addWidget(self.chk_sdh)
-        self.btn_test_sdh = QtWidgets.QPushButton("▶ SDH-Marker")
+        self.btn_test_sdh = QtWidgets.QPushButton("â–¶ SDH-Marker")
         self.btn_test_sdh.clicked.connect(lambda: self.seek_absolute(600000))
         sdh_layout.addWidget(self.btn_test_sdh)
         form.addRow("SDH:", sdh_layout)
@@ -375,7 +381,7 @@ class Screen3Validator(QtWidgets.QWidget):
         forced_layout = QtWidgets.QHBoxLayout()
         self.chk_forced = QtWidgets.QCheckBox("Ja")
         forced_layout.addWidget(self.chk_forced)
-        self.btn_test_forced = QtWidgets.QPushButton("▶ Forced-Stelle")
+        self.btn_test_forced = QtWidgets.QPushButton("â–¶ Forced-Stelle")
         self.btn_test_forced.clicked.connect(lambda: self.seek_absolute(900000))
         forced_layout.addWidget(self.btn_test_forced)
         form.addRow("Forced:", forced_layout)
@@ -396,13 +402,13 @@ class Screen3Validator(QtWidgets.QWidget):
         
         right_layout.addStretch()
         
-        self.btn_save = QtWidgets.QPushButton("✓ Spur bestätigen & Weiter")
+        self.btn_save = QtWidgets.QPushButton("âœ“ Spur bestÃ¤tigen & Weiter")
         self.btn_save.setStyleSheet("background-color: #2e7d32; font-size: 14px; padding: 12px;")
         self.btn_save.clicked.connect(self.save_and_next)
         self.btn_save.setEnabled(False)
         right_layout.addWidget(self.btn_save)
         
-        self.btn_next_screen = QtWidgets.QPushButton("Validierung abschließen ➔")
+        self.btn_next_screen = QtWidgets.QPushButton("Validierung abschlieÃŸen âž”")
         self.btn_next_screen.clicked.connect(lambda: self.parent.stacked.setCurrentIndex(2))
         right_layout.addWidget(self.btn_next_screen)
         
@@ -539,7 +545,7 @@ class Screen3Validator(QtWidgets.QWidget):
                 break
         
         self.cmb_lang.setCurrentText(str(row['Effektive Sprache (ISO-Code)']))
-        self.chk_sdh.setChecked(bool(row['Schwerhörig-Schalter']))
+        self.chk_sdh.setChecked(bool(row['SchwerhÃ¶rig-Schalter']))
         self.chk_forced.setChecked(bool(row['Anzeige erzwingen-Schalter']))
         if 'Effektiver Name' in row and pd.notna(row['Effektiver Name']):
             self.txt_titel.setText(str(row['Effektiver Name']))
@@ -573,7 +579,7 @@ class Screen3Validator(QtWidgets.QWidget):
         row_idx = self.auto_rows[self.current_idx]
         
         original_lang = str(self.df.at[row_idx, 'Effektive Sprache (ISO-Code)'])
-        original_sdh = bool(self.df.at[row_idx, 'Schwerhörig-Schalter'])
+        original_sdh = bool(self.df.at[row_idx, 'SchwerhÃ¶rig-Schalter'])
         original_forced = bool(self.df.at[row_idx, 'Anzeige erzwingen-Schalter'])
         
         new_lang = self.cmb_lang.currentText()
@@ -608,7 +614,7 @@ class Screen3Validator(QtWidgets.QWidget):
             json.dump(stats, af, indent=4)
             
         self.df.at[row_idx, 'Effektive Sprache (ISO-Code)'] = new_lang
-        self.df.at[row_idx, 'Schwerhörig-Schalter'] = new_sdh
+        self.df.at[row_idx, 'SchwerhÃ¶rig-Schalter'] = new_sdh
         self.df.at[row_idx, 'Anzeige erzwingen-Schalter'] = new_forced
         self.df.at[row_idx, 'Effektiver Name'] = new_titel
         self.df.at[row_idx, 'Sonstiges'] = ""
@@ -676,7 +682,7 @@ class Screen4Trainer(QtWidgets.QWidget):
         lbl_title.setFont(QtGui.QFont("Segoe UI", 18, QtGui.QFont.Bold))
         layout.addWidget(lbl_title)
         
-        layout.addWidget(QtWidgets.QLabel("Glückwunsch! Du hast Spuren erfolgreich validiert."))
+        layout.addWidget(QtWidgets.QLabel("GlÃ¼ckwunsch! Du hast Spuren erfolgreich validiert."))
         
         self.dash_frame = QtWidgets.QFrame()
         self.dash_frame.setStyleSheet("background-color: #2d2d2d; border-radius: 8px; padding: 20px;")
@@ -691,7 +697,7 @@ class Screen4Trainer(QtWidgets.QWidget):
         layout.addWidget(self.btn_refresh)
         
         layout.addSpacing(20)
-        self.btn_runner = QtWidgets.QPushButton("Test-Runner starten (Erstellt Bericht für Antigravity)")
+        self.btn_runner = QtWidgets.QPushButton("Test-Runner starten (Erstellt Bericht fÃ¼r Antigravity)")
         self.btn_runner.setStyleSheet("background-color: #e65100; font-size: 16px; padding: 20px;")
         layout.addWidget(self.btn_runner)
         layout.addStretch()
@@ -706,11 +712,11 @@ class Screen4Trainer(QtWidgets.QWidget):
                 if t == 0: t = 1
                 
                 text = (
-                    "🏆 Validierte Spuren gesamt: " + str(s.get('total', 0)) + "\\n\\n" +
-                    "✔️ Sprache korrekt: " + str(s.get('correct_lang', 0)) + " (" + str(int(s.get('correct_lang',0)/t*100)) + "%)\\n" +
-                    "✔️ SDH korrekt: " + str(s.get('correct_sdh', 0)) + " (" + str(int(s.get('correct_sdh',0)/t*100)) + "%)\\n" +
-                    "✔️ Forced korrekt: " + str(s.get('correct_forced', 0)) + " (" + str(int(s.get('correct_forced',0)/t*100)) + "%)\\n\\n" +
-                    "🚀 Makellose Spuren (100% KI-Treffer): " + str(s.get('perfect_tracks', 0)) + " (" + str(int(s.get('perfect_tracks',0)/t*100)) + "%)"
+                    "ðŸ† Validierte Spuren gesamt: " + str(s.get('total', 0)) + "\\n\\n" +
+                    "âœ”ï¸ Sprache korrekt: " + str(s.get('correct_lang', 0)) + " (" + str(int(s.get('correct_lang',0)/t*100)) + "%)\\n" +
+                    "âœ”ï¸ SDH korrekt: " + str(s.get('correct_sdh', 0)) + " (" + str(int(s.get('correct_sdh',0)/t*100)) + "%)\\n" +
+                    "âœ”ï¸ Forced korrekt: " + str(s.get('correct_forced', 0)) + " (" + str(int(s.get('correct_forced',0)/t*100)) + "%)\\n\\n" +
+                    "ðŸš€ Makellose Spuren (100% KI-Treffer): " + str(s.get('perfect_tracks', 0)) + " (" + str(int(s.get('perfect_tracks',0)/t*100)) + "%)"
                 )
                 text = text.replace("\\n", "\n")
                 self.lbl_dash.setText(text)
@@ -746,7 +752,7 @@ class CockpitWizard(QtWidgets.QMainWindow):
         
         self.screen3.bg_progress.setMaximum(len(file_paths))
         self.screen3.bg_progress.setValue(0)
-        self.screen3.lbl_bg_status.setText(f"KI-Analyse läuft: 0/{len(file_paths)}")
+        self.screen3.lbl_bg_status.setText(f"KI-Analyse lÃ¤uft: 0/{len(file_paths)}")
         
         self.thread = AnalysisThread(file_paths)
         self.thread.progress_update.connect(self.update_bg_progress)
@@ -761,7 +767,7 @@ class CockpitWizard(QtWidgets.QMainWindow):
         self.screen3.lbl_bg_status.setText(f"KI-Analyse ({current}/{total}): {msg}")
         
     def analysis_done(self):
-        self.screen3.lbl_bg_status.setText("KI-Analyse vollständig abgeschlossen!")
+        self.screen3.lbl_bg_status.setText("KI-Analyse vollstÃ¤ndig abgeschlossen!")
         self.screen3.bg_progress.setValue(self.screen3.bg_progress.maximum())
 
     def closeEvent(self, event):
@@ -774,3 +780,4 @@ if __name__ == '__main__':
     window = CockpitWizard()
     window.show()
     sys.exit(app.exec_())
+
