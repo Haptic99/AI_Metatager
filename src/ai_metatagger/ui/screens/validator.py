@@ -144,7 +144,11 @@ class Screen3Validator(QtWidgets.QWidget):
 
     def _test_text_clicked(self):
         if not self.current_row is None:
-            self.player_widget.seek_absolute(300000)
+            film = self.current_row['file_name']
+            typ = self.current_row['track_type']
+            spur = self.current_row['track_id']
+            seek_time = self._get_smart_seek_time(film, typ, spur)
+            self.player_widget.seek_absolute(seek_time)
 
     def _toggle_play_safe(self):
         focus_widget = QtWidgets.QApplication.focusWidget()
@@ -327,8 +331,25 @@ class Screen3Validator(QtWidgets.QWidget):
                         filepath = os.path.join(root, film)
                         break
         if os.path.exists(filepath):
+            # Berechne den 1-basierten Index (relative_idx) für VLC!
+            df = self.ctrl.df
+            movie_rows = df[df['file_name'] == film]
+            typ_rows = movie_rows[movie_rows['track_type'].str.lower() == track_type.lower()]
+            
+            relative_idx = 1
+            for _, r in typ_rows.iterrows():
+                if int(r['track_id']) == int(track_id):
+                    break
+                relative_idx += 1
+                
             self.player_widget.play_media(
-                filepath, track_type.lower(), int(track_id), autoplay)
+                filepath, track_type.lower(), relative_idx, autoplay)
+            
+            if autoplay:
+                seek_time = self._get_smart_seek_time(film, track_type, track_id)
+                # Wait 2500ms so VLC has enough time to init D3D11 and set SPU before we jump
+                from PyQt5 import QtCore
+                QtCore.QTimer.singleShot(2500, lambda: self.player_widget.seek_absolute(seek_time))
 
     def _get_smart_seek_time(self, film, typ, spur):
         seek_time_ms = 300000  # Default 5 minutes
@@ -349,10 +370,17 @@ class Screen3Validator(QtWidgets.QWidget):
                                     start_str = line.split('-->')[0].strip()
                                     h, m, s_ms = start_str.split(':')
                                     s, ms = s_ms.split(',')
-                                    seek_time_ms = int(
-                                        h)*3600000 + int(m)*60000 + int(s)*1000 + int(ms)
+                                    seek_time_ms = int(h)*3600000 + int(m)*60000 + int(s)*1000 + int(ms)
                                     seek_time_ms = max(0, seek_time_ms - 2000)
                                     break
+                                elif line.startswith('[') and ']' in line:
+                                    import re
+                                    m_match = re.match(r'^\[(\d+):(\d+):(\d+)\]', line.strip())
+                                    if m_match:
+                                        h, m, s = m_match.groups()
+                                        seek_time_ms = int(h)*3600000 + int(m)*60000 + int(s)*1000
+                                        seek_time_ms = max(0, seek_time_ms - 2000)
+                                        break
                     except Exception:
                         pass
                     break

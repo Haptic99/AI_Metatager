@@ -64,27 +64,45 @@ class VideoPlayerWidget(QtWidgets.QWidget):
             self.switch_track(track_type, track_id, autoplay)
             
     def switch_track(self, typ, spur_id, autoplay=False):
-        if not self.media_player or self._stopping:
-            return
-            
-        if typ == 'audio':
-            aud_tracks = self.media_player.audio_get_track_description()
-            if aud_tracks:
-                valid_auds = [t[0] for t in aud_tracks if t[0] >= 0]
-                if spur_id - 1 < len(valid_auds):
-                    vlc_id = valid_auds[spur_id - 1]
-                    self.media_player.audio_set_track(vlc_id)
-            self.media_player.video_set_spu(-1)
-        elif typ == 'subtitle':
-            self.media_player.video_set_spu(spur_id)
-            audio_count = self.media_player.audio_get_track_count()
-            if audio_count > 1:
-                self.media_player.audio_set_track(1)
+            if not self.media_player or self._stopping:
+                return
                 
-        if autoplay:
-            self.media_player.play()
-        else:
-            self.media_player.set_pause(1)
+            if typ == 'audio':
+                aud_tracks = self.media_player.audio_get_track_description()
+                if aud_tracks:
+                    valid_auds = [t[0] for t in aud_tracks if t[0] >= 0]
+                    if spur_id - 1 < len(valid_auds):
+                        vlc_id = valid_auds[spur_id - 1]
+                        self.media_player.audio_set_track(vlc_id)
+                self.media_player.video_set_spu(-1)
+                
+            elif typ == 'subtitle':
+                # 1. Spuren vom Player abfragen
+                spu_tracks = self.media_player.video_get_spu_description()
+                
+                if spu_tracks:
+                    # 2. Filtere alle "echten" Spuren (VLC nutzt oft -1 für "Deaktiviert")
+                    valid_spus = [t[0] for t in spu_tracks if t[0] >= 0]
+                    
+                    # 3. Mappe die 1-basierte spur_id aus deiner UI auf die tatsächliche VLC SPU ID
+                    if spur_id - 1 < len(valid_spus):
+                        vlc_spu_id = valid_spus[spur_id - 1]
+                        self.media_player.video_set_spu(vlc_spu_id)
+                    else:
+                        print(f"Warnung: Untertitel-Index {spur_id} ausserhalb der verfügbaren SPU-Spuren.")
+                else:
+                    # Fallback, falls keine Spuren im Header gefunden wurden (oder das Video noch nicht weit genug geladen ist)
+                    self.media_player.video_set_spu(spur_id)
+
+                # Audio auf Spur 1 fixieren (wie in deinem originalen Code)
+                audio_count = self.media_player.audio_get_track_count()
+                if audio_count > 1:
+                    self.media_player.audio_set_track(1)
+                    
+            if autoplay:
+                self.media_player.play()
+            else:
+                self.media_player.set_pause(1)
         
     def stop(self):
         if self.media_player and not self._stopping:
