@@ -66,8 +66,10 @@ class VideoPlayerWidget(QtWidgets.QWidget):
     def switch_track(self, typ, spur_id, autoplay=False):
             if not self.media_player or self._stopping:
                 return
+
+            typ_lower = str(typ).lower()
                 
-            if typ == 'audio':
+            if typ_lower == 'audio':
                 aud_tracks = self.media_player.audio_get_track_description()
                 if aud_tracks:
                     valid_auds = [t[0] for t in aud_tracks if t[0] >= 0]
@@ -76,7 +78,7 @@ class VideoPlayerWidget(QtWidgets.QWidget):
                         self.media_player.audio_set_track(vlc_id)
                 self.media_player.video_set_spu(-1)
                 
-            elif typ == 'subtitle':
+            elif typ_lower in ['untertitel', 'subtitle']:
                 # 1. Spuren vom Player abfragen
                 spu_tracks = self.media_player.video_get_spu_description()
                 

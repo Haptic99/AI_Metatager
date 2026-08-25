@@ -335,3 +335,14 @@ Movie,TrackType,Codec,DurationSec
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.40
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.27
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.90
+"ALL",prescan,ffprobe,0.63
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,31.18
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,27.36
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,24.81
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,28.52
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,24.48
+"Schindlers Liste (1993).mkv",audio,,4.81
+"Schindlers Liste (1993).mkv",audio,,1.08
+"ALL",prescan,ffprobe,0.06
+"Ananas Express (2008).mkv",audio,,1.24
+"Ananas Express (2008).mkv",audio,,0.00

@@ -2973,3 +2973,65 @@ DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\da
   -> Speichere aufgeräumte Datei (FFmpeg Remux)...
      Erfolgreich aktualisiert!
 Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Schindlers Liste (1993).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: eng, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => SDH-Erkennung (PGS): 13 Marker gefunden. Markiere als Schwerhörig.
+       => OCR KI Gesamtergebnis: 'eng' (Sicherheit: 100.0%)
+[2026-08-25 18:43:19]      => OCR KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 31.2s)
+  -> Prüfe Untertitel Spur 4 (Codec: hdmv_pgs_subtitle, Lang: spa, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-25 18:43:46]      => OCR KI Bestätigt: 'spa' (Sicherheit: 100.0%, Dauer: 27.4s)
+  -> Prüfe Untertitel Spur 5 (Codec: hdmv_pgs_subtitle, Lang: spa, Titel: '')
+     => FORCED ERKANNT (100 Pakete). Setze Forced-Tag.
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 100 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'spa' (Sicherheit: 100.0%)
+[2026-08-25 18:44:11]      => OCR KI Bestätigt: 'spa' (Sicherheit: 100.0%, Dauer: 24.8s)
+  -> Prüfe Untertitel Spur 6 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: '')
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-25 18:44:39]      => OCR KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 28.5s)
+  -> Prüfe Untertitel Spur 7 (Codec: hdmv_pgs_subtitle, Lang: fre, Titel: '')
+     => FORCED ERKANNT (96 Pakete). Setze Forced-Tag.
+       Starte Precision-OCR (Modell: eng+deu+fra+spa+ita) an 96 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'fre' (Sicherheit: 100.0%)
+[2026-08-25 18:45:04]      => OCR KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 24.5s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (41.6%)
+       Whisper KI (Spot 2151s): ger (99.5%)
+       Whisper KI (Spot 4003s): ger (98.9%)
+       Whisper KI (Spot 5855s): ger (95.1%)
+       Whisper KI (Spot 7707s): ger (96.9%)
+       Whisper KI (Spot 9558s): ger (99.3%)
+[2026-08-25 18:45:09]      => Audio KI Bestätigt: 'ger' (Sicherheit: 88.5%, Dauer: 4.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+       Whisper KI (Spot 300s): eng (82.9%)
+       Whisper KI (Spot 2151s): eng (87.6%)
+       Whisper KI (Spot 4003s): eng (50.4%)
+       Whisper KI (Spot 5855s): eng (81.4%)
+       Whisper KI (Spot 7707s): eng (66.4%)
+       Whisper KI (Spot 9558s): eng (90.6%)
+[2026-08-25 18:45:10]      => Audio KI Bestätigt: 'eng' (Sicherheit: 76.5%, Dauer: 1.1s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ananas Express (2008).mkv ---
+  -> Prüfe Untertitel Spur 3 (Codec: hdmv_pgs_subtitle, Lang: chi, Titel: 'CHS')
+       Starte Precision-OCR (Modell: chi_sim+chi_tra+eng) an 150 exakten Bild-Zeitpunkten...
+       => OCR KI Gesamtergebnis: 'zh-Hans' (Sicherheit: 100.0%)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Dauer konnte nicht ermittelt werden: could not convert string to float: b''
+Lade Whisper Modell (tiny) auf cuda...
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Dauer konnte nicht ermittelt werden: could not convert string to float: b''
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     FEHLER beim Ausführen von mkvpropedit.
+Entlade Whisper Modell aus dem Speicher...
