@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 import pandas as pd
+import os
 
 class ValidatorFormWidget(QtWidgets.QWidget):
     track_selected = QtCore.pyqtSignal(int)
@@ -10,6 +11,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
     test_forced_requested = QtCore.pyqtSignal()
     show_srt_requested = QtCore.pyqtSignal()
     show_pgs_requested = QtCore.pyqtSignal()
+    pgs_image_double_clicked = QtCore.pyqtSignal(str)
     
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -118,10 +120,10 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.form_grid.addWidget(self.lbl_ki_name, 5, 1)
         self.txt_titel = QtWidgets.QLineEdit()
         self.txt_titel.setPlaceholderText("z.B. Director's Commentary")
-        self.form_grid.addWidget(self.txt_titel, 4, 2)
+        self.form_grid.addWidget(self.txt_titel, 5, 2)
         
         # Empty placeholder for layout alignment
-        self.form_grid.addWidget(QtWidgets.QLabel(""), 4, 3) 
+        self.form_grid.addWidget(QtWidgets.QLabel(""), 5, 3)
         
         self.btn_valid_name = QtWidgets.QPushButton("✔")
         self.btn_valid_name.clicked.connect(lambda: self.field_validated.emit('name'))
@@ -149,9 +151,20 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.srt_text_edit.setStyleSheet("background-color: #1e1e1e; border: 1px solid #555; color: #ddd; font-family: Consolas;")
         layout.addWidget(self.srt_text_edit)
         
+        # --- NEU: Galerie für PGS-Bilder ---
+        self.pgs_image_list = QtWidgets.QListWidget()
+        self.pgs_image_list.setViewMode(QtWidgets.QListView.IconMode)
+        self.pgs_image_list.setIconSize(QtCore.QSize(160, 90))
+        self.pgs_image_list.setResizeMode(QtWidgets.QListView.Adjust)
+        self.pgs_image_list.setSpacing(10)
+        self.pgs_image_list.setVisible(False)
+        self.pgs_image_list.setMaximumHeight(200)
+        self.pgs_image_list.itemDoubleClicked.connect(self._on_pgs_item_double_clicked)
+        layout.addWidget(self.pgs_image_list)
+        
         layout.addStretch()
         
-        self.btn_save = QtWidgets.QPushButton("✔ Spur bestätigen & Weiter")
+        self.btn_save = QtWidgets.QPushButton("✔ Film abschließen")
         self.btn_save.setStyleSheet("background-color: #2e7d32; font-size: 14px; padding: 12px;")
         self.btn_save.clicked.connect(self.save_requested.emit)
         layout.addWidget(self.btn_save)
@@ -173,7 +186,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         is_audio = str(df_row['track_type']).lower() == 'audio'
         
         # Hide unneeded fields for audio
-        for row_idx in [2, 3, 4]: # SDH, Forced, Name
+        for row_idx in [2, 3, 4, 5]: # SDH, Forced, Standard, Name
             for col in range(5):
                 item = self.form_grid.itemAtPosition(row_idx, col)
                 if item and item.widget():
@@ -185,13 +198,21 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.srt_text_edit.setVisible(False)
         self.btn_conv_srt.setText("SRT ansehen")
         
+        self.pgs_image_list.setVisible(False)
+        self.btn_conv_pgs.setText("PGS Bilder ansehen")
+        
         if str(df_row['track_type']).lower() == 'untertitel':
             codec = str(df_row.get('subtitle_type', '')).lower()
             self.lbl_conv.setVisible(True)
+            
+            # Button für Textansicht ist jetzt IMMER an bei Untertiteln
+            self.btn_conv_srt.setVisible(True) 
+            
             if not codec or 'srt' in codec or 'subrip' in codec:
-                self.btn_conv_srt.setVisible(True)
+                self.btn_conv_srt.setText("SRT ansehen")
             else:
                 self.btn_conv_pgs.setVisible(True)
+                self.btn_conv_srt.setText("OCR Text ansehen")
                 
         self.cmb_lang.setCurrentText(str(df_row['language_iso']))
         self.cmb_sdh.setCurrentText("Ja" if bool(df_row['is_hearing_impaired']) else "Nein")
@@ -232,10 +253,36 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.update_validation_ui({}, False)
         
     def toggle_srt_view(self, text_content=None):
+        # Erkennt automatisch, ob es eine PGS-Spur ist, anhand des PGS-Buttons
+        btn_text = "OCR Text" if self.btn_conv_pgs.isVisible() else "SRT"
+        
         if self.srt_text_edit.isVisible() and text_content is None:
             self.srt_text_edit.setVisible(False)
-            self.btn_conv_srt.setText("SRT ansehen")
+            self.btn_conv_srt.setText(f"{btn_text} ansehen")
         elif text_content:
             self.srt_text_edit.setPlainText(text_content)
             self.srt_text_edit.setVisible(True)
-            self.btn_conv_srt.setText("SRT verbergen")
+            self.btn_conv_srt.setText(f"{btn_text} verbergen")
+
+    def _on_pgs_item_double_clicked(self, item):
+        filepath = item.data(QtCore.Qt.UserRole)
+        if filepath:
+            self.pgs_image_double_clicked.emit(filepath)
+
+    def toggle_pgs_view(self, image_paths=None):
+        if self.pgs_image_list.isVisible() and image_paths is None:
+            self.pgs_image_list.setVisible(False)
+            self.btn_conv_pgs.setText("PGS Bilder ansehen")
+        elif image_paths:
+            self.srt_text_edit.setVisible(False)
+            self.btn_conv_srt.setText("SRT ansehen")
+            
+            self.pgs_image_list.clear()
+            for path in image_paths:
+                icon = QtGui.QIcon(path)
+                item = QtWidgets.QListWidgetItem(icon, os.path.basename(path))
+                item.setData(QtCore.Qt.UserRole, path)
+                self.pgs_image_list.addItem(item)
+                
+            self.pgs_image_list.setVisible(True)
+            self.btn_conv_pgs.setText("PGS Bilder verbergen")

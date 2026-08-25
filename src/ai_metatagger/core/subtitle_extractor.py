@@ -18,7 +18,7 @@ from ai_metatagger.core.subtitle_tools import (
 )
 from ai_metatagger.core.audio_analyzer import detect_audio_language_whisper
 from ai_metatagger.core.ocr_analyzer import analyze_subtitle_pgs
-from ai_metatagger.config import DATA_DIR, DIR_SERIEN, FFSUBSYNC_PATH, MKVPROPEDIT, CONFIG, TEMP_DIR
+from ai_metatagger.config import DATA_DIR, DIR_SERIEN, FFSUBSYNC_PATH, MKVPROPEDIT, CONFIG, TEMP_DIR, SUBS_DIR
 from langdetect import detect_langs, DetectorFactory
 
 if os.name == 'nt':
@@ -51,15 +51,19 @@ def _extract_and_sync_subtitles(
     for idx, s in sub_streams:
         if s.get('codec_name') in ['subrip', 'ass']:
             movie_base = os.path.basename(filepath)
-            out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}.srt")
+            track_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{idx}")
+            os.makedirs(track_dir, exist_ok=True)
+            
+            out_sub = os.path.join(track_dir, f"{movie_base}_sub_{idx}.srt")
             tracked_run(["ffmpeg", "-v", "quiet", "-y", "-i", filepath, "-map", f"0:{idx}", out_sub])
             if os.path.exists(out_sub):
                 sync_tasks.append(idx)
 
     def do_sync(idx):
         movie_base = os.path.basename(filepath)
-        out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}.srt")
-        synced_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}_synced.srt")
+        track_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{idx}")
+        out_sub = os.path.join(track_dir, f"{movie_base}_sub_{idx}.srt")
+        synced_sub = os.path.join(track_dir, f"{movie_base}_sub_{idx}_synced.srt")
         start_t = time.time()
         success, offset, scale = auto_sync_subtitle(filepath, out_sub, synced_sub)
         return idx, success, offset, scale, time.time() - start_t
@@ -122,8 +126,9 @@ def _process_subtitles(
 
         if codec in ['subrip', 'ass']:
             movie_base = os.path.basename(filepath)
-            out_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}.srt")
-            synced_sub = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id_map[idx]}_synced.srt")
+            track_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{idx}")
+            out_sub = os.path.join(track_dir, f"{movie_base}_sub_{idx}.srt")
+            synced_sub = os.path.join(track_dir, f"{movie_base}_sub_{idx}_synced.srt")
 
             if idx in sync_results:
                 sync_success, sync_offset, sync_scale, dur = sync_results[idx]
@@ -147,6 +152,13 @@ def _process_subtitles(
                     ffmpeg_args.extend(["-i", synced_sub])
                     mapped_input = f"{input_idx}:0"
                     synced_srt_paths[idx] = synced_sub
+                    
+                    # --- NEU: Original-SRT löschen, da wir die Synced-Version haben ---
+                    if os.path.exists(out_sub):
+                        try:
+                            os.remove(out_sub)
+                        except Exception:
+                            pass
                 else:
                     extracted_text, line_count = read_text_subtitle(out_sub)
                     is_hi = is_hearing_impaired(extracted_text, line_count)

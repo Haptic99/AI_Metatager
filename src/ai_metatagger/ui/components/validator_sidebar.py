@@ -20,7 +20,7 @@ class ValidatorSidebarWidget(QtWidgets.QWidget):
         self.movie_list.itemClicked.connect(self._on_movie_clicked)
         layout.addWidget(self.movie_list)
         
-        self.btn_remove_movie = QtWidgets.QPushButton("X Film ignorieren")
+        self.btn_remove_movie = QtWidgets.QPushButton("Film aus Testdaten Löschen")
         self.btn_remove_movie.setStyleSheet("background-color: #d32f2f;")
         self.btn_remove_movie.clicked.connect(self._on_remove_clicked)
         layout.addWidget(self.btn_remove_movie)

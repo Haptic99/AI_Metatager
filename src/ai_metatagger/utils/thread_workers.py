@@ -6,7 +6,7 @@ import time
 import threading
 import pandas as pd
 from PyQt5 import QtCore
-from ai_metatagger.config import DIR_TEST, MKVPROPEDIT, PYTHON_EXE, DB_PATH
+from ai_metatagger.config import DIR_TEST, MKVPROPEDIT, PYTHON_EXE, DB_PATH, SUBS_DIR
 from ai_metatagger.utils.state_manager import load_state, save_state, load_matrix, save_matrix
 from ai_metatagger.utils.subprocess_tracker import SubprocessTracker, set_active_tracker, tracked_run
 from ai_metatagger.core import processor as analyzer
@@ -28,6 +28,44 @@ class AnalysisThread(QtCore.QThread):
         """Signal cancellation and terminate all running subprocesses."""
         self.is_cancelled = True
         self._tracker.cancel()
+
+    def _cleanup_failed_movie(self, basename, dest_path):
+        """Räumt alle Spuren und Dateien eines abgebrochenen Films auf."""
+        import time
+        from ai_metatagger.utils.state_manager import DB_LOCK, init_db
+        
+        # 1. Unfertige Videodatei löschen
+        for _ in range(3):
+            if not os.path.exists(dest_path): break
+            try:
+                time.sleep(0.5)
+                os.remove(dest_path)
+                break
+            except Exception: pass
+            
+        # 2. extracted_subs Ordner dieses Films löschen
+        subs_dir = os.path.join(SUBS_DIR, basename)
+        for _ in range(3):
+            if not os.path.exists(subs_dir): break
+            try:
+                time.sleep(0.5)
+                shutil.rmtree(subs_dir)
+                break
+            except Exception: pass
+            
+        # 3. Halbe Datenbank-Einträge bereinigen
+        with DB_LOCK:
+            conn = init_db()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (basename,))
+            conn.commit()
+            conn.close()
+            
+        # 4. JSON-Einträge bereinigen
+        state_data = load_state()
+        if basename in state_data:
+            del state_data[basename]
+            save_state(state_data)
 
     def extract_metadata(self, filepath):
         data = getattr(self, 'ffprobe_cache', {}).get(filepath)
@@ -251,6 +289,11 @@ class AnalysisThread(QtCore.QThread):
                 dest_path = new_dest
                 basename = os.path.basename(dest_path)
 
+            # --- NEU: Prüfen, ob während dieses Films auf Stopp gedrückt wurde ---
+            if self.is_cancelled:
+                self._cleanup_failed_movie(basename, dest_path)
+                break
+
             new_tracks = self.extract_metadata(dest_path)
             if os.path.exists(DB_PATH):
                 df = load_matrix()
@@ -306,5 +349,9 @@ class AnalysisThread(QtCore.QThread):
         except Exception as e:
             print(f"Warnung beim Entladen des Whisper-Modells: {e}")
 
-        self.progress_update.emit(total, total, "Alle Filme analysiert!")
+        if self.is_cancelled:
+            self.progress_update.emit(total, total, "Analyse erfolgreich abgebrochen!")
+        else:
+            self.progress_update.emit(total, total, "Alle Filme analysiert!")
+            
         self.finished_analysis.emit()

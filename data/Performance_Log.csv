@@ -1,348 +1,188 @@
 Movie,TrackType,Codec,DurationSec
-"ALL",prescan,ffprobe,0.50
-"Black Swan (2010).mkv",audio,,2.37
-"Black Swan (2010).mkv",audio,,1.70
-"Das ist das Ende.mkv",audio,,1.41
-"Die Highligen Drei Könige (2015).mkv",audio,,1.48
-"Die Highligen Drei Könige (2015).mkv",audio,,1.44
-"Lord Of War.mkv",audio,,1.43
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,11.79
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,8.20
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,8.41
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,7.35
-"Perfume The Story Of A Murderer (2006).mkv",audio,,1.81
-"Perfume The Story Of A Murderer (2006).mkv",audio,,1.54
-"Prestige - Meister der Magie (2006).mkv",subtitle,subrip,0.02
-"Prestige - Meister der Magie (2006).mkv",subtitle,subrip,0.02
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.20
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.86
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.15
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,8.88
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.01
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,8.79
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.05
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.41
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.62
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.81
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.95
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.72
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.57
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,6.44
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.00
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,7.45
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.45
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.79
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,11.63
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,6.93
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,7.30
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,9.62
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,6.36
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.18
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.02
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,12.03
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,7.16
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.41
-"Prestige - Meister der Magie (2006).mkv",audio,,1.94
-"Prestige - Meister der Magie (2006).mkv",audio,,1.64
-"Prestige - Meister der Magie (2006).mkv",muxing,,29.02
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,11.68
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.73
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,5.50
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.52
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.29
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,9.17
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.66
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,5.88
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,5.48
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,9.11
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,9.40
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,6.24
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.85
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.75
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,5.77
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.83
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.73
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,8.67
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,9.39
-"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,6.00
-"Sausage Party - Es geht um die Wurst (2016).mkv",audio,,1.92
-"Sausage Party - Es geht um die Wurst (2016).mkv",audio,,1.66
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,14.38
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,14.52
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,16.48
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,14.29
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,17.22
-"Schindlers Liste (1993).mkv",audio,,3.32
-"Schindlers Liste (1993).mkv",audio,,1.58
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.01
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,9.59
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,8.68
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.85
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.63
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.41
-"The Dark Knight (2008).mkv",subtitle,subrip,0.02
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,14.05
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,13.43
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,13.49
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.53
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.56
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.38
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.98
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,8.33
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,8.87
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,8.07
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.46
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.60
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.54
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.99
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,7.37
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.41
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.48
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,8.37
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,10.72
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,11.98
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,7.78
-"The Dark Knight (2008).mkv",subtitle,hdmv_pgs_subtitle,12.62
-"The Dark Knight (2008).mkv",audio,,1.95
-"The Dark Knight (2008).mkv",audio,,1.77
-"The Dark Knight (2008).mkv",muxing,,31.96
-"ALL",prescan,ffprobe,0.12
-"The Dark Knight Rises (2012).mkv",subtitle,subrip,0.21
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.83
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.48
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.58
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.35
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.51
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.34
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.57
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.91
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.34
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.57
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.31
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.83
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.38
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.93
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.28
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.28
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.66
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,13.95
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,17.68
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.89
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.64
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.49
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,14.58
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,13.42
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,13.79
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,17.00
-"ALL",prescan,ffprobe,0.07
-"Black Swan (2010).mkv",audio,,2.83
-"Black Swan (2010).mkv",audio,,1.70
-"ALL",prescan,ffprobe,0.06
-"The Dark Knight Rises (2012).mkv",subtitle,subrip,0.21
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.25
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,15.74
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,16.70
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,17.19
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,17.00
-"The Dark Knight Rises (2012).mkv",subtitle,hdmv_pgs_subtitle,17.12
-"ALL",prescan,ffprobe,0.06
-"The Favourite - Intrigen und Irrsinn (2018).mkv",subtitle,subrip,0.23
-"The Favourite - Intrigen und Irrsinn (2018).mkv",subtitle,hdmv_pgs_subtitle,11.62
-"The Favourite - Intrigen und Irrsinn (2018).mkv",subtitle,hdmv_pgs_subtitle,11.18
-"The Favourite - Intrigen und Irrsinn (2018).mkv",audio,,2.89
-"The Favourite - Intrigen und Irrsinn (2018).mkv",audio,,1.52
-"The Favourite - Intrigen und Irrsinn (2018).mkv",muxing,,12.82
 "ALL",prescan,ffprobe,0.05
-"Das ist das Ende.mkv",audio,,2.17
-"ALL",prescan,ffprobe,0.05
-"Das ist das Ende.mkv",audio,,2.44
-"ALL",prescan,ffprobe,0.05
-"Das ist das Ende.mkv",audio,,1.84
-"ALL",prescan,ffprobe,0.04
-"Das ist das Ende.mkv",audio,,1.82
-"ALL",prescan,ffprobe,0.11
-"Das ist das Ende.mkv",audio,,1.96
-"Die Highligen Drei Könige (2015).mkv",audio,,1.48
-"Die Highligen Drei Könige (2015).mkv",audio,,1.48
-"ALL",prescan,ffprobe,0.14
-"Das ist das Ende.mkv",audio,,1.93
-"Die Highligen Drei Könige (2015).mkv",audio,,1.42
-"Die Highligen Drei Könige (2015).mkv",audio,,1.36
-"ALL",prescan,ffprobe,0.10
-"Das ist das Ende.mkv",audio,,2.60
-"Die Highligen Drei Könige (2015).mkv",audio,,1.57
-"Die Highligen Drei Könige (2015).mkv",audio,,1.48
-"ALL",prescan,ffprobe,0.65
-"Black Swan (2010).mkv",audio,,1.90
-"Black Swan (2010).mkv",audio,,1.67
-"Lord Of War.mkv",audio,,1.48
-"ALL",prescan,ffprobe,0.61
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,12.90
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,8.40
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,9.59
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,10.03
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,11.10
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,7.72
-"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,6.41
-"Perfume The Story Of A Murderer (2006).mkv",audio,,2.96
-"Perfume The Story Of A Murderer (2006).mkv",audio,,1.58
-"Prestige - Meister der Magie (2006).mkv",subtitle,subrip,0.02
-"Prestige - Meister der Magie (2006).mkv",subtitle,subrip,0.02
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,12.28
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,11.64
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.59
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,12.44
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,10.06
-"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,11.92
-"ALL",prescan,ffprobe,0.05
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.01
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,9.08
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,8.06
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,2.19
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.78
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.43
-"ALL",prescan,ffprobe,0.05
-"Das ist das Ende.mkv",audio,,2.31
-"ALL",prescan,ffprobe,0.07
-"Black Swan (2010).mkv",audio,,1.94
-"Black Swan (2010).mkv",audio,,1.21
-"ALL",prescan,ffprobe,0.10
-"Die Highligen Drei Könige (2015).mkv",audio,,1.92
-"Die Highligen Drei Könige (2015).mkv",audio,,0.93
-"ALL",prescan,ffprobe,0.06
-"Die Highligen Drei Könige (2015).mkv",audio,,1.91
-"Die Highligen Drei Könige (2015).mkv",audio,,0.95
-"ALL",prescan,ffprobe,0.09
-"Die Highligen Drei Könige (2015).mkv",audio,,1.55
-"Die Highligen Drei Könige (2015).mkv",audio,,0.95
-"Lord Of War.mkv",audio,,1.00
-"ALL",prescan,ffprobe,0.09
-"Ali G Indahouse.mp4",audio,,2.30
-"ALL",prescan,ffprobe,0.19
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,26.23
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,21.34
-"Ananas Express (2008).mkv",audio,,1.80
-"Ananas Express (2008).mkv",audio,,1.06
-"Ali G Indahouse.mp4",audio,,0.93
-"Batman Begins (2005).mkv",subtitle,subrip,0.02
-"Batman Begins (2005).mkv",subtitle,hdmv_pgs_subtitle,24.88
-"Batman Begins (2005).mkv",subtitle,hdmv_pgs_subtitle,18.62
-"Batman Begins (2005).mkv",subtitle,hdmv_pgs_subtitle,25.89
-"Batman Begins (2005).mkv",audio,,0.97
-"Batman Begins (2005).mkv",audio,,1.27
-"Batman Begins (2005).mkv",muxing,,15.93
-"ALL",prescan,ffprobe,0.21
-"Ali G Indahouse.mp4",audio,,1.75
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.87
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.67
-"Ananas Express (2008).mkv",audio,,0.92
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.65
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.72
+"Ananas Express (2008).mkv",audio,,2.91
 "Ananas Express (2008).mkv",audio,,1.02
-"Blow 2001.mp4",audio,,0.97
-"ALL",prescan,ffprobe,0.20
-"Ali G Indahouse.mp4",audio,,1.73
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,25.36
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.64
-"Ananas Express (2008).mkv",audio,,0.97
-"Ananas Express (2008).mkv",audio,,1.07
-"Blow 2001.mp4",audio,,0.97
-"ALL",prescan,ffprobe,0.08
-"Ali G Indahouse.mp4",audio,,2.46
-"ALL",prescan,ffprobe,0.07
-"Ali G Indahouse.mp4",audio,,1.94
-"ALL",prescan,ffprobe,0.07
-"Ali G Indahouse.mp4",audio,,1.81
-"ALL",prescan,ffprobe,0.08
-"Ali G Indahouse.mp4",audio,,1.98
-"ALL",prescan,ffprobe,0.07
-"Ali G Indahouse.mp4",audio,,2.00
-"ALL",prescan,ffprobe,0.07
-"ALL",prescan,ffprobe,0.05
-"Ali G Indahouse.mkv",audio,,2.00
-"ALL",prescan,ffprobe,0.06
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.51
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.19
-"Ananas Express (2008).mkv",audio,,1.84
-"Ananas Express (2008).mkv",audio,,1.13
-"ALL",prescan,ffprobe,0.12
-"Ali G Indahouse.mp4",audio,,1.53
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.76
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,22.89
+"ALL",prescan,ffprobe,0.63
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,25.40
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,22.34
+"Ananas Express (2008).mkv",audio,,2.87
 "Ananas Express (2008).mkv",audio,,1.02
-"Ananas Express (2008).mkv",audio,,1.07
-"ALL",prescan,ffprobe,0.31
-"ALL",prescan,ffprobe,0.72
-"Ali G Indahouse.mp4",audio,,2.16
-"Ananas Express (2008).mkv",audio,,0.00
-"Ananas Express (2008).mkv",audio,,0.00
-"ALL",prescan,ffprobe,0.08
-"ALL",prescan,ffprobe,0.12
-"Ali G Indahouse.mp4",audio,,2.16
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.05
-"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.07
-"Ananas Express (2008).mkv",audio,,0.94
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.39
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,21.13
+"Ananas Express (2008).mkv",audio,,2.88
+"Ananas Express (2008).mkv",audio,,1.03
+"ALL",prescan,ffprobe,0.06
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,24.66
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,21.24
+"Ananas Express (2008).mkv",audio,,2.90
+"Ananas Express (2008).mkv",audio,,1.03
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,24.24
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,22.34
+"Ananas Express (2008).mkv",audio,,2.87
 "Ananas Express (2008).mkv",audio,,1.04
-"ALL",prescan,ffprobe,0.07
-"Ali G Indahouse.mp4",audio,,2.26
-"ALL",prescan,ffprobe,0.55
-"Blow 2001.mp4",audio,,2.08
-"Scary Movie 2.mp4",audio,,0.92
-"Scary Movie 4.mp4",audio,,1.05
-"Taxi 5.mp4",audio,,1.05
-"Terrifier 3 Deutsch.mp4",audio,,1.03
-"The Fast and the Furious 3 (2006).mkv",audio,,0.99
-"ALL",prescan,ffprobe,0.07
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.22
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
-"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
-"The Witcher (2019) - S01E01.mkv",audio,,1.97
-"The Witcher (2019) - S01E01.mkv",audio,,1.27
-"The Witcher (2019) - S01E01.mkv",audio,,1.27
-"The Witcher (2019) - S01E01.mkv",audio,,1.30
-"The Witcher (2019) - S01E01.mkv",audio,,1.26
-"The Witcher (2019) - S01E01.mkv",audio,,1.00
-"The Witcher (2019) - S01E01.mkv",audio,,1.26
-"The Witcher (2019) - S01E01.mkv",audio,,1.26
-"The Witcher (2019) - S01E01.mkv",audio,,0.98
-"The Witcher (2019) - S01E01.mkv",muxing,,20.96
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,24.77
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,28.81
+"Ananas Express (2008).mkv",audio,,2.97
+"Ananas Express (2008).mkv",audio,,1.10
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,29.86
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,25.65
+"Ananas Express (2008).mkv",audio,,2.94
+"Ananas Express (2008).mkv",audio,,1.03
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,23.19
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,20.64
+"Ananas Express (2008).mkv",audio,,2.87
+"Ananas Express (2008).mkv",audio,,1.02
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,25.16
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,21.86
+"Ananas Express (2008).mkv",audio,,2.89
+"Ananas Express (2008).mkv",audio,,1.02
+"ALL",prescan,ffprobe,0.05
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,29.65
+"Ananas Express (2008).mkv",subtitle,hdmv_pgs_subtitle,26.42
+"Ananas Express (2008).mkv",audio,,2.96
+"Ananas Express (2008).mkv",audio,,1.03
+"ALL",prescan,ffprobe,1.41
+"Black Swan (2010).mkv",audio,,1.61
+"Black Swan (2010).mkv",audio,,1.16
+"Blood Diamond 2006.mp4",audio,,0.99
+"Catch Me If You Can.mp4",audio,,1.01
+"Das ist das Ende.mkv",audio,,0.96
+"Der Schatzplanet.mp4",audio,,1.06
+"Die Highligen Drei Könige (2015).mkv",audio,,0.96
+"Die Highligen Drei Könige (2015).mkv",audio,,0.93
+"Ein Minecraft Film.mp4",audio,,1.02
+"Evil Dead Rise.mp4",audio,,1.04
+"Get Rich or Die Tryin' (2005).mp4",audio,,1.01
+"Inception 2010.mp4",audio,,0.99
+"Interstellar.mp4",audio,,1.02
+"Lord Of War.mkv",audio,,0.99
+"Now You See Me (2013).mp4",audio,,1.06
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,33.20
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,27.16
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,27.58
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,31.38
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,31.97
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,22.09
+"Perfume The Story Of A Murderer (2006).mkv",subtitle,hdmv_pgs_subtitle,19.56
+"Perfume The Story Of A Murderer (2006).mkv",audio,,1.06
+"Perfume The Story Of A Murderer (2006).mkv",audio,,1.22
+"Prestige - Meister der Magie (2006).mkv",subtitle,subrip,0.02
+"Prestige - Meister der Magie (2006).mkv",subtitle,subrip,0.02
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,35.11
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,24.46
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,24.86
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,33.29
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,23.75
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,33.75
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,32.75
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,33.87
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,24.16
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,25.07
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,25.01
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,33.06
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,33.91
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,19.74
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,28.25
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,31.71
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,25.18
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,22.52
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,27.17
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,20.64
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,20.83
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,27.14
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,20.29
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,27.24
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,27.80
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,27.44
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,18.94
+"Prestige - Meister der Magie (2006).mkv",subtitle,hdmv_pgs_subtitle,22.99
+"Prestige - Meister der Magie (2006).mkv",audio,,1.14
+"Prestige - Meister der Magie (2006).mkv",audio,,1.31
+"Prestige - Meister der Magie (2006).mkv",muxing,,32.21
+"Red One.mp4",audio,,0.97
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,26.66
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,21.85
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,13.18
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.75
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.37
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.54
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.61
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,13.49
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,13.67
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.39
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.47
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,15.56
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.52
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.61
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,13.75
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.31
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.49
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.30
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,22.39
+"Sausage Party - Es geht um die Wurst (2016).mkv",subtitle,hdmv_pgs_subtitle,15.28
+"Sausage Party - Es geht um die Wurst (2016).mkv",audio,,1.06
+"Sausage Party - Es geht um die Wurst (2016).mkv",audio,,1.16
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,28.28
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,27.66
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,25.20
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,29.30
+"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,26.39
+"Schindlers Liste (1993).mkv",audio,,3.15
+"Schindlers Liste (1993).mkv",audio,,1.07
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.01
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,24.91
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,21.74
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.34
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.15
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.42
+"ALL",prescan,ffprobe,0.09
+"ALL",prescan,ffprobe,0.09
+"ALL",prescan,ffprobe,0.08
+"Die Schneegesellschaft.mp4",audio,,2.95
+"ALL",prescan,ffprobe,0.05
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.22
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,27.71
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,24.07
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.40
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.18
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.63
+"ALL",prescan,ffprobe,0.05
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.22
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,25.24
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,23.15
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.55
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.19
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.84
+"ALL",prescan,ffprobe,0.05
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.23
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,26.94
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,24.37
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.47
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.15
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.90
+"ALL",prescan,ffprobe,0.05
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.23
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,26.13
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,22.83
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.50
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.29
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.79
 "ALL",prescan,ffprobe,0.06
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.21
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,23.14
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.24
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,26.18
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.52
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,0.00
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,0.00
+"ALL",prescan,ffprobe,0.05
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.22
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.24
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,0.00
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,0.00
-"ALL",prescan,ffprobe,0.63
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.64
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,28.10
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,28.80
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.76
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.34
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,13.87
-"ALL",prescan,ffprobe,0.06
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.21
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,23.57
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,22.43
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,3.40
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.27
-"Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,12.90
-"ALL",prescan,ffprobe,0.63
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,31.18
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,27.36
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,24.81
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,28.52
-"Schindlers Liste (1993).mkv",subtitle,hdmv_pgs_subtitle,24.48
-"Schindlers Liste (1993).mkv",audio,,4.81
-"Schindlers Liste (1993).mkv",audio,,1.08
-"ALL",prescan,ffprobe,0.06
-"Ananas Express (2008).mkv",audio,,1.24
-"Ananas Express (2008).mkv",audio,,0.00

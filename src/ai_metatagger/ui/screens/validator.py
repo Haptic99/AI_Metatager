@@ -1,7 +1,7 @@
 import os
 import glob
 from PyQt5 import QtWidgets, QtCore, QtGui
-from ai_metatagger.config import DIR_FILME, DIR_SERIEN, DIR_TEST
+from ai_metatagger.config import DIR_FILME, DIR_SERIEN, DIR_TEST, SUBS_DIR
 from ai_metatagger.ui.components.widgets import ClickableSlider
 from ai_metatagger.ui.components.video_player import VideoPlayerWidget
 from ai_metatagger.ui.components.validator_sidebar import ValidatorSidebarWidget
@@ -141,6 +141,7 @@ class Screen3Validator(QtWidgets.QWidget):
 
         self.form_widget.show_srt_requested.connect(self.open_srt)
         self.form_widget.show_pgs_requested.connect(self.open_pgs)
+        self.form_widget.pgs_image_double_clicked.connect(lambda path: os.startfile(path))
 
     def _test_text_clicked(self):
         if not self.current_row is None:
@@ -246,8 +247,47 @@ class Screen3Validator(QtWidgets.QWidget):
                 break
 
     def on_track_selected(self, idx):
+        self._save_current_ui_to_memory()
         self.current_idx = idx
         self.load_row(autoplay=True)
+
+    def _save_current_ui_to_memory(self):
+        if self.current_row is None: return
+        film = self.current_row['file_name']
+        trk_id = str(self.current_row['track_id'])
+        form_data = self.form_widget.get_form_data()
+        
+        mask = (self.ctrl.df['file_name'] == film) & (self.ctrl.df['track_id'].astype(str) == trk_id)
+        if mask.any():
+            self.ctrl.df.loc[mask, 'language_iso'] = form_data['lang']
+            self.ctrl.df.loc[mask, 'is_hearing_impaired'] = form_data['sdh']
+            self.ctrl.df.loc[mask, 'is_forced'] = form_data['forced']
+            self.ctrl.df.loc[mask, 'track_name'] = form_data['title']
+            
+        self.current_row['language_iso'] = form_data['lang']
+        self.current_row['is_hearing_impaired'] = form_data['sdh']
+        self.current_row['is_forced'] = form_data['forced']
+        self.current_row['track_name'] = form_data['title']
+        
+        try:
+            import json
+            from ai_metatagger.utils.state_manager import DB_LOCK, init_db
+            with DB_LOCK:
+                conn = init_db()
+                cursor = conn.cursor()
+                cursor.execute(
+                    """UPDATE media_tracks 
+                       SET language_iso = ?, 
+                           is_hearing_impaired = ?, 
+                           is_forced = ?, 
+                           track_name = ?
+                       WHERE file_name = ? AND CAST(track_id AS TEXT) = ?""",
+                    (form_data['lang'], form_data['sdh'], form_data['forced'], form_data['title'], film, trk_id)
+                )
+                conn.commit()
+                conn.close()
+        except Exception as e:
+            print(f"Fehler beim Zwischenspeichern: {e}")
 
     def load_row(self, autoplay=False):
         if self.current_idx >= len(self.auto_rows) or len(self.auto_rows) == 0:
@@ -355,11 +395,20 @@ class Screen3Validator(QtWidgets.QWidget):
         seek_time_ms = 300000  # Default 5 minutes
         if typ.lower() == 'subtitle':
             import os
-            from ai_metatagger.config import DIR_TEST
-            base = os.path.join(
-                DIR_TEST, "..", "temp_cleanup", f"{film}_sub_{spur}")
-            paths_to_try = [f"{base}_synced.srt",
-                            f"{base}.srt", f"{base}_OCR.txt"]
+            from ai_metatagger.config import SUBS_DIR
+            
+            track_dir = os.path.join(SUBS_DIR, film, f"Spur_{spur}")
+            if not os.path.exists(track_dir):
+                film_no_ext = os.path.splitext(film)[0]
+                fallback_dir = os.path.join(SUBS_DIR, film_no_ext, f"Spur_{spur}")
+                if os.path.exists(fallback_dir):
+                    track_dir = fallback_dir
+                    
+            search_srt = os.path.join(glob.escape(track_dir), "*.srt")
+            search_txt = os.path.join(glob.escape(track_dir), "*_OCR.txt")
+            
+            paths_to_try = glob.glob(search_srt) + glob.glob(search_txt)
+            
             for path in paths_to_try:
                 if os.path.exists(path):
                     try:
@@ -393,45 +442,47 @@ class Screen3Validator(QtWidgets.QWidget):
             self.current_film = None
             self.player_widget.clear_media()
 
-        def _do_cleanup(path):
+        def _do_cleanup(vid_path, subs_path):
+            import shutil
             max_retries = 3
+            
+            # 1. Videodatei löschen
             for attempt in range(max_retries):
-                if not os.path.exists(path):
+                if not os.path.exists(vid_path):
                     break
                 try:
                     time.sleep(0.5 + (attempt * 1.0))
-                    os.remove(path)
+                    os.remove(vid_path)
                     break
                 except OSError as e:
-                    print(
-                        f"Cleanup retry {attempt+1}/{max_retries} failed for {path}: {e}")
+                    print(f"Cleanup retry {attempt+1}/{max_retries} failed for video {vid_path}: {e}")
+                    
+            # 2. Kompletten extracted_subs Ordner dieses Films löschen
+            for attempt in range(max_retries):
+                if not os.path.exists(subs_path):
+                    break
+                try:
+                    time.sleep(0.5 + (attempt * 1.0))
+                    shutil.rmtree(subs_path)
+                    break
+                except OSError as e:
+                    print(f"Cleanup retry {attempt+1}/{max_retries} failed for folder {subs_path}: {e}")
 
+        # Pfade zusammenbauen
         filepath = os.path.join(DIR_TEST, film)
-        threading.Thread(target=_do_cleanup, args=(
-            filepath,), daemon=True).start()
+        subs_folder = os.path.join(SUBS_DIR, film)
+        
+        # Hintergrund-Thread starten, damit die Benutzeroberfläche nicht einfriert
+        threading.Thread(target=_do_cleanup, args=(filepath, subs_folder), daemon=True).start()
+        
         return player_ref is not None
 
     def validate_field(self, field):
         film = self.current_row['file_name']
         trk_id = str(self.current_row['track_id'])
 
-        # Save current UI values to DataFrame so they persist when switching tracks
-        form_data = self.form_widget.get_form_data()
-
-        # Update self.ctrl.df
-        mask = (self.ctrl.df['file_name'] == film) & (
-            self.ctrl.df['track_id'] == self.current_row['track_id'])
-        if mask.any():
-            self.ctrl.df.loc[mask, 'language_iso'] = form_data['lang']
-            self.ctrl.df.loc[mask, 'is_hearing_impaired'] = form_data['sdh']
-            self.ctrl.df.loc[mask, 'is_forced'] = form_data['forced']
-            self.ctrl.df.loc[mask, 'track_name'] = form_data['title']
-
-        # Update current_row in memory as well
-        self.current_row['language_iso'] = form_data['lang']
-        self.current_row['is_hearing_impaired'] = form_data['sdh']
-        self.current_row['is_forced'] = form_data['forced']
-        self.current_row['track_name'] = form_data['title']
+        # Speichert Werte sicher ab (inkl. Dropdowns)
+        self._save_current_ui_to_memory()
 
         val_dict = self.ctrl.get_validation_data(film, trk_id)
         val_dict[field] = not val_dict.get(field, False)
@@ -442,8 +493,19 @@ class Screen3Validator(QtWidgets.QWidget):
             self.ctrl.state_data[film][trk_id] = {'Validated': {}, 'KI': {}}
         self.ctrl.state_data[film][trk_id]['Validated'] = val_dict
 
-        # Persist validation checkboxes and current form data to SQLite so they don't reset on restart
+        # --- NEU: JSON Datei permanent auf der Festplatte speichern ---
         import json
+        import os
+        from ai_metatagger.config import DB_PATH
+        state_file = os.path.join(os.path.dirname(DB_PATH), 'validation_state.json')
+        try:
+            with open(state_file, 'w', encoding='utf-8') as f:
+                json.dump(self.ctrl.state_data, f, indent=4)
+        except Exception as e:
+            print(f"Fehler beim Speichern der JSON-Datei: {e}")
+
+        # --- Auch Dropdown-Daten in der SQLite-Datenbank sichern ---
+        form_data = self.form_widget.get_form_data()
         from ai_metatagger.utils.state_manager import DB_LOCK, init_db
         with DB_LOCK:
             conn = init_db()
@@ -451,19 +513,9 @@ class Screen3Validator(QtWidgets.QWidget):
             val_json = json.dumps(val_dict)
             cursor.execute(
                 """UPDATE media_tracks 
-                   SET validated_fields = ?, 
-                       language_iso = ?, 
-                       is_hearing_impaired = ?, 
-                       is_forced = ?, 
-                       track_name = ?
-                   WHERE file_name = ? AND track_id = ?""",
-                (val_json,
-                 form_data['lang'],
-                 form_data['sdh'],
-                 form_data['forced'],
-                 form_data['title'],
-                 film,
-                 self.current_row['track_id'])
+                   SET validated_fields = ?, language_iso = ?, is_hearing_impaired = ?, is_forced = ?, track_name = ?
+                   WHERE file_name = ? AND CAST(track_id AS TEXT) = ?""",
+                (val_json, form_data['lang'], form_data['sdh'], form_data['forced'], form_data['title'], film, trk_id)
             )
             conn.commit()
             conn.close()
@@ -486,23 +538,48 @@ class Screen3Validator(QtWidgets.QWidget):
         return all_valid, val_dict
 
     def save_and_next(self):
-        all_valid, val_dict = self.check_all_fields_validated()
+        # Aktuelle Ansicht noch schnell speichern
+        self._save_current_ui_to_memory()
+        
+        film = self.current_row['file_name']
+        df_film = self.ctrl.df[(self.ctrl.df['file_name'] == film) & (~self.ctrl.df['is_validated'])]
+        
+        tracks_to_finalize = []
+        all_valid = True
+        
+        # Prüfe ALLE Spuren dieses Films, ob JEDES Häkchen gesetzt ist
+        for _, row in df_film.iterrows():
+            t_id = str(row['track_id'])
+            val_dict = self.ctrl.get_validation_data(film, t_id)
+            is_audio = str(row['track_type']).lower() == 'audio'
+            
+            if is_audio:
+                is_track_valid = val_dict.get('lang', False)
+            else:
+                is_track_valid = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
+                
+            if not is_track_valid:
+                all_valid = False
+                break
+            
+            tracks_to_finalize.append((t_id, row, val_dict))
+            
+        # Wenn auch nur ein Häkchen im gesamten Film fehlt: Abbruch!
         if not all_valid:
             QtWidgets.QMessageBox.warning(
-                self, "Fehlende Prüfung", "Bitte überprüfe und setze erst alle Häkchen!")
+                self, "Film nicht vollständig geprüft", 
+                f"Es wurden noch nicht alle Spuren für diesen Film validiert.\n\nBitte wähle jede Spur in der Liste an und setze alle grünen Häkchen, bevor du den Film abschließt.")
             return
 
-        film = self.current_row['file_name']
-        trk_id = str(self.current_row['track_id'])
-
-        form_data = self.form_widget.get_form_data()
-        self.ctrl.save_validation(film, trk_id,
-                                  form_data['lang'],
-                                  form_data['sdh'],
-                                  form_data['forced'],
-                                  form_data['title'],
-                                  "",  # notes
-                                  val_dict)
+        # Speichere ALLE vollständig geprüften Spuren ab
+        for t_id, row, val_dict in tracks_to_finalize:
+            self.ctrl.save_validation(film, t_id,
+                                      row['language_iso'],
+                                      row['is_hearing_impaired'],
+                                      row['is_forced'],
+                                      row['track_name'],
+                                      "",  # notes (Löscht das AUTO Label)
+                                      val_dict)
 
         self.ctrl.refresh_data()
         df = self.ctrl.df
@@ -512,7 +589,8 @@ class Screen3Validator(QtWidgets.QWidget):
         if remaining.empty:
             player_ref = self._cleanup_vlc_and_file(film)
 
-        self.current_idx += 1
+        # Da der ganze Film erledigt ist, springen wir sicher auf den ersten Index des nächsten Films
+        self.current_idx = 0
 
         if player_ref:
             QtCore.QTimer.singleShot(600, self.check_for_new_data)
@@ -547,29 +625,58 @@ class Screen3Validator(QtWidgets.QWidget):
         if not self.current_row is None:
             film = self.current_row['file_name']
             idx = self.current_row['track_id']
-            path = os.path.join(
-                DIR_TEST, "..", "temp_cleanup", f"{film}_sub_{idx}.srt")
-            if os.path.exists(path):
-                with open(path, 'r', encoding='utf-8') as f:
+            
+            track_dir = os.path.join(SUBS_DIR, film, f"Spur_{idx}")
+            if not os.path.exists(track_dir):
+                film_no_ext = os.path.splitext(film)[0]
+                fallback_dir = os.path.join(SUBS_DIR, film_no_ext, f"Spur_{idx}")
+                if os.path.exists(fallback_dir):
+                    track_dir = fallback_dir
+
+            # Suchen wir nach .srt UND .txt dateien in diesem Ordner
+            search_srt = os.path.join(glob.escape(track_dir), "*.srt")
+            search_txt = os.path.join(glob.escape(track_dir), "*_OCR.txt")
+            
+            files = glob.glob(search_srt) + glob.glob(search_txt)
+            
+            if files:
+                # Priorität: 1. _synced.srt -> 2. normale .srt -> 3. OCR.txt
+                files.sort(key=lambda x: ('_synced' not in x, '_OCR' not in x))
+                target_file = files[0]
+                with open(target_file, 'r', encoding='utf-8') as f:
                     self.form_widget.toggle_srt_view(f.read())
             else:
                 self.form_widget.toggle_srt_view()
                 QtWidgets.QMessageBox.warning(
-                    self, "Nicht gefunden", "Das SRT File wurde nicht gefunden.")
+                    self, "Nicht gefunden", f"Es wurde weder eine SRT noch ein OCR Text gefunden in:\n{track_dir}")
 
     def open_pgs(self):
         if not self.current_row is None:
+            if self.form_widget.pgs_image_list.isVisible():
+                self.form_widget.toggle_pgs_view()
+                return
+                
             film = self.current_row['file_name']
             idx = self.current_row['track_id']
-            search = os.path.join(
-                DIR_TEST, "..", "temp_cleanup", f"{glob.escape(film)}_sub_{idx}_*.png")
+            
+            track_pgs_dir = os.path.join(SUBS_DIR, film, f"Spur_{idx}")
+            
+            if not os.path.exists(track_pgs_dir):
+                film_no_ext = os.path.splitext(film)[0]
+                fallback_dir = os.path.join(SUBS_DIR, film_no_ext, f"Spur_{idx}")
+                if os.path.exists(fallback_dir):
+                    track_pgs_dir = fallback_dir
+            
+            search = os.path.join(glob.escape(track_pgs_dir), "*.png")
             files = glob.glob(search)
+            
             if files:
                 files.sort()
-                os.startfile(files[0])
+                self.form_widget.toggle_pgs_view(files)
             else:
+                self.form_widget.toggle_pgs_view()
                 QtWidgets.QMessageBox.warning(
-                    self, "Nicht gefunden", "PGS Bilder nicht gefunden.")
+                    self, "Nicht gefunden", f"Keine Bilder gefunden in:\n{track_pgs_dir}")
 
     def start_new_analysis(self, paths):
         if paths:

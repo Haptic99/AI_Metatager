@@ -16,7 +16,7 @@ from pytesseract import Output
 from langdetect import detect_langs
 
 from ai_metatagger.utils.subprocess_tracker import tracked_run
-from ai_metatagger.config import TESSERACT_PATH, CONFIG, TEMP_DIR
+from ai_metatagger.config import TESSERACT_PATH, CONFIG, TEMP_DIR, SUBS_DIR
 from ai_metatagger.core.logger import write_log, write_review
 from ai_metatagger.core.subtitle_tools import map_lang, is_hearing_impaired
 
@@ -157,29 +157,31 @@ def analyze_subtitle_pgs(
     # Auto-detect best Tesseract language model
     tess_lang = _auto_detect_tess_language(filepath, stream_idx, track_id, sample_timestamps, tess_lang, old_lang)
 
-    # Parallel OCR extraction
-    combined_text = _run_parallel_ocr(filepath, stream_idx, track_id, sample_timestamps, tess_lang)
+    # Parallel OCR extraction (Liefert jetzt den reinen Text UND den SRT-formatierten Text)
+    pure_text, srt_text = _run_parallel_ocr(filepath, stream_idx, track_id, sample_timestamps, tess_lang)
 
-    # Save OCR text for debugging
+    # Save OCR text (im SRT Format!) für die Benutzeroberfläche
     movie_base = os.path.basename(filepath)
-    ocr_file = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_OCR.txt")
+    track_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{stream_idx}")
+    os.makedirs(track_dir, exist_ok=True)
+    ocr_file = os.path.join(track_dir, f"{movie_base}_sub_{stream_idx}_OCR.txt")
     with open(ocr_file, "w", encoding="utf-8") as f:
-        f.write(combined_text)
+        f.write(srt_text)
 
-    # SDH detection — use shared helper from subtitle_tools
-    line_count = len([l for l in combined_text.split('\n') if l.strip()])
-    is_hi = is_hearing_impaired(combined_text, line_count)
+    # SDH detection — wir nutzen hierfür den reinen Text (pure_text) ohne störende Timestamps
+    line_count = len([l for l in pure_text.split('\n') if l.strip()])
+    is_hi = is_hearing_impaired(pure_text, line_count)
     if is_hi:
-        sdh_markers = len(re.findall(r'\[.*?\]|\(.*?\)|^[A-Z\s]{2,}:', combined_text, flags=re.MULTILINE))
+        sdh_markers = len(re.findall(r'\[.*?\]|\(.*?\)|^[A-Z\s]{2,}:', pure_text, flags=re.MULTILINE))
         write_log(f"       => SDH-Erkennung (PGS): {sdh_markers} Marker gefunden. Markiere als Schwerhörig.")
 
-    # Language detection
-    if len(combined_text.strip()) > 10:
-        if "Me refiero a" in combined_text or "manera de ver" in combined_text or "Djame ver" in combined_text:
+    # Language detection (auch mit pure_text)
+    if len(pure_text.strip()) > 10:
+        if "Me refiero a" in pure_text or "manera de ver" in pure_text or "Djame ver" in pure_text:
             return 'spa', is_forced_meta, 80.0, is_hi
 
         try:
-            res = detect_langs(combined_text)
+            res = detect_langs(pure_text)
             if res:
                 guess = map_lang(res[0].lang, old_title)
                 conf = res[0].prob * 100
@@ -204,7 +206,7 @@ def _auto_detect_tess_language(
     movie_base = os.path.basename(filepath)
 
     for i, ts in enumerate(sample_timestamps[:50]):
-        out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_test.png")
+        out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{stream_idx}_test.png")
         if extract_subtitle_image(filepath, stream_idx, ts, out_img):
             try:
                 with Image.open(out_img) as img:
@@ -250,12 +252,15 @@ def _run_parallel_ocr(
     track_id: int,
     sample_timestamps: List[float],
     tess_lang: str,
-) -> str:
-    """Run OCR on multiple subtitle images in parallel using ThreadPoolExecutor."""
+) -> Tuple[str, str]:
+    """Run OCR on multiple subtitle images in parallel and return pure text & SRT format."""
     movie_base = os.path.basename(filepath)
 
-    def extract_and_ocr(ts: float, i: int) -> str:
-        out_img = os.path.join(TEMP_DIR, f"{movie_base}_sub_{track_id}_{i:03d}.png")
+    track_pgs_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{stream_idx}")
+    os.makedirs(track_pgs_dir, exist_ok=True)
+
+    def extract_and_ocr(ts: float, i: int) -> Tuple[float, str]:
+        out_img = os.path.join(track_pgs_dir, f"{movie_base}_sub_{stream_idx}_{i:03d}.png")
         if extract_subtitle_image(filepath, stream_idx, ts, out_img):
             try:
                 with Image.open(out_img) as img:
@@ -265,21 +270,45 @@ def _run_parallel_ocr(
                                 min(img.width, bbox[2] + 10), min(img.height, bbox[3] + 10))
                         cropped = img.crop(bbox)
                         cropped.save(out_img)
-                return pytesseract.image_to_string(out_img, lang=tess_lang).strip()
+                text = pytesseract.image_to_string(out_img, lang=tess_lang).strip()
+                return ts, text
             except Exception as e:
                 write_log(f"Warnung in OCR extract_and_ocr: {e}")
-                return ""
-            finally:
-                if os.path.exists(out_img):
-                    os.remove(out_img)
-        return ""
+                return ts, ""
+        return ts, ""
 
-    combined_text = ""
+    results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
         futures = [executor.submit(extract_and_ocr, ts, i) for i, ts in enumerate(sample_timestamps)]
         for future in concurrent.futures.as_completed(futures):
-            text = future.result()
+            ts, text = future.result()
             if text:
-                combined_text += text + "\n"
+                results.append((ts, text))
 
-    return combined_text
+    # --- WICHTIG: Chronologisch sortieren, da Threads durcheinander enden ---
+    results.sort(key=lambda x: x[0])
+
+    pure_text = ""
+    srt_text = ""
+    
+    for i, (ts, text) in enumerate(results, start=1):
+        # Reintext für die KI sammeln
+        pure_text += text + "\n\n"
+        
+        # Zeitrechnung für das SRT-Format
+        h = int(ts // 3600)
+        m = int((ts % 3600) // 60)
+        s = int(ts % 60)
+        ms = int((ts % 1) * 1000)
+        
+        # Künstliches End-Datum erzeugen (+ 2 Sekunden), da wir bei PGS nur den Start haben
+        end_ts = ts + 2.0
+        e_h = int(end_ts // 3600)
+        e_m = int((end_ts % 3600) // 60)
+        e_s = int(end_ts % 60)
+        e_ms = int((end_ts % 1) * 1000)
+        
+        # In die SRT-Struktur einbauen
+        srt_text += f"{i}\n{h:02d}:{m:02d}:{s:02d},{ms:03d} --> {e_h:02d}:{e_m:02d}:{e_s:02d},{e_ms:03d}\n{text}\n\n"
+
+    return pure_text.strip(), srt_text.strip()

@@ -8,12 +8,14 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 # Data paths
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 TEMP_DIR = os.path.join(DATA_DIR, 'temp_cleanup')
+SUBS_DIR = os.path.join(DATA_DIR, 'extracted_subs')
 CONFIG_PATH = os.path.join(DATA_DIR, 'config.json')
 DB_PATH = os.path.join(DATA_DIR, 'Jellyfin_AI_Database.sqlite')
 
 try:
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(TEMP_DIR, exist_ok=True)
+    os.makedirs(SUBS_DIR, exist_ok=True)
 except OSError as e:
     print(f"FEHLER: Verzeichnisse konnten nicht angelegt werden ({DATA_DIR}): {e}")
     print("Bitte stellen Sie sicher, dass das Programm Schreibrechte hat.")

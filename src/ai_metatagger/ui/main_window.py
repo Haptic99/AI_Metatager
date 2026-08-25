@@ -44,10 +44,19 @@ class CockpitWizard(QtWidgets.QMainWindow):
             self.screen3.sidebar.btn_cancel_analysis.setEnabled(False)
             self.screen3.sidebar.lbl_bg_status.setText("KI-Analyse wird abgebrochen...")
     def analysis_done(self):
-        self.screen3.sidebar.lbl_bg_status.setText("KI-Analyse vollständig abgeschlossen!")
+        if hasattr(self, 'analysis_worker') and self.analysis_worker.is_cancelled:
+            self.screen3.sidebar.lbl_bg_status.setText("Analyse abgebrochen. Daten bereinigt.")
+        else:
+            self.screen3.sidebar.lbl_bg_status.setText("KI-Analyse vollständig abgeschlossen!")
+            
         self.screen3.sidebar.bg_progress.setValue(self.screen3.sidebar.bg_progress.maximum())
+        
+        # WICHTIG: Liste sofort aktualisieren, damit abgebrochene Filme verschwinden
         self.screen3.scan_files()
-        self.screen3.sidebar.bg_status_frame.hide()
+        self.screen3.check_for_new_data()
+        
+        # Blendet das Fenster nach 2,5 Sekunden aus, damit man die Meldung noch lesen kann
+        QtCore.QTimer.singleShot(2500, self.screen3.sidebar.bg_status_frame.hide)
     def closeEvent(self, event):
         self.screen3.player_widget.release_safe()
         # Stop any running analysis thread and its subprocesses
