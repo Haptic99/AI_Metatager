@@ -262,11 +262,13 @@ class Screen3Validator(QtWidgets.QWidget):
             self.ctrl.df.loc[mask, 'language_iso'] = form_data['lang']
             self.ctrl.df.loc[mask, 'is_hearing_impaired'] = form_data['sdh']
             self.ctrl.df.loc[mask, 'is_forced'] = form_data['forced']
+            self.ctrl.df.loc[mask, 'is_default'] = form_data['default'] # <-- NEU
             self.ctrl.df.loc[mask, 'track_name'] = form_data['title']
             
         self.current_row['language_iso'] = form_data['lang']
         self.current_row['is_hearing_impaired'] = form_data['sdh']
         self.current_row['is_forced'] = form_data['forced']
+        self.current_row['is_default'] = form_data['default'] # <-- NEU
         self.current_row['track_name'] = form_data['title']
         
         try:
@@ -280,9 +282,10 @@ class Screen3Validator(QtWidgets.QWidget):
                        SET language_iso = ?, 
                            is_hearing_impaired = ?, 
                            is_forced = ?, 
+                           is_default = ?, 
                            track_name = ?
                        WHERE file_name = ? AND CAST(track_id AS TEXT) = ?""",
-                    (form_data['lang'], form_data['sdh'], form_data['forced'], form_data['title'], film, trk_id)
+                    (form_data['lang'], form_data['sdh'], form_data['forced'], form_data['default'], form_data['title'], film, trk_id)
                 )
                 conn.commit()
                 conn.close()
@@ -493,17 +496,6 @@ class Screen3Validator(QtWidgets.QWidget):
             self.ctrl.state_data[film][trk_id] = {'Validated': {}, 'KI': {}}
         self.ctrl.state_data[film][trk_id]['Validated'] = val_dict
 
-        # --- NEU: JSON Datei permanent auf der Festplatte speichern ---
-        import json
-        import os
-        from ai_metatagger.config import DB_PATH
-        state_file = os.path.join(os.path.dirname(DB_PATH), 'validation_state.json')
-        try:
-            with open(state_file, 'w', encoding='utf-8') as f:
-                json.dump(self.ctrl.state_data, f, indent=4)
-        except Exception as e:
-            print(f"Fehler beim Speichern der JSON-Datei: {e}")
-
         # --- Auch Dropdown-Daten in der SQLite-Datenbank sichern ---
         form_data = self.form_widget.get_form_data()
         from ai_metatagger.utils.state_manager import DB_LOCK, init_db
@@ -513,9 +505,9 @@ class Screen3Validator(QtWidgets.QWidget):
             val_json = json.dumps(val_dict)
             cursor.execute(
                 """UPDATE media_tracks 
-                   SET validated_fields = ?, language_iso = ?, is_hearing_impaired = ?, is_forced = ?, track_name = ?
+                   SET validated_fields = ?, language_iso = ?, is_hearing_impaired = ?, is_forced = ?, is_default = ?, track_name = ?
                    WHERE file_name = ? AND CAST(track_id AS TEXT) = ?""",
-                (val_json, form_data['lang'], form_data['sdh'], form_data['forced'], form_data['title'], film, trk_id)
+                (val_json, form_data['lang'], form_data['sdh'], form_data['forced'], form_data['default'], form_data['title'], film, trk_id)
             )
             conn.commit()
             conn.close()
@@ -529,7 +521,7 @@ class Screen3Validator(QtWidgets.QWidget):
 
         is_audio = str(self.current_row['track_type']).lower() == 'audio'
         if is_audio:
-            all_valid = val_dict.get('lang', False)
+            all_valid = all(val_dict.get(k, False) for k in ['lang', 'default'])
         else:
             all_valid = all(val_dict.get(k, False)
                             for k in ['lang', 'sdh', 'forced', 'name'])
@@ -554,7 +546,7 @@ class Screen3Validator(QtWidgets.QWidget):
             is_audio = str(row['track_type']).lower() == 'audio'
             
             if is_audio:
-                is_track_valid = val_dict.get('lang', False)
+                is_track_valid = all(val_dict.get(k, False) for k in ['lang', 'default'])
             else:
                 is_track_valid = all(val_dict.get(k, False) for k in ['lang', 'sdh', 'forced', 'name'])
                 
@@ -577,8 +569,9 @@ class Screen3Validator(QtWidgets.QWidget):
                                       row['language_iso'],
                                       row['is_hearing_impaired'],
                                       row['is_forced'],
+                                      row['is_default'],
                                       row['track_name'],
-                                      "",  # notes (Löscht das AUTO Label)
+                                      "",  # notes
                                       val_dict)
 
         self.ctrl.refresh_data()

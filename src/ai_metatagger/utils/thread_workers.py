@@ -60,12 +60,6 @@ class AnalysisThread(QtCore.QThread):
             cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (basename,))
             conn.commit()
             conn.close()
-            
-        # 4. JSON-Einträge bereinigen
-        state_data = load_state()
-        if basename in state_data:
-            del state_data[basename]
-            save_state(state_data)
 
     def extract_metadata(self, filepath):
         data = getattr(self, 'ffprobe_cache', {}).get(filepath)

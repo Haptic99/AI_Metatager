@@ -56,7 +56,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.lbl_ki_lang = QtWidgets.QLabel("-")
         self.form_grid.addWidget(self.lbl_ki_lang, 1, 1)
         self.cmb_lang = QtWidgets.QComboBox()
-        self.cmb_lang.addItems(["de", "eng", "fre", "spa", "ita", "chi", "ko", "jpn", "und"])
+        self.cmb_lang.addItems(["ger", "eng", "fre", "spa", "zh-hans", "zh-hans", "ko", "jpn"])
         self.cmb_lang.setEditable(True)
         self.form_grid.addWidget(self.cmb_lang, 1, 2)
         self.btn_test_lang = QtWidgets.QPushButton("▶ Text")
@@ -179,6 +179,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
             'lang': self.cmb_lang.currentText(),
             'sdh': self.cmb_sdh.currentText() == "Ja",
             'forced': self.cmb_forced.currentText() == "Ja",
+            'default': self.cmb_default.currentText() == "Ja",  # <-- NEU
             'title': self.txt_titel.text()
         }
         
@@ -186,7 +187,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         is_audio = str(df_row['track_type']).lower() == 'audio'
         
         # Hide unneeded fields for audio
-        for row_idx in [2, 3, 4, 5]: # SDH, Forced, Standard, Name
+        for row_idx in [2, 3, 5]: # SDH, Forced, Standard, Name
             for col in range(5):
                 item = self.form_grid.itemAtPosition(row_idx, col)
                 if item and item.widget():
@@ -217,6 +218,7 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.cmb_lang.setCurrentText(str(df_row['language_iso']))
         self.cmb_sdh.setCurrentText("Ja" if bool(df_row['is_hearing_impaired']) else "Nein")
         self.cmb_forced.setCurrentText("Ja" if bool(df_row['is_forced']) else "Nein")
+        self.cmb_default.setCurrentText("Ja" if bool(df_row.get('is_default', False)) else "Nein") # <-- NEU
         if 'track_name' in df_row and pd.notna(df_row['track_name']):
             self.txt_titel.setText(str(df_row['track_name']))
         else:
@@ -231,12 +233,27 @@ class ValidatorFormWidget(QtWidgets.QWidget):
         self.lbl_ki_name.setText(str(name_val) if name_val else "-")
         
     def update_validation_ui(self, val_data, is_all_valid):
+        # Mappe die Felder auf ihre jeweiligen Eingabe-Widgets
+        widget_map = {
+            'lang': self.cmb_lang,
+            'sdh': self.cmb_sdh,
+            'forced': self.cmb_forced,
+            'default': self.cmb_default,
+            'name': self.txt_titel
+        }
+        
         for field in ['lang', 'sdh', 'forced', 'default', 'name']:
             btn = getattr(self, f"btn_valid_{field}")
+            input_widget = widget_map.get(field)
+            
             if val_data.get(field):
                 btn.setStyleSheet("background-color: #4caf50; color: white;")
+                if input_widget:
+                    input_widget.setEnabled(False)  # Feld ausgrauen/sperren
             else:
                 btn.setStyleSheet("")
+                if input_widget:
+                    input_widget.setEnabled(True)   # Feld wieder freigeben
                 
         if self.track_list.currentRow() >= 0:
             row = self.track_list.currentRow()

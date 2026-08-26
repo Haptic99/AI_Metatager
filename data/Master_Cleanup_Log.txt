@@ -1166,3 +1166,311 @@ DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\da
   -> Speichere aufgeräumte Datei (FFmpeg Remux)...
      FEHLER beim Muxen mit ffmpeg.
 Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Schneegesellschaft.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.4%)
+       Whisper KI (Spot 1655s): tr (53.4%)
+       Whisper KI (Spot 3010s): ger (98.5%)
+       Whisper KI (Spot 4365s): tr (61.0%)
+       Whisper KI (Spot 5721s): ger (99.2%)
+       Whisper KI (Spot 7076s): la (33.7%)
+[2026-08-26 18:30:20]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.7%, Dauer: 3.3s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Ein Minecraft Film.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (99.2%)
+       Whisper KI (Spot 1211s): ger (73.6%)
+       Whisper KI (Spot 2123s): ger (76.2%)
+       Whisper KI (Spot 3034s): ger (57.0%)
+       Whisper KI (Spot 3946s): ger (98.6%)
+       Whisper KI (Spot 4857s): ger (98.0%)
+[2026-08-26 18:31:31]      => Audio KI Bestätigt: 'ger' (Sicherheit: 83.8%, Dauer: 1.8s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Evil Dead Rise.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (82.4%)
+       Whisper KI (Spot 1164s): eng (88.2%)
+       Whisper KI (Spot 2029s): eng (33.5%)
+       Whisper KI (Spot 2893s): zh (29.6%)
+       Whisper KI (Spot 3758s): ger (98.4%)
+       Whisper KI (Spot 4622s): eng (35.5%)
+[2026-08-26 18:33:01]      => Audio KI Korrektur: War 'ger', ist jetzt 'eng' (Sicherheit: 52.4%, Dauer: 1.8s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Evil Dead Rise.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (82.4%)
+       Whisper KI (Spot 1164s): eng (88.2%)
+       Whisper KI (Spot 2029s): eng (33.5%)
+       Whisper KI (Spot 2893s): zh (29.6%)
+       Whisper KI (Spot 3758s): ger (98.4%)
+       Whisper KI (Spot 4622s): eng (35.5%)
+[2026-08-26 18:37:27]      => Audio KI Korrektur: War 'ger', ist jetzt 'eng' (Sicherheit: 52.4%, Dauer: 2.8s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Get Rich or Die Tryin' (2005).mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.5%)
+       Whisper KI (Spot 1364s): ger (99.2%)
+       Whisper KI (Spot 2428s): ger (95.0%)
+       Whisper KI (Spot 3493s): ger (95.2%)
+       Whisper KI (Spot 4557s): ger (98.8%)
+       Whisper KI (Spot 5621s): ger (97.5%)
+[2026-08-26 18:38:19]      => Audio KI Bestätigt: 'ger' (Sicherheit: 97.4%, Dauer: 1.6s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Inception 2010.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.0%)
+       Whisper KI (Spot 1681s): ger (96.1%)
+       Whisper KI (Spot 3062s): ger (98.8%)
+       Whisper KI (Spot 4444s): ger (97.8%)
+       Whisper KI (Spot 5825s): ger (97.5%)
+       Whisper KI (Spot 7206s): ger (97.2%)
+[2026-08-26 18:38:57]      => Audio KI Bestätigt: 'ger' (Sicherheit: 97.6%, Dauer: 1.8s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Interstellar.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.2%)
+       Whisper KI (Spot 1890s): ger (97.9%)
+       Whisper KI (Spot 3481s): ger (99.2%)
+       Whisper KI (Spot 5072s): ger (99.2%)
+       Whisper KI (Spot 6662s): ger (98.8%)
+       Whisper KI (Spot 8253s): ger (96.3%)
+[2026-08-26 18:39:36]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.3%, Dauer: 1.9s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Lord Of War.mkv ---
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.2%)
+       Whisper KI (Spot 1419s): ger (96.7%)
+       Whisper KI (Spot 2539s): ger (21.9%)
+       Whisper KI (Spot 3658s): ger (96.6%)
+       Whisper KI (Spot 4778s): ger (99.7%)
+       Whisper KI (Spot 5897s): ru (73.3%)
+[2026-08-26 18:39:55]      => Audio KI Bestätigt: 'ger' (Sicherheit: 82.6%, Dauer: 1.7s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Witcher (2019) - S01E01.mkv ---
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+       Starte ffsubsync (KI-AutoSync) für Spur...
+  -> Prüfe Untertitel Spur 10 (Codec: subrip, Lang: eng, Titel: '')
+[2026-08-26 18:42:38]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.4s). Ersetze Spur 10.
+[2026-08-26 18:42:39]      => Text KI Bestätigt: 'eng' (Sicherheit: 100.0%, Dauer: 0.6s)
+  -> Prüfe Untertitel Spur 11 (Codec: subrip, Lang: ara, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.4s). Ersetze Spur 11.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'ara', ist jetzt 'ar' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 12 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.4s). Ersetze Spur 12.
+[2026-08-26 18:42:39]      => Text KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 13 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 10.4s). Ersetze Spur 13.
+[2026-08-26 18:42:39]      => Text KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 14 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 9.0s). Ersetze Spur 14.
+[2026-08-26 18:42:39]      => Text KI Bestätigt: 'fre' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 15 (Codec: subrip, Lang: hin, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.020s, Speed: 0.999x, Dauer: 8.1s). Ersetze Spur 15.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'hin', ist jetzt 'hi' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 16 (Codec: subrip, Lang: fre, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Speed: 0.999x, Dauer: 8.1s). Ersetze Spur 16.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'fre', ist jetzt 'eng' (Sicherheit: 85.1%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 17 (Codec: subrip, Lang: pol, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.9s). Ersetze Spur 17.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 18 (Codec: subrip, Lang: pol, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 9.1s). Ersetze Spur 18.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 19 (Codec: subrip, Lang: und, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: -6.500s, Speed: 1.043x, Dauer: 8.2s). Ersetze Spur 19.
+     => FORCED ERKANNT (2 Zeilen). Setze Forced-Tag.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'und', ist jetzt 'tl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 20 (Codec: subrip, Lang: chi, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.2s). Ersetze Spur 20.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'chi', ist jetzt 'ko' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 21 (Codec: subrip, Lang: und, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: -0.160s, Speed: 0.999x, Dauer: 7.3s). Ersetze Spur 21.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'und', ist jetzt 'tl' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 22 (Codec: subrip, Lang: ukr, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.000s, Dauer: 8.4s). Ersetze Spur 22.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'ukr', ist jetzt 'uk' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Prüfe Untertitel Spur 23 (Codec: subrip, Lang: ukr, Titel: '')
+[2026-08-26 18:42:39]      => Auto-Sync erfolgreich! (Verschiebung: 0.120s, Speed: 1.001x, Dauer: 7.8s). Ersetze Spur 23.
+     => FORCED ERKANNT (3 Zeilen). Setze Forced-Tag.
+[2026-08-26 18:42:39]      => Text KI Korrektur: War 'ukr', ist jetzt 'uk' (Sicherheit: 100.0%, Dauer: 0.0s)
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 960s): ger (99.4%)
+       Whisper KI (Spot 1170s): ger (98.2%)
+       Whisper KI (Spot 900s): ger (99.2%)
+       Whisper KI (Spot 1020s): ger (99.0%)
+       Whisper KI (Spot 810s): ger (98.1%)
+       Whisper KI (Spot 990s): ger (98.7%)
+[2026-08-26 18:42:41]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.8%, Dauer: 1.8s)
+  -> Audio Spur 2 (Bisher: 'eng'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): eng (97.7%)
+       Whisper KI (Spot 1170s): eng (97.4%)
+       Whisper KI (Spot 900s): eng (98.0%)
+       Whisper KI (Spot 1020s): eng (97.4%)
+       Whisper KI (Spot 810s): eng (98.3%)
+       Whisper KI (Spot 990s): eng (97.6%)
+[2026-08-26 18:42:42]      => Audio KI Bestätigt: 'eng' (Sicherheit: 97.7%, Dauer: 1.1s)
+  -> Audio Spur 3 (Bisher: 'fre'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): fre (99.0%)
+       Whisper KI (Spot 1170s): fre (97.7%)
+       Whisper KI (Spot 900s): fre (98.1%)
+       Whisper KI (Spot 1020s): fre (97.9%)
+       Whisper KI (Spot 810s): fre (97.0%)
+       Whisper KI (Spot 990s): fre (97.4%)
+[2026-08-26 18:42:43]      => Audio KI Bestätigt: 'fre' (Sicherheit: 97.8%, Dauer: 1.1s)
+  -> Audio Spur 4 (Bisher: 'hin'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): hi (87.2%)
+       Whisper KI (Spot 1170s): hi (82.0%)
+       Whisper KI (Spot 900s): hi (89.8%)
+       Whisper KI (Spot 1020s): hi (94.9%)
+       Whisper KI (Spot 810s): hi (95.0%)
+       Whisper KI (Spot 990s): hi (90.1%)
+[2026-08-26 18:42:45]      => Audio KI Korrektur: War 'hin', ist jetzt 'hi' (Sicherheit: 89.8%, Dauer: 1.1s)
+  -> Audio Spur 5 (Bisher: 'pol'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): pl (97.1%)
+       Whisper KI (Spot 1170s): pl (97.8%)
+       Whisper KI (Spot 900s): pl (98.4%)
+       Whisper KI (Spot 1020s): pl (97.2%)
+       Whisper KI (Spot 810s): pl (98.9%)
+       Whisper KI (Spot 990s): pl (96.5%)
+[2026-08-26 18:42:46]      => Audio KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 97.7%, Dauer: 1.1s)
+  -> Audio Spur 6 (Bisher: 'pol'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): pl (97.8%)
+       Whisper KI (Spot 1170s): pl (97.4%)
+       Whisper KI (Spot 900s): pl (98.7%)
+       Whisper KI (Spot 1020s): pl (97.5%)
+       Whisper KI (Spot 810s): pl (98.7%)
+       Whisper KI (Spot 990s): pl (96.8%)
+[2026-08-26 18:42:47]      => Audio KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 97.8%, Dauer: 0.9s)
+  -> Audio Spur 7 (Bisher: 'pol'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): pl (90.3%)
+       Whisper KI (Spot 1170s): pl (96.9%)
+       Whisper KI (Spot 900s): pl (92.8%)
+       Whisper KI (Spot 1020s): pl (96.6%)
+       Whisper KI (Spot 810s): pl (98.5%)
+       Whisper KI (Spot 990s): pl (95.6%)
+[2026-08-26 18:42:48]      => Audio KI Korrektur: War 'pol', ist jetzt 'pl' (Sicherheit: 95.1%, Dauer: 1.1s)
+  -> Audio Spur 8 (Bisher: 'rus'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): uk (85.5%)
+       Whisper KI (Spot 1170s): uk (87.8%)
+       Whisper KI (Spot 900s): ru (51.2%)
+       Whisper KI (Spot 1020s): uk (96.8%)
+       Whisper KI (Spot 810s): uk (69.1%)
+       Whisper KI (Spot 990s): uk (93.8%)
+[2026-08-26 18:42:49]      => Audio KI Korrektur: War 'rus', ist jetzt 'uk' (Sicherheit: 86.6%, Dauer: 1.2s)
+  -> Audio Spur 9 (Bisher: 'rus'). Starte Whisper Analyse...
+       Whisper KI (Spot 960s): uk (84.4%)
+       Whisper KI (Spot 1170s): uk (89.0%)
+       Whisper KI (Spot 900s): uk (49.7%)
+       Whisper KI (Spot 1020s): uk (97.2%)
+       Whisper KI (Spot 810s): uk (81.4%)
+       Whisper KI (Spot 990s): uk (93.5%)
+[2026-08-26 18:42:50]      => Audio KI Korrektur: War 'rus', ist jetzt 'uk' (Sicherheit: 82.5%, Dauer: 1.0s)
+DEBUG: Running ffmpeg with args: ffmpeg -v quiet -y -i F:\Jellyfin_AI_Cockpit\data\Test_Videos\The Witcher (2019) - S01E01.mkv -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_10\The Witcher (2019) - S01E01.mkv_sub_10_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_11\The Witcher (2019) - S01E01.mkv_sub_11_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_12\The Witcher (2019) - S01E01.mkv_sub_12_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_13\The Witcher (2019) - S01E01.mkv_sub_13_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_14\The Witcher (2019) - S01E01.mkv_sub_14_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_15\The Witcher (2019) - S01E01.mkv_sub_15_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_16\The Witcher (2019) - S01E01.mkv_sub_16_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_17\The Witcher (2019) - S01E01.mkv_sub_17_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_18\The Witcher (2019) - S01E01.mkv_sub_18_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_19\The Witcher (2019) - S01E01.mkv_sub_19_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_20\The Witcher (2019) - S01E01.mkv_sub_20_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_21\The Witcher (2019) - S01E01.mkv_sub_21_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_22\The Witcher (2019) - S01E01.mkv_sub_22_synced.srt -i F:\Jellyfin_AI_Cockpit\data\extracted_subs\The Witcher (2019) - S01E01.mkv\Spur_23\The Witcher (2019) - S01E01.mkv_sub_23_synced.srt -map 0:v:0 -default_mode infer_no_subs -map 0:1 -metadata:s:a:0 title= -metadata:s:a:0 language=ger -disposition:a:0 default -map 0:2 -metadata:s:a:1 title= -metadata:s:a:1 language=eng -disposition:a:1 0 -map 0:3 -metadata:s:a:2 title= -metadata:s:a:2 language=fre -disposition:a:2 0 -map 0:4 -metadata:s:a:3 title= -metadata:s:a:3 language=hi -disposition:a:3 0 -map 0:5 -metadata:s:a:4 title= -metadata:s:a:4 language=pl -disposition:a:4 0 -map 0:6 -metadata:s:a:5 title= -metadata:s:a:5 language=pl -disposition:a:5 0 -map 0:7 -metadata:s:a:6 title= -metadata:s:a:6 language=pl -disposition:a:6 0 -map 0:8 -metadata:s:a:7 title= -metadata:s:a:7 language=uk -disposition:a:7 0 -map 0:9 -metadata:s:a:8 title= -metadata:s:a:8 language=uk -disposition:a:8 0 -map 1:0 -metadata:s:s:0 title= -metadata:s:s:0 language=eng -disposition:s:0 hearing_impaired -map 2:0 -metadata:s:s:1 title= -metadata:s:s:1 language=ar -disposition:s:1 0 -map 3:0 -metadata:s:s:2 title= -metadata:s:s:2 language=fre -disposition:s:2 0 -map 4:0 -metadata:s:s:3 title= -metadata:s:s:3 language=fre -disposition:s:3 0 -map 5:0 -metadata:s:s:4 title= -metadata:s:s:4 language=fre -disposition:s:4 hearing_impaired -map 6:0 -metadata:s:s:5 title= -metadata:s:s:5 language=hi -disposition:s:5 forced -map 7:0 -metadata:s:s:6 title= -metadata:s:s:6 language=eng -disposition:s:6 forced -map 8:0 -metadata:s:s:7 title= -metadata:s:s:7 language=pl -disposition:s:7 0 -map 9:0 -metadata:s:s:8 title= -metadata:s:s:8 language=pl -disposition:s:8 hearing_impaired -map 10:0 -metadata:s:s:9 title= -metadata:s:s:9 language=tl -disposition:s:9 forced -map 11:0 -metadata:s:s:10 title= -metadata:s:s:10 language=ko -disposition:s:10 0 -map 12:0 -metadata:s:s:11 title= -metadata:s:s:11 language=tl -disposition:s:11 forced -map 13:0 -metadata:s:s:12 title= -metadata:s:s:12 language=uk -disposition:s:12 0 -map 14:0 -metadata:s:s:13 title= -metadata:s:s:13 language=uk -disposition:s:13 forced -c copy F:\Jellyfin_AI_Cockpit\data\temp_cleanup\clean_The Witcher (2019) - S01E01.mkv
+  -> Speichere aufgeräumte Datei (FFmpeg Remux)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Now You See Me (2013).mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (95.8%)
+       Whisper KI (Spot 1452s): ger (95.9%)
+       Whisper KI (Spot 2605s): ger (97.8%)
+       Whisper KI (Spot 3758s): ger (98.4%)
+       Whisper KI (Spot 4911s): zh (49.7%)
+       Whisper KI (Spot 6064s): ger (82.1%)
+[2026-08-26 18:57:18]      => Audio KI Bestätigt: 'ger' (Sicherheit: 94.0%, Dauer: 2.3s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...
+
+--- Analysiere V5: F:\Jellyfin_AI_Cockpit\data\Test_Videos\Die Schneegesellschaft.mp4 ---
+  -> Konvertiere .mp4 in .mkv Container...
+     Erfolgreich konvertiert.
+  -> Audio Spur 1 (Bisher: 'ger'). Starte Whisper Analyse...
+       -> Kein voller Text-Untertitel gefunden. Nutze 6 mathematische Zeitstempel.
+Lade Whisper Modell (tiny) auf cuda...
+       Whisper KI (Spot 300s): ger (98.4%)
+       Whisper KI (Spot 1655s): tr (53.4%)
+       Whisper KI (Spot 3010s): ger (98.5%)
+       Whisper KI (Spot 4365s): tr (61.0%)
+       Whisper KI (Spot 5721s): ger (99.2%)
+       Whisper KI (Spot 7076s): la (33.7%)
+[2026-08-26 18:59:45]      => Audio KI Bestätigt: 'ger' (Sicherheit: 98.7%, Dauer: 1.9s)
+  -> Schnelles Metadaten-Update (mkvpropedit)...
+     Erfolgreich aktualisiert!
+Entlade Whisper Modell aus dem Speicher...

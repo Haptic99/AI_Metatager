@@ -29,7 +29,7 @@ class ValidatorController:
     def get_validation_data(self, film, track_id):
         return self.state_data.get(film, {}).get(str(track_id), {}).get('Validated', {})
         
-    def save_validation(self, film, track_id, lang, sdh, forced, track_name, notes, validation_flags):
+    def save_validation(self, film, track_id, lang, sdh, forced, default_flag, track_name, notes, validation_flags):
         """
         Save user validation to the database (O(1) update).
         """
@@ -37,6 +37,7 @@ class ValidatorController:
             'language_iso': lang,
             'is_hearing_impaired': sdh,
             'is_forced': forced,
+            'is_default': default_flag, # <-- NEU
             'track_name': track_name,
             'notes': notes,
             'is_validated': True
@@ -67,8 +68,8 @@ class ValidatorController:
             conn.close()
             
     def remove_movie(self, film):
-        """Remove all tracks for a specific movie from the database and JSON state."""
-        # 1. Aus der SQLite Datenbank löschen
+        """Remove all tracks for a specific movie from the database."""
+        # 1. Aus der SQLite Datenbank löschen (löscht nun automatisch auch alle State-Daten!)
         from ai_metatagger.utils.state_manager import DB_LOCK, init_db
         with DB_LOCK:
             conn = init_db()
@@ -76,25 +77,6 @@ class ValidatorController:
             cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (film,))
             conn.commit()
             conn.close()
-            
-        # 2. Aus der validation_state.json löschen
-        import json
-        import os
-        from ai_metatagger.config import DB_PATH
-        state_file = os.path.join(os.path.dirname(DB_PATH), 'validation_state.json')
-        if os.path.exists(state_file):
-            try:
-                with open(state_file, 'r', encoding='utf-8') as f:
-                    state_data = json.load(f)
-                
-                # Wenn der Film in der JSON existiert, restlos entfernen
-                if film in state_data:
-                    del state_data[film]
-                    
-                    with open(state_file, 'w', encoding='utf-8') as f:
-                        json.dump(state_data, f, indent=4)
-            except Exception as e:
-                print(f"Fehler beim Löschen aus der JSON-Datei: {e}")
                 
         self.refresh_data()
         

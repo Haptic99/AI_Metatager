@@ -186,3 +186,48 @@ Movie,TrackType,Codec,DurationSec
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,1.24
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",audio,,0.00
 "Shape of Water - Das Flüstern des Wassers (2017).mkv",muxing,,0.00
+"ALL",prescan,ffprobe,0.70
+"Die Schneegesellschaft.mp4",audio,,3.26
+"ALL",prescan,ffprobe,0.08
+"Ein Minecraft Film.mp4",audio,,1.75
+"ALL",prescan,ffprobe,0.08
+"Evil Dead Rise.mp4",audio,,1.76
+"ALL",prescan,ffprobe,0.08
+"Evil Dead Rise.mp4",audio,,2.82
+"ALL",prescan,ffprobe,0.10
+"Get Rich or Die Tryin' (2005).mp4",audio,,1.61
+"ALL",prescan,ffprobe,0.09
+"Inception 2010.mp4",audio,,1.84
+"ALL",prescan,ffprobe,0.10
+"Interstellar.mp4",audio,,1.85
+"ALL",prescan,ffprobe,0.05
+"Lord Of War.mkv",audio,,1.68
+"ALL",prescan,ffprobe,0.07
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.64
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.02
+"The Witcher (2019) - S01E01.mkv",subtitle,subrip,0.01
+"The Witcher (2019) - S01E01.mkv",audio,,1.83
+"The Witcher (2019) - S01E01.mkv",audio,,1.11
+"The Witcher (2019) - S01E01.mkv",audio,,1.15
+"The Witcher (2019) - S01E01.mkv",audio,,1.15
+"The Witcher (2019) - S01E01.mkv",audio,,1.11
+"The Witcher (2019) - S01E01.mkv",audio,,0.90
+"The Witcher (2019) - S01E01.mkv",audio,,1.09
+"The Witcher (2019) - S01E01.mkv",audio,,1.20
+"The Witcher (2019) - S01E01.mkv",audio,,0.98
+"The Witcher (2019) - S01E01.mkv",muxing,,20.77
+"ALL",prescan,ffprobe,0.11
+"Now You See Me (2013).mp4",audio,,2.34
+"ALL",prescan,ffprobe,0.09
+"Die Schneegesellschaft.mp4",audio,,1.91
