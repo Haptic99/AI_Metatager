@@ -7,6 +7,7 @@ import os
 import subprocess
 from collections import defaultdict
 from typing import List, Optional, Tuple
+import warnings
 
 import torch
 import whisper
@@ -17,6 +18,8 @@ from ai_metatagger.core.logger import write_log
 from ai_metatagger.core.subtitle_tools import find_dense_audio_spots, map_lang
 
 _WHISPER_MODEL = None
+_VAD_MODEL = None
+_VAD_UTILS = None
 
 
 def get_whisper_model():
@@ -39,6 +42,17 @@ def unload_whisper_model() -> None:
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
+def get_vad_model():
+    """Load and cache the Silero VAD model."""
+    global _VAD_MODEL, _VAD_UTILS
+    if _VAD_MODEL is None:
+        write_log("Lade Silero VAD Modell zur Vorprüfung...", console=False)
+        warnings.filterwarnings("ignore", category=UserWarning)
+        _VAD_MODEL, _VAD_UTILS = torch.hub.load(repo_or_dir='snakers4/silero-vad',
+                                                model='silero_vad',
+                                                force_reload=False,
+                                                trust_repo=True)
+    return _VAD_MODEL, _VAD_UTILS
 
 def detect_audio_language_whisper(
     video_path: str,
@@ -81,10 +95,73 @@ def detect_audio_language_whisper(
             write_log(f"Dauer konnte nicht ermittelt werden: {e}")
             spots = [300, 900, 1500, 2100, 2700, 3300]
 
-    try:
-        model = get_whisper_model()
-    except Exception as e:
-        write_log(f'Whisper Model Load Error: {e}')
+        try:
+            model = get_whisper_model()
+            
+            # Silero VAD laden
+            vad_model, vad_utils = get_vad_model()
+            get_speech_timestamps = vad_utils[0]
+            read_audio = vad_utils[1]
+        except Exception as e:
+            write_log(f'Whisper/VAD Model Load Error: {e}')
+            return 'und', '0%'
+
+        detected_langs: List[Tuple[str, float]] = []
+        
+        for base_spot in spots:
+            current_spot = base_spot
+            spot_success = False
+            
+            for attempt in range(4):  # Maximal 4 Versuche (+0s, +15s, +30s, +45s)
+                temp_audio = os.path.join(TEMP_DIR, f"temp_audio_{audio_stream_idx}_{int(current_spot)}.wav")
+                cmd = ["ffmpeg", "-v", "quiet", "-y", "-ss", str(current_spot), "-i", video_path,
+                    "-map", f"0:{audio_stream_idx}", "-t", "30",
+                    "-c:a", "pcm_s16le", "-ar", "16000", "-ac", "1", temp_audio]
+                tracked_run(cmd)
+
+                if os.path.exists(temp_audio):
+                    try:
+                        # 1. Silero VAD Check
+                        wav = read_audio(temp_audio, sampling_rate=16000)
+                        speech_timestamps = get_speech_timestamps(wav, vad_model, sampling_rate=16000)
+                        
+                        if not speech_timestamps:
+                            write_log(f"       VAD: Keine Sprache bei {int(current_spot)}s. Springe 15s vor...", console=False)
+                            current_spot += 15
+                            continue
+                            
+                        # 2. Whisper Analyse (da echte Sprache gefunden wurde)
+                        audio = whisper.load_audio(temp_audio)
+                        audio = whisper.pad_or_trim(audio)
+                        mel = whisper.log_mel_spectrogram(audio, n_mels=model.dims.n_mels).to(model.device)
+                        _, probs = model.detect_language(mel)
+                        lang = max(probs, key=probs.get)
+                        prob = probs[lang] * 100
+                        detected_langs.append((map_lang(lang), prob))
+                        write_log(f"       Whisper KI (Spot {int(current_spot)}s): {map_lang(lang)} ({prob:.1f}%)", console=False)
+                        spot_success = True
+                        break  # Spot erfolgreich, verlasse die Skip-Schleife
+                        
+                    except Exception as e:
+                        write_log(f"Warnung bei Analyse (Spot {int(current_spot)}s): {e}")
+                    finally:
+                        try:
+                            os.remove(temp_audio)
+                        except OSError as e:
+                            pass
+                            
+            if not spot_success:
+                write_log(f"       VAD: Auch nach 4 Versuchen keine Sprache um {int(base_spot)}s gefunden.", console=False)
+
+        if detected_langs:
+            counts: defaultdict = defaultdict(list)
+            for l, p in detected_langs:
+                counts[l].append(p)
+            best_lang = max(counts.keys(), key=lambda k: len(counts[k]))
+            if len(counts[best_lang]) >= 2 or (len(counts[best_lang]) == 1 and len(spots) == 1):
+                avg_prob = sum(counts[best_lang]) / len(counts[best_lang])
+                return best_lang, f"{avg_prob:.1f}%"
+
         return 'und', '0%'
 
     detected_langs: List[Tuple[str, float]] = []
