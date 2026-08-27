@@ -231,3 +231,15 @@ Movie,TrackType,Codec,DurationSec
 "Now You See Me (2013).mp4",audio,,2.34
 "ALL",prescan,ffprobe,0.09
 "Die Schneegesellschaft.mp4",audio,,1.91
+"ALL",prescan,ffprobe,0.72
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.62
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,25.20
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,20.70
+"ALL",prescan,ffprobe,0.05
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.21
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,23.62
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,19.89
+"ALL",prescan,ffprobe,0.06
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,subrip,0.20
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,22.72
+"Shape of Water - Das Flüstern des Wassers (2017).mkv",subtitle,hdmv_pgs_subtitle,20.09
