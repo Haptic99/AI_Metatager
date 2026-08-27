@@ -2,6 +2,7 @@
 
 Provides a simple interface to query stream metadata from media files.
 """
+import os
 import json
 import subprocess
 from typing import Dict, List
@@ -29,3 +30,47 @@ def get_streams(filepath: str) -> List[Dict]:
     except Exception as e:
         write_log(f'Error in get_streams: {e}')
         return []
+
+def generate_track_metadata(filepath: str) -> list:
+    """Uses ffprobe to extract stream metadata and formats it for the database."""
+    cmd = ["ffprobe", "-v", "error", "-show_streams", "-of", "json", filepath]
+    res = tracked_run(cmd, capture_output=True, text=True, encoding='utf-8')
+    if res.returncode != 0:
+        return []
+        
+    try:
+        data = json.loads(res.stdout)
+    except json.JSONDecodeError:
+        return []
+
+    tracks = []
+    streams = [s for s in data.get('streams', []) if s.get('codec_type') != 'video']
+    for idx, s in enumerate(streams, start=1):
+        lang = s.get('tags', {}).get('language', 'und')
+        title = s.get('tags', {}).get('title', '')
+        is_sdh = 'SDH' in title.upper()
+        is_forced = 'FORCED' in title.upper()
+        track_type = "Audio" if s.get('codec_type') == 'audio' else "Untertitel"
+        codec = s.get('codec_name', '').lower()
+        
+        if track_type == "Audio":
+            sub_type = ""
+        elif 'pgs' in codec or 'dvd' in codec:
+            sub_type = "PGSSUB"
+        else:
+            sub_type = "SRT"
+
+        tracks.append({
+            "file_name": os.path.basename(filepath),
+            "track_id": idx,
+            "track_type": track_type,
+            "language_iso": lang,
+            "track_name": "",
+            "is_default": False,
+            "subtitle_type": sub_type,
+            "is_hearing_impaired": is_sdh,
+            "is_forced": is_forced,
+            "notes": "AUTO",
+            "is_validated": False
+        })
+    return tracks

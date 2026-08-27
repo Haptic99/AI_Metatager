@@ -11,6 +11,8 @@ from ai_metatagger.utils.state_manager import load_state, save_state, load_matri
 from ai_metatagger.utils.subprocess_tracker import SubprocessTracker, set_active_tracker, tracked_run
 from ai_metatagger.core import processor as analyzer
 from ai_metatagger.core.audio_analyzer import unload_whisper_model
+from ai_metatagger.core.ffmpeg_tools import generate_track_metadata
+from ai_metatagger.core.logger import write_performance_log
 
 
 class AnalysisThread(QtCore.QThread):
@@ -54,12 +56,8 @@ class AnalysisThread(QtCore.QThread):
             except Exception: pass
             
         # 3. Halbe Datenbank-Einträge bereinigen
-        with DB_LOCK:
-            conn = init_db()
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (basename,))
-            conn.commit()
-            conn.close()
+        from ai_metatagger.utils.state_manager import delete_movie_tracks
+        delete_movie_tracks(basename)
 
     def extract_metadata(self, filepath):
         data = getattr(self, 'ffprobe_cache', {}).get(filepath)
@@ -136,9 +134,6 @@ class AnalysisThread(QtCore.QThread):
                                      text=True, encoding='utf-8', errors='replace',
                                      creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
                 data = json.loads(res.stdout)
-                if not hasattr(self, 'ffprobe_cache'):
-                    self.ffprobe_cache = {}
-                self.ffprobe_cache[path] = data
                 for s in data.get('streams', []):
                     ctype = s.get('codec_type')
                     if ctype == 'audio':
@@ -159,15 +154,7 @@ class AnalysisThread(QtCore.QThread):
             file_stats.append({'total_tracks': f_aud + f_sub, 'points': pts_for_file})
 
         prescan_dur = time.time() - prescan_start
-        try:
-            csv_path = os.path.join(os.path.dirname(DB_PATH), "Performance_Log.csv")
-            write_header = not os.path.exists(csv_path)
-            with open(csv_path, "a", encoding="utf-8") as f:
-                if write_header:
-                    f.write("Movie,TrackType,Codec,DurationSec\n")
-                f.write(f'"ALL",prescan,ffprobe,{prescan_dur:.2f}\n')
-        except OSError as e:
-            print(f'Log write error: {e}')
+        write_performance_log("ALL", "prescan", "ffprobe", prescan_dur)
 
         if total_points == 0:
             total_points = 1
@@ -222,15 +209,7 @@ class AnalysisThread(QtCore.QThread):
 
             elif status == 'done':
                 dur = time.time() - track_start_times.get(f"{track_type}_{idx}", time.time())
-                try:
-                    csv_path = os.path.join(os.path.dirname(DB_PATH), "Performance_Log.csv")
-                    write_header = not os.path.exists(csv_path)
-                    with open(csv_path, "a", encoding="utf-8") as f:
-                        if write_header:
-                            f.write("Movie,TrackType,Codec,DurationSec\n")
-                        f.write(f'"{basename}",{track_type},{codec},{dur:.2f}\n')
-                except OSError as e:
-                    print(f'Log write error: {e}')
+                write_performance_log(basename, track_type, codec, dur)
 
                 fractional_points = 0.0
                 if track_type == 'audio':
@@ -288,7 +267,8 @@ class AnalysisThread(QtCore.QThread):
                 self._cleanup_failed_movie(basename, dest_path)
                 break
 
-            new_tracks = self.extract_metadata(dest_path)
+            # Metadaten über die ausgelagerte Kern-Funktion extrahieren
+            new_tracks = generate_track_metadata(dest_path)
             if os.path.exists(DB_PATH):
                 df = load_matrix()
             else:
@@ -296,15 +276,10 @@ class AnalysisThread(QtCore.QThread):
                                            'track_name', 'is_default', 'subtitle_type',
                                            'is_hearing_impaired', 'is_forced', 'notes', 'is_validated'])
 
-            from ai_metatagger.utils.state_manager import init_db, DB_LOCK, append_tracks
+            from ai_metatagger.utils.state_manager import append_tracks, delete_movie_tracks
             # Wenn ein Film neu analysiert wird, löschen wir alle alten Spuren aus der DB,
             # damit er wieder als unvalidiert in der Liste auftaucht.
-            with DB_LOCK:
-                conn = init_db()
-                cursor = conn.cursor()
-                cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (basename,))
-                conn.commit()
-                conn.close()
+            delete_movie_tracks(basename)
                 
             if new_tracks:
                 print(f"AnalysisThread: appending {len(new_tracks)} tracks to DB")

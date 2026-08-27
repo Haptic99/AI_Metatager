@@ -86,6 +86,15 @@ def delete_unvalidated_tracks(file_name: str):
         conn.commit()
         conn.close()
 
+def delete_movie_tracks(file_name: str):
+    """Delete all tracks for a specific movie (e.g., on restart or abort)."""
+    with DB_LOCK:
+        conn = init_db()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM media_tracks WHERE file_name = ?", (file_name,))
+        conn.commit()
+        conn.close()
+
 def update_track(file_name, track_id, updates: dict):
     """
     Update specific fields for a track. O(1) operation instead of rewriting the entire DB.

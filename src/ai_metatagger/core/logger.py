@@ -54,3 +54,19 @@ def write_log(msg: str, console: bool = True, log_type: str = 'cleanup') -> None
 
     if console:
         print(str(msg).encode(sys.stdout.encoding, errors='replace').decode(sys.stdout.encoding))
+
+def write_performance_log(movie: str, track_type: str, codec: str, duration: float) -> None:
+    """Write execution time performance data to a CSV log."""
+    from ai_metatagger.config import DB_PATH
+    
+    csv_path = os.path.join(os.path.dirname(DB_PATH), "Performance_Log.csv")
+    write_header = not os.path.exists(csv_path)
+    
+    try:
+        with LOG_LOCK:
+            with open(csv_path, "a", encoding="utf-8") as f:
+                if write_header:
+                    f.write("Movie,TrackType,Codec,DurationSec\n")
+                f.write(f'"{movie}",{track_type},{codec},{duration:.2f}\n')
+    except OSError as e:
+        print(f'Log write error: {e}')
