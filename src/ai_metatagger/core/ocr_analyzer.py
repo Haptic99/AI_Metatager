@@ -35,7 +35,7 @@ def get_subtitle_timestamps(filepath: str, stream_idx: int) -> List[float]:
         List of timestamps in seconds.
     """
     cmd = ["ffprobe", "-v", "quiet", "-select_streams", str(stream_idx),
-           "-show_entries", "packet=pts_time", "-of", "json", filepath]
+           "-show_entries", "packet=pts_time,size", "-of", "json", filepath]
     try:
         res = tracked_run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                           text=True, encoding='utf-8', errors='replace')
@@ -44,6 +44,16 @@ def get_subtitle_timestamps(filepath: str, stream_idx: int) -> List[float]:
         data = json.loads(res.stdout)
         timestamps = []
         for p in data.get('packets', []):
+            # Ignore empty/clearing packets (size < 50 bytes) for PGS subtitles
+            size_str = p.get('size', '100')
+            try:
+                size_val = int(size_str)
+            except:
+                size_val = 100
+                
+            if size_val < 50:
+                continue
+                
             pts = p.get('pts_time')
             if pts:
                 try:
@@ -57,27 +67,31 @@ def get_subtitle_timestamps(filepath: str, stream_idx: int) -> List[float]:
 
 
 def extract_subtitle_image(filepath: str, stream_idx: int, ts: float, out_img: str) -> bool:
-    """Extract a single subtitle frame as a PNG image.
-
-    Args:
-        filepath: Path to the media file.
-        stream_idx: Stream index of the subtitle track.
-        ts: Timestamp in seconds.
-        out_img: Output path for the PNG image.
-
-    Returns:
-        True if extraction was successful.
-    """
+    """Extract a single subtitle frame as a PNG image."""
     try:
-        cmd = [
-            "ffmpeg", "-v", "quiet", "-y",
-            "-ss", str(ts + 0.1),
-            "-i", filepath,
-            "-filter_complex", f"[0:{stream_idx}]scale=1920:1080[v]",
-            "-map", "[v]",
-            "-vframes", "1",
-            out_img
-        ]
+        movie_base = os.path.basename(filepath)
+        temp_mkv = os.path.join(SUBS_DIR, movie_base, f"Spur_{stream_idx}", "temp.mkv")
+        
+        if os.path.exists(temp_mkv):
+            cmd = [
+                "ffmpeg", "-v", "quiet", "-y",
+                "-i", temp_mkv,
+                "-ss", str(ts),
+                "-filter_complex", "[0:0]scale=1920:1080[v]",
+                "-map", "[v]",
+                "-vframes", "1",
+                out_img
+            ]
+        else:
+            cmd = [
+                "ffmpeg", "-v", "quiet", "-y",
+                "-ss", str(ts + 0.1),
+                "-i", filepath,
+                "-filter_complex", f"[0:{stream_idx}]scale=1920:1080[v]",
+                "-map", "[v]",
+                "-vframes", "1",
+                out_img
+            ]
         tracked_run(cmd, check=True)
         return os.path.exists(out_img)
     except subprocess.CalledProcessError:
@@ -154,16 +168,23 @@ def analyze_subtitle_pgs(
 
     write_log(f"       Starte Precision-OCR (Modell: {tess_lang}) an {len(sample_timestamps)} exakten Bild-Zeitpunkten...", console=False)
 
+    movie_base = os.path.basename(filepath)
+    track_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{stream_idx}")
+    os.makedirs(track_dir, exist_ok=True)
+    temp_mkv = os.path.join(track_dir, "temp.mkv")
+    subprocess.run(["ffmpeg", "-v", "quiet", "-y", "-i", filepath, "-map", f"0:{stream_idx}", "-c", "copy", temp_mkv])
+
     # Auto-detect best Tesseract language model
     tess_lang = _auto_detect_tess_language(filepath, stream_idx, track_id, sample_timestamps, tess_lang, old_lang)
 
     # Parallel OCR extraction (Liefert jetzt den reinen Text UND den SRT-formatierten Text)
     pure_text, srt_text = _run_parallel_ocr(filepath, stream_idx, track_id, sample_timestamps, tess_lang)
 
+    if os.path.exists(temp_mkv):
+        try: os.remove(temp_mkv)
+        except: pass
+
     # Save OCR text (im SRT Format!) für die Benutzeroberfläche
-    movie_base = os.path.basename(filepath)
-    track_dir = os.path.join(SUBS_DIR, movie_base, f"Spur_{stream_idx}")
-    os.makedirs(track_dir, exist_ok=True)
     ocr_file = os.path.join(track_dir, f"{movie_base}_sub_{stream_idx}_OCR.txt")
     with open(ocr_file, "w", encoding="utf-8") as f:
         f.write(srt_text)

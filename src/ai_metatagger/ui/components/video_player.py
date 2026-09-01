@@ -33,7 +33,7 @@ class VideoPlayerWidget(QtWidgets.QWidget):
         
     def _init_vlc(self):
         if self.vlc_instance is None:
-            self.vlc_instance = vlc.Instance("--no-xlib")
+            self.vlc_instance = vlc.Instance("--no-xlib", "--quiet")
             self.media_player = self.vlc_instance.media_player_new()
             self._stopping = False
             
@@ -59,11 +59,11 @@ class VideoPlayerWidget(QtWidgets.QWidget):
                 self.media_player.set_nsobject(int(self.video_frame.winId()))
                 
             self.media_player.play()
-            QtCore.QTimer.singleShot(1500, lambda: self.switch_track(track_type, track_id, autoplay))
+            QtCore.QTimer.singleShot(1500, lambda: self.switch_track(track_type, track_id, autoplay, is_new_media=True))
         else:
-            self.switch_track(track_type, track_id, autoplay)
+            self.switch_track(track_type, track_id, autoplay, is_new_media=False)
             
-    def switch_track(self, typ, spur_id, autoplay=False):
+    def switch_track(self, typ, spur_id, autoplay=False, is_new_media=False):
             if not self.media_player or self._stopping:
                 return
 
@@ -101,10 +101,12 @@ class VideoPlayerWidget(QtWidgets.QWidget):
                 if audio_count > 1:
                     self.media_player.audio_set_track(1)
                     
-            if autoplay:
-                self.media_player.play()
-            else:
-                self.media_player.set_pause(1)
+            # Only control play/pause state when loading a new movie
+            if is_new_media:
+                if autoplay:
+                    self.media_player.play()
+                else:
+                    self.media_player.set_pause(1)
         
     def stop(self):
         if self.media_player and not self._stopping:

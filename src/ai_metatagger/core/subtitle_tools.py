@@ -89,6 +89,18 @@ def map_lang(lang_str: str, title_str: str = "") -> str:
     map_2_to_3 = CONFIG.get('map_2_to_3', {})
     if lang_str in map_2_to_3:
         return map_2_to_3[lang_str]
+        
+    # Hardcoded fallback for fasttext 2-letter codes to Matroska 3-letter codes
+    fallback_map = {
+        'ar': 'ara', 'bg': 'bul', 'hr': 'hrv', 'ru': 'rus', 'ja': 'jpn',
+        'ko': 'kor', 'it': 'ita', 'pl': 'pol', 'tr': 'tur', 'hi': 'hin',
+        'th': 'tha', 'sv': 'swe', 'da': 'dan', 'no': 'nor', 'fi': 'fin',
+        'pt': 'por', 'nl': 'dut', 'uk': 'ukr', 'cs': 'cze', 'sk': 'slo',
+        'hu': 'hun', 'ro': 'rum', 'el': 'gre', 'he': 'heb', 'id': 'ind',
+        'vi': 'vie', 'ms': 'may', 'fa': 'per', 'ur': 'urd', 'sr': 'srp'
+    }
+    if lang_str in fallback_map:
+        return fallback_map[lang_str]
 
     return lang_str
 

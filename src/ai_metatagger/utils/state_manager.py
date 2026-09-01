@@ -37,6 +37,14 @@ def init_db():
     except sqlite3.OperationalError:
         pass
         
+    # Migrate target_track_id
+    try:
+        cursor.execute("ALTER TABLE media_tracks ADD COLUMN target_track_id TEXT")
+        # Update existing rows to default to track_id
+        cursor.execute("UPDATE media_tracks SET target_track_id = track_id WHERE target_track_id IS NULL")
+    except sqlite3.OperationalError:
+        pass
+        
     conn.commit()
     return conn
 

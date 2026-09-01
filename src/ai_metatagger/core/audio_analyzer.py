@@ -4,17 +4,36 @@ multi-spot language detection with smart silence skipping.
 """
 import os
 
-# --- KRITISCHER FIX: Verhindert den sofortigen Absturz durch PyTorch/CTranslate2 Konflikte ---
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-# --- FIX: Unterdrückt Hugging Face Warnungen und zwingt saubere Downloads ---
-os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
-
 import subprocess
 import warnings
 from collections import defaultdict
 from typing import List, Optional, Tuple
 
 import torch
+
+# --- NEUER FIX FÜR DEN LAUTLOSEN ABSTURZ (CUDA DLLs) ---
+# faster-whisper (CTranslate2) findet die Windows-NVIDIA-Dateien oft nicht. 
+# Wir binden hier die mitgelieferten Dateien von PyTorch in den Systempfad ein:
+if os.name == 'nt':
+    paths_to_add = []
+    
+    # 1. PyTorch lib (für ältere Modelle / CUDA 11)
+    paths_to_add.append(os.path.join(os.path.dirname(torch.__file__), "lib"))
+    
+    # 2. Nvidia CUDA 12 packages (für ctranslate2 v4+)
+    import site
+    for base in site.getsitepackages() + [site.getusersitepackages()]:
+        paths_to_add.append(os.path.join(base, "nvidia", "cublas", "bin"))
+        paths_to_add.append(os.path.join(base, "nvidia", "cudnn", "bin"))
+        
+    for p in paths_to_add:
+        if os.path.exists(p):
+            os.environ["PATH"] = p + os.pathsep + os.environ.get("PATH", "")
+            if hasattr(os, 'add_dll_directory'):
+                try:
+                    os.add_dll_directory(p)
+                except Exception:
+                    pass
 from faster_whisper import WhisperModel
 
 from ai_metatagger.utils.subprocess_tracker import tracked_run
@@ -30,10 +49,13 @@ def get_whisper_model():
     """Load and cache the faster-whisper model."""
     global _WHISPER_MODEL
     if _WHISPER_MODEL is None:
+        # CUDA wieder aktivieren
         device = "cuda" if torch.cuda.is_available() else "cpu"
         compute_type = "float16" if device == "cuda" else "int8"
         write_log(f"Lade faster-whisper Modell ({WHISPER_MODEL_SIZE}) auf {device} ({compute_type})...", console=False)
-        _WHISPER_MODEL = WhisperModel(WHISPER_MODEL_SIZE, device=device, compute_type=compute_type)
+        
+        # cpu_threads=1 verhindert, dass der PyQt-Thread bei der CUDA-Initialisierung abstürzt
+        _WHISPER_MODEL = WhisperModel(WHISPER_MODEL_SIZE, device=device, compute_type=compute_type, cpu_threads=1)
     return _WHISPER_MODEL
 
 def get_vad_model():
@@ -59,8 +81,7 @@ def unload_whisper_model() -> None:
         _WHISPER_MODEL = None
         _VAD_MODEL = None
         _VAD_UTILS = None
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
+        # torch.cuda.empty_cache() removed to prevent QThread segfault on Windows
 
 def detect_audio_language_whisper(
     video_path: str,
@@ -94,7 +115,7 @@ def detect_audio_language_whisper(
         model = get_whisper_model()
         vad_model, vad_utils = get_vad_model()
         get_speech_timestamps = vad_utils[0]
-        read_audio = vad_utils[1]
+        import torchaudio
     except Exception as e:
         write_log(f'Whisper/VAD Model Load Error: {e}')
         return 'und', '0%'
@@ -115,7 +136,12 @@ def detect_audio_language_whisper(
             if os.path.exists(temp_audio):
                 try:
                     # 1. Silero VAD Check (Gibt es hier überhaupt Sprache?)
-                    wav = read_audio(temp_audio, sampling_rate=16000)
+                    wav, sr = torchaudio.load(temp_audio)
+                    if sr != 16000:
+                        import torchaudio.transforms as T
+                        resampler = T.Resample(sr, 16000)
+                        wav = resampler(wav)
+                    wav = wav.squeeze(0)
                     speech_timestamps = get_speech_timestamps(wav, vad_model, sampling_rate=16000)
                     
                     if not speech_timestamps:

@@ -48,8 +48,10 @@ def generate_track_metadata(filepath: str) -> list:
     for idx, s in enumerate(streams, start=1):
         lang = s.get('tags', {}).get('language', 'und')
         title = s.get('tags', {}).get('title', '')
-        is_sdh = 'SDH' in title.upper()
-        is_forced = 'FORCED' in title.upper()
+        disp = s.get('disposition', {})
+        is_sdh = disp.get('hearing_impaired', 0) == 1 or 'SDH' in title.upper()
+        is_forced = disp.get('forced', 0) == 1 or 'FORCED' in title.upper()
+        is_default = disp.get('default', 0) == 1
         track_type = "Audio" if s.get('codec_type') == 'audio' else "Untertitel"
         codec = s.get('codec_name', '').lower()
         
@@ -63,10 +65,11 @@ def generate_track_metadata(filepath: str) -> list:
         tracks.append({
             "file_name": os.path.basename(filepath),
             "track_id": idx,
+            "target_track_id": idx,
             "track_type": track_type,
             "language_iso": lang,
             "track_name": "",
-            "is_default": False,
+            "is_default": is_default,
             "subtitle_type": sub_type,
             "is_hearing_impaired": is_sdh,
             "is_forced": is_forced,

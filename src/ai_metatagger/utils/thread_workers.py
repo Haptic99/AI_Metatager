@@ -243,6 +243,7 @@ class AnalysisThread(QtCore.QThread):
             return self.is_cancelled
 
         for i, src_path in enumerate(self.file_paths):
+          try:
             current_movie_idx = i
             current_track_idx = 0
             if self.is_cancelled:
@@ -253,6 +254,27 @@ class AnalysisThread(QtCore.QThread):
             self.progress_update.emit(i, total, f"Kopiere {basename}...")
             if not os.path.exists(dest_path):
                 shutil.copy2(src_path, dest_path)
+                
+            # --- INTERLEAVING PRÜFUNG & REPARATUR (nur auf der Kopie!) ---
+            from ai_metatagger.utils.interleaving_fixer import InterleavingFixer
+            from ai_metatagger.core.logger import write_log
+            import datetime
+            
+            self.progress_update.emit(i, total, f"Prüfe Interleaving: {basename}...")
+            if InterleavingFixer.needs_interleaving_fix(dest_path):
+                msg = f"Interleaving wird repariert (Hardcore-Fix): {basename}"
+                self.progress_update.emit(i, total, f"Muxing wird repariert: {basename} (Dies kann dauern)...")
+                
+                # In die Konsole und ins Master_Cleanup_Log.txt schreiben
+                timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                write_log(f"[{timestamp}] {msg}")
+                
+                if not InterleavingFixer.fix_interleaving(dest_path):
+                    self.progress_update.emit(i, total, f"Warnung: Reparatur fehlgeschlagen für {basename}")
+                    write_log(f"[{timestamp}] Fehler bei Reparatur von {basename}")
+                else:
+                    write_log(f"[{timestamp}] Reparatur erfolgreich abgeschlossen für {basename}")
+            
             subprocess.run([MKVPROPEDIT, dest_path, "-d", "title"],
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                            creationflags=subprocess.CREATE_NO_WINDOW)
@@ -272,7 +294,7 @@ class AnalysisThread(QtCore.QThread):
             if os.path.exists(DB_PATH):
                 df = load_matrix()
             else:
-                df = pd.DataFrame(columns=['file_name', 'track_id', 'track_type', 'language_iso',
+                df = pd.DataFrame(columns=['file_name', 'track_id', 'target_track_id', 'track_type', 'language_iso',
                                            'track_name', 'is_default', 'subtitle_type',
                                            'is_hearing_impaired', 'is_forced', 'notes', 'is_validated'])
 
@@ -311,6 +333,10 @@ class AnalysisThread(QtCore.QThread):
                 }
             save_state(state_data)
             self.movie_ready.emit()
+          except Exception as e:
+            import traceback
+            traceback.print_exc()
+            self.progress_update.emit(i, len(self.file_paths), f"Fehler bei {os.path.basename(src_path)}: {e}")
 
         # Batch finished or cancelled: release Whisper VRAM
         try:

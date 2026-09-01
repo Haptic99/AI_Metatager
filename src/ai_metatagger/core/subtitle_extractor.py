@@ -208,10 +208,17 @@ def _process_subtitles(
                 return mapped_subs, [], synced_srt_paths, needs_muxing, needs_ffmpeg
             dur = time.time() - start_t
             if detected_pgs_lang != 'und':
+                try:
+                    c_val = float(str(conf).replace('%', ''))
+                except:
+                    c_val = 0.0
+
                 if not is_same_lang_family(detected_pgs_lang, new_lang):
                     tl = str(old_title).lower()
                     if ('french' in tl or 'fran' in tl) and new_lang == 'fre':
                         write_log(f"     => OCR KI Erkennung '{detected_pgs_lang}' ignoriert, da Titel auf 'fre' hindeutet.", log_type="korrektur")
+                    elif c_val < 35.0:
+                        write_log(f"     => OCR KI Erkennung '{detected_pgs_lang}' ignoriert, da Sicherheit zu gering ({conf}). Behalte '{new_lang}'.", log_type="korrektur")
                     else:
                         write_log(f"     => OCR KI Korrektur: War '{new_lang}', ist jetzt '{detected_pgs_lang}' (Sicherheit: {conf}, Dauer: {dur:.1f}s)", log_type="korrektur")
                         new_lang = detected_pgs_lang
